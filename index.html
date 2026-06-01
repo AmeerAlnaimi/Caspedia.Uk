@@ -1,740 +1,883 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Caspedia – The Free Encyclopedia</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Linux+Libertine+Display:ital@0;1&family=Linux+Biolinum:wght@400;600&family=Georgia&display=swap" rel="stylesheet" />
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --white: #ffffff;
-    --bg: #f8f9fa;
-    --bg-infobox: #f8f9fa;
-    --border: #a2a9b1;
-    --border-light: #eaecf0;
-    --link: #3366cc;
-    --link-visited: #795cb2;
-    --text: #202122;
-    --text-muted: #54595d;
-    --header-bg: #ffffff;
-    --sidebar-bg: #ffffff;
-    --featured-bg: #eaf3fb;
-    --featured-border: #a2c8e0;
-    --toc-bg: #f8f9fa;
-    --toc-border: #a2a9b1;
-    --notice-bg: #eef3fd;
-    --notice-border: #3366cc;
-    --font-serif: 'Linux Libertine Display', 'Georgia', serif;
-    --font-sans: 'Linux Biolinum', 'Arial', sans-serif;
-    --font-body: 'Georgia', serif;
-  }
-
-  body {
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--text);
-    background: var(--bg);
-    line-height: 1.6;
-  }
-
-  a { color: var(--link); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  a:visited { color: var(--link-visited); }
-
-  /* ── TOP HEADER ── */
-  #mw-head {
-    background: var(--header-bg);
-    border-bottom: 1px solid var(--border-light);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .mw-head-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 0 16px;
-    height: 50px;
-  }
-
-  .mw-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-
-  .mw-logo-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .mw-logo-text {
-    font-family: var(--font-serif);
-    font-size: 20px;
-    color: var(--text);
-    letter-spacing: -0.3px;
-  }
-
-  .mw-logo-text span {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-
-  .mw-search {
-    flex: 1;
-    max-width: 500px;
-    margin-left: auto;
-    position: relative;
-  }
-
-  .mw-search input {
-    width: 100%;
-    padding: 6px 36px 6px 12px;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    font-size: 13px;
-    font-family: var(--font-sans);
-    background: var(--white);
-    color: var(--text);
-    outline: none;
-  }
-
-  .mw-search input:focus { border-color: #3366cc; box-shadow: 0 0 0 2px rgba(51,102,204,0.15); }
-
-  .mw-search-btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 34px;
-    background: #f8f9fa;
-    border: 1px solid var(--border);
-    border-left: none;
-    border-radius: 0 2px 2px 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-size: 14px;
-  }
-
-  .mw-search-btn:hover { background: #e8e8e8; }
-
-  .mw-nav-links {
-    display: flex;
-    gap: 12px;
-    flex-shrink: 0;
-    font-family: var(--font-sans);
-    font-size: 12px;
-  }
-
-  .mw-nav-links a { color: var(--text-muted); }
-  .mw-nav-links a:hover { color: var(--link); text-decoration: none; }
-
-  /* ── PAGE TABS ── */
-  #mw-tabs {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .mw-tabs-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    padding: 0 16px 0 200px;
-    gap: 0;
-    font-family: var(--font-sans);
-    font-size: 12.5px;
-  }
-
-  .mw-tab {
-    padding: 6px 14px;
-    border: 1px solid transparent;
-    border-bottom: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    white-space: nowrap;
-    position: relative;
-    bottom: -1px;
-  }
-
-  .mw-tab.active {
-    background: var(--white);
-    border-color: var(--border);
-    border-bottom-color: var(--white);
-    color: var(--text);
-  }
-
-  .mw-tab:hover:not(.active) { background: #f0f0f0; border-color: #c8ccd1; }
-
-  /* ── MAIN LAYOUT ── */
-  #content-wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    padding: 16px;
-    gap: 16px;
-  }
-
-  /* ── SIDEBAR ── */
-  #mw-sidebar {
-    width: 180px;
-    flex-shrink: 0;
-  }
-
-  .sidebar-logo-large {
-    text-align: center;
-    padding: 12px 0 16px;
-    border-bottom: 1px solid var(--border-light);
-    margin-bottom: 12px;
-  }
-
-  .sidebar-logo-large .globe {
-    width: 55px;
-    height: 55px;
-    margin: 0 auto 6px;
-  }
-
-  .sidebar-logo-large .site-name {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    color: var(--text);
-    display: block;
-  }
-
-  .sidebar-logo-large .tagline {
-    font-family: var(--font-sans);
-    font-size: 10px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .sidebar-section { margin-bottom: 16px; }
-
-  .sidebar-section h3 {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--text-muted);
-    padding: 4px 0;
-    border-bottom: 1px solid var(--border-light);
-    margin-bottom: 6px;
-  }
-
-  .sidebar-section ul { list-style: none; }
-
-  .sidebar-section ul li { padding: 2px 0; }
-
-  .sidebar-section ul li a {
-    font-family: var(--font-sans);
-    font-size: 12.5px;
-    color: var(--link);
-  }
-
-  /* ── ARTICLE CONTENT ── */
-  #mw-content {
-    flex: 1;
-    min-width: 0;
-    background: var(--white);
-    border: 1px solid var(--border-light);
-    padding: 24px 28px;
-  }
-
-  .page-title {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    font-weight: normal;
-    color: var(--text);
-    border-bottom: 1px solid var(--border-light);
-    padding-bottom: 4px;
-    margin-bottom: 4px;
-  }
-
-  .page-subtitle {
-    font-family: var(--font-sans);
-    font-size: 12.5px;
-    color: var(--text-muted);
-    font-style: italic;
-    margin-bottom: 16px;
-  }
-
-  /* ── NOTICE BOX ── */
-  .notice-box {
-    background: var(--notice-bg);
-    border-left: 4px solid var(--notice-border);
-    padding: 10px 14px;
-    margin-bottom: 18px;
-    font-family: var(--font-sans);
-    font-size: 13px;
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
-
-  .notice-box .notice-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-
-  /* ── INFOBOX ── */
-  .infobox {
-    float: right;
-    clear: right;
-    margin: 0 0 16px 20px;
-    background: var(--bg-infobox);
-    border: 1px solid var(--border);
-    font-size: 13px;
-    font-family: var(--font-sans);
-    width: 260px;
-    line-height: 1.5;
-  }
-
-  .infobox-title {
-    background: #cee0f2;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    padding: 8px 10px;
-    border-bottom: 1px solid var(--border);
-    font-family: var(--font-sans);
-  }
-
-  .infobox-image {
-    text-align: center;
-    padding: 10px;
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .infobox-image img {
-    max-width: 100%;
-    height: 160px;
-    object-fit: cover;
-    width: 100%;
-  }
-
-  .infobox-image-placeholder {
-    width: 100%;
-    height: 160px;
-    background: linear-gradient(135deg, #e8f0fe 0%, #c8dcf0 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    color: #5a8fc4;
-  }
-
-  .infobox-caption {
-    font-size: 11px;
-    color: var(--text-muted);
-    text-align: center;
-    padding: 4px 8px;
-    font-style: italic;
-  }
-
-  .infobox table { width: 100%; border-collapse: collapse; }
-
-  .infobox td {
-    padding: 4px 8px;
-    vertical-align: top;
-    border-top: 1px solid var(--border-light);
-  }
-
-  .infobox td:first-child { color: var(--text-muted); white-space: nowrap; font-weight: bold; width: 40%; }
-
-  /* ── TOC ── */
-  .toc {
-    background: var(--toc-bg);
-    border: 1px solid var(--toc-border);
-    display: inline-block;
-    padding: 12px 18px;
-    margin: 0 0 18px 0;
-    font-family: var(--font-sans);
-    font-size: 13px;
-    min-width: 220px;
-  }
-
-  .toc-title {
-    font-weight: bold;
-    font-size: 13px;
-    text-align: center;
-    margin-bottom: 8px;
-  }
-
-  .toc ol { padding-left: 20px; }
-  .toc li { padding: 1px 0; }
-  .toc li a { color: var(--link); }
-  .toc .toc-sub { padding-left: 16px; list-style: decimal; }
-
-  /* ── ARTICLE BODY ── */
-  .article-body p { margin-bottom: 14px; }
-
-  .article-body h2 {
-    font-family: var(--font-serif);
-    font-size: 22px;
-    font-weight: normal;
-    border-bottom: 1px solid var(--border-light);
-    padding-bottom: 4px;
-    margin: 22px 0 10px;
-  }
-
-  .article-body h3 {
-    font-family: var(--font-serif);
-    font-size: 17px;
-    font-weight: bold;
-    margin: 18px 0 8px;
-  }
-
-  .article-body ul, .article-body ol {
-    margin: 0 0 14px 28px;
-  }
-
-  .article-body li { margin-bottom: 4px; }
-
-  .article-body .ref {
-    font-size: 10px;
-    vertical-align: super;
-    color: var(--link);
-    font-family: var(--font-sans);
-  }
-
-  /* ── FEATURED ARTICLE BOX ── */
-  .featured-box {
-    background: var(--featured-bg);
-    border: 1px solid var(--featured-border);
-    padding: 14px 16px;
-    margin-bottom: 20px;
-  }
-
-  .featured-box h3 {
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #3366cc;
-    margin-bottom: 8px;
-  }
-
-  /* ── MAIN PAGE PORTAL GRID ── */
-  .portal-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border: 1px solid var(--border);
-  }
-
-  .portal-cell {
-    padding: 16px;
-    border: 1px solid var(--border-light);
-  }
-
-  .portal-cell h3 {
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text);
-    background: #eaf3fb;
-    margin: -16px -16px 12px;
-    padding: 8px 16px;
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .portal-cell p, .portal-cell ul {
-    font-size: 13px;
-    font-family: var(--font-sans);
-  }
-
-  .portal-cell ul { padding-left: 18px; }
-  .portal-cell ul li { padding: 2px 0; }
-
-  /* ── CATEGORIES ── */
-  .categories {
-    border-top: 1px solid var(--border);
-    margin-top: 24px;
-    padding-top: 10px;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-
-  .categories strong { color: var(--text); }
-  .categories a { margin: 0 4px; }
-
-  /* ── FOOTER ── */
-  #mw-footer {
-    background: var(--white);
-    border-top: 1px solid var(--border);
-    margin-top: 24px;
-    padding: 16px;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    color: var(--text-muted);
-    text-align: center;
-  }
-
-  #mw-footer ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0; margin-bottom: 8px; }
-  #mw-footer ul li::after { content: ' · '; }
-  #mw-footer ul li:last-child::after { content: ''; }
-  #mw-footer ul li a { color: var(--link); }
-
-  /* ── CLEARFIX ── */
-  .clearfix::after { content: ''; display: table; clear: both; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caspedia – The Free Encyclopedia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Linux+Libertine+Display:ital@0;1&family=Linux+Biolinum:wght@400;600&family=Georgia&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --white: #ffffff;
+      --bg: #f8f9fa;
+      --bg-infobox: #f8f9fa;
+      --border: #a2a9b1;
+      --border-light: #eaecf0;
+      --link: #3366cc;
+      --link-visited: #795cb2;
+      --text: #202122;
+      --text-muted: #54595d;
+      --header-bg: #ffffff;
+      --sidebar-bg: #ffffff;
+      --featured-bg: #eaf3fb;
+      --featured-border: #a2c8e0;
+      --toc-bg: #f8f9fa;
+      --toc-border: #a2a9b1;
+      --notice-bg: #eef3fd;
+      --notice-border: #3366cc;
+      --font-serif: 'Linux Libertine Display', 'Georgia', serif;
+      --font-sans: 'Linux Biolinum', 'Arial', sans-serif;
+      --font-body: 'Georgia', serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: var(--link-visited);
+    }
+
+    /* ── TOP HEADER ── */
+    #mw-head {
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .mw-head-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 16px;
+      height: 50px;
+    }
+
+    .mw-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .mw-logo-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .mw-logo-text {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .mw-logo-text span {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .mw-search {
+      flex: 1;
+      max-width: 500px;
+      margin-left: auto;
+      position: relative;
+    }
+
+    .mw-search input {
+      width: 100%;
+      padding: 6px 36px 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 13px;
+      font-family: var(--font-sans);
+      background: var(--white);
+      color: var(--text);
+      outline: none;
+    }
+
+    .mw-search input:focus {
+      border-color: #3366cc;
+      box-shadow: 0 0 0 2px rgba(51, 102, 204, 0.15);
+    }
+
+    .mw-search-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 34px;
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      border-left: none;
+      border-radius: 0 2px 2px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .mw-search-btn:hover {
+      background: #e8e8e8;
+    }
+
+    .mw-nav-links {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+      font-family: var(--font-sans);
+      font-size: 12px;
+    }
+
+    .mw-nav-links a {
+      color: var(--text-muted);
+    }
+
+    .mw-nav-links a:hover {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    /* ── PAGE TABS ── */
+    #mw-tabs {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mw-tabs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 16px 0 200px;
+      gap: 0;
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+    }
+
+    .mw-tab {
+      padding: 6px 14px;
+      border: 1px solid transparent;
+      border-bottom: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+      bottom: -1px;
+    }
+
+    .mw-tab.active {
+      background: var(--white);
+      border-color: var(--border);
+      border-bottom-color: var(--white);
+      color: var(--text);
+    }
+
+    .mw-tab:hover:not(.active) {
+      background: #f0f0f0;
+      border-color: #c8ccd1;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    #content-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      padding: 16px;
+      gap: 16px;
+    }
+
+    /* ── SIDEBAR ── */
+    #mw-sidebar {
+      width: 180px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo-large {
+      text-align: center;
+      padding: 12px 0 16px;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 12px;
+    }
+
+    .sidebar-logo-large .globe {
+      width: 55px;
+      height: 55px;
+      margin: 0 auto 6px;
+    }
+
+    .sidebar-logo-large .site-name {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--text);
+      display: block;
+    }
+
+    .sidebar-logo-large .tagline {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 16px;
+    }
+
+    .sidebar-section h3 {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 6px;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-section ul li {
+      padding: 2px 0;
+    }
+
+    .sidebar-section ul li a {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      color: var(--link);
+    }
+
+    /* ── ARTICLE CONTENT ── */
+    #mw-content {
+      flex: 1;
+      min-width: 0;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      padding: 24px 28px;
+    }
+
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: normal;
+      color: var(--text);
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+    }
+
+    .page-subtitle {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    /* ── NOTICE BOX ── */
+    .notice-box {
+      background: var(--notice-bg);
+      border-left: 4px solid var(--notice-border);
+      padding: 10px 14px;
+      margin-bottom: 18px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .notice-box .notice-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── INFOBOX ── */
+    .infobox {
+      float: right;
+      clear: right;
+      margin: 0 0 16px 20px;
+      background: var(--bg-infobox);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-family: var(--font-sans);
+      width: 260px;
+      line-height: 1.5;
+    }
+
+    .infobox-title {
+      background: #cee0f2;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-sans);
+    }
+
+    .infobox-image {
+      text-align: center;
+      padding: 10px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .infobox-image img {
+      max-width: 100%;
+      height: 160px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .infobox-image-placeholder {
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(135deg, #e8f0fe 0%, #c8dcf0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: #5a8fc4;
+    }
+
+    .infobox-caption {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 4px 8px;
+      font-style: italic;
+    }
+
+    .infobox table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .infobox td {
+      padding: 4px 8px;
+      vertical-align: top;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .infobox td:first-child {
+      color: var(--text-muted);
+      white-space: nowrap;
+      font-weight: bold;
+      width: 40%;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--toc-bg);
+      border: 1px solid var(--toc-border);
+      display: inline-block;
+      padding: 12px 18px;
+      margin: 0 0 18px 0;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      min-width: 220px;
+    }
+
+    .toc-title {
+      font-weight: bold;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .toc ol {
+      padding-left: 20px;
+    }
+
+    .toc li {
+      padding: 1px 0;
+    }
+
+    .toc li a {
+      color: var(--link);
+    }
+
+    .toc .toc-sub {
+      padding-left: 16px;
+      list-style: decimal;
+    }
+
+    /* ── ARTICLE BODY ── */
+    .article-body p {
+      margin-bottom: 14px;
+    }
+
+    .article-body h2 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: normal;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 4px;
+      margin: 22px 0 10px;
+    }
+
+    .article-body h3 {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: bold;
+      margin: 18px 0 8px;
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 14px 28px;
+    }
+
+    .article-body li {
+      margin-bottom: 4px;
+    }
+
+    .article-body .ref {
+      font-size: 10px;
+      vertical-align: super;
+      color: var(--link);
+      font-family: var(--font-sans);
+    }
+
+    /* ── FEATURED ARTICLE BOX ── */
+    .featured-box {
+      background: var(--featured-bg);
+      border: 1px solid var(--featured-border);
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+
+    .featured-box h3 {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #3366cc;
+      margin-bottom: 8px;
+    }
+
+    /* ── MAIN PAGE PORTAL GRID ── */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    .portal-cell {
+      padding: 16px;
+      border: 1px solid var(--border-light);
+    }
+
+    .portal-cell h3 {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text);
+      background: #eaf3fb;
+      margin: -16px -16px 12px;
+      padding: 8px 16px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .portal-cell p,
+    .portal-cell ul {
+      font-size: 13px;
+      font-family: var(--font-sans);
+    }
+
+    .portal-cell ul {
+      padding-left: 18px;
+    }
+
+    .portal-cell ul li {
+      padding: 2px 0;
+    }
+
+    /* ── CATEGORIES ── */
+    .categories {
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+      padding-top: 10px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .categories strong {
+      color: var(--text);
+    }
+
+    .categories a {
+      margin: 0 4px;
+    }
+
+    /* ── FOOTER ── */
+    #mw-footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+      padding: 16px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    #mw-footer ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 8px;
+    }
+
+    #mw-footer ul li::after {
+      content: ' · ';
+    }
+
+    #mw-footer ul li:last-child::after {
+      content: '';
+    }
+
+    #mw-footer ul li a {
+      color: var(--link);
+    }
+
+    /* ── CLEARFIX ── */
+    .clearfix::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- TOP HEADER -->
-<div id="mw-head">
-  <div class="mw-head-inner">
-    <a class="mw-logo" href="#">
-      <svg class="mw-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="19" stroke="#a2a9b1" stroke-width="1"/>
-        <ellipse cx="20" cy="20" rx="10" ry="19" stroke="#a2a9b1" stroke-width="1"/>
-        <line x1="1" y1="20" x2="39" y2="20" stroke="#a2a9b1" stroke-width="1"/>
-        <path d="M4 12 Q20 8 36 12" stroke="#a2a9b1" stroke-width="1" fill="none"/>
-        <path d="M4 28 Q20 32 36 28" stroke="#a2a9b1" stroke-width="1" fill="none"/>
-      </svg>
-      <div class="mw-logo-text">
-        Caspedia
-        <span>The Free Encyclopedia</span>
+  <!-- TOP HEADER -->
+  <div id="mw-head">
+    <div class="mw-head-inner">
+      <a class="mw-logo" href="#">
+        <svg class="mw-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="19" stroke="#a2a9b1" stroke-width="1" />
+          <ellipse cx="20" cy="20" rx="10" ry="19" stroke="#a2a9b1" stroke-width="1" />
+          <line x1="1" y1="20" x2="39" y2="20" stroke="#a2a9b1" stroke-width="1" />
+          <path d="M4 12 Q20 8 36 12" stroke="#a2a9b1" stroke-width="1" fill="none" />
+          <path d="M4 28 Q20 32 36 28" stroke="#a2a9b1" stroke-width="1" fill="none" />
+        </svg>
+        <div class="mw-logo-text">
+          Caspedia
+          <span>The Free Encyclopedia</span>
+        </div>
+      </a>
+      <div class="mw-search">
+        <input type="search" placeholder="Search Caspedia" />
+        <button class="mw-search-btn" aria-label="Search">&#128269;</button>
       </div>
-    </a>
-    <div class="mw-search">
-      <input type="search" placeholder="Search Caspedia" />
-      <button class="mw-search-btn" aria-label="Search">&#128269;</button>
+      <nav class="mw-nav-links">
+        <a href="#">Create account</a>
+        <a href="#">Log in</a>
+      </nav>
     </div>
-    <nav class="mw-nav-links">
-      <a href="#">Create account</a>
-      <a href="#">Log in</a>
-    </nav>
   </div>
-</div>
 
-<!-- PAGE TABS -->
-<div id="mw-tabs">
-  <div class="mw-tabs-inner">
-    <div class="mw-tab active">Article</div>
-    <div class="mw-tab">Talk</div>
-    <div class="mw-tab">Read</div>
-    <div class="mw-tab">Edit</div>
-    <div class="mw-tab">View history</div>
+  <!-- PAGE TABS -->
+  <div id="mw-tabs">
+    <div class="mw-tabs-inner">
+      <div class="mw-tab active">Article</div>
+      <div class="mw-tab">Talk</div>
+      <div class="mw-tab">Read</div>
+      <div class="mw-tab">Edit</div>
+      <div class="mw-tab">View history</div>
+    </div>
   </div>
-</div>
 
-<!-- MAIN LAYOUT -->
-<div id="content-wrap">
+  <!-- MAIN LAYOUT -->
+  <div id="content-wrap">
 
-  <!-- SIDEBAR -->
-  <aside id="mw-sidebar">
-    <div class="sidebar-logo-large">
-      <svg class="globe" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="27.5" cy="27.5" r="26" stroke="#a2a9b1" stroke-width="1.5"/>
-        <ellipse cx="27.5" cy="27.5" rx="13" ry="26" stroke="#a2a9b1" stroke-width="1.5"/>
-        <line x1="1.5" y1="27.5" x2="53.5" y2="27.5" stroke="#a2a9b1" stroke-width="1.5"/>
-        <path d="M5 18 Q27.5 12 50 18" stroke="#a2a9b1" stroke-width="1.2" fill="none"/>
-        <path d="M5 37 Q27.5 43 50 37" stroke="#a2a9b1" stroke-width="1.2" fill="none"/>
-      </svg>
-      <span class="site-name">Caspedia</span>
-      <span class="tagline">The Free Encyclopedia</span>
-    </div>
-
-    <div class="sidebar-section">
-      <h3>Navigation</h3>
-      <ul>
-        <li><a href="#">Main page</a></li>
-        <li><a href="#">Current events</a></li>
-        <li><a href="#">About Caspedia</a></li>
-        <li><a href="#">Contact us</a></li>
-        <li><a href="#">Meet our team</a></li>
-      </ul>
-    </div>
-
-    <div class="sidebar-section">
-      <h3>Contribute</h3>
-      <ul>
-        <li><a href="#">Help</a></li>
-        <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/deployments">Recent changes</a></li>
-        <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/pulls">Suggest an Edit</a></li>
-      </ul>
-    </div>
-
-<div class="sidebar-section">
-      <h3>Languages</h3>
-      <ul>
-        <li><a href="#">Español</a></li>
-        <li><a href="#">Français</a></li>
-        <li><a href="#">Deutsch</a></li>
-        <li><a href="#">日本語</a></li>
-        <li><a href="#">中文</a></li>
-        <li><a href="#">+ 300 more</a></li>
-      </ul>
-    </div>
-  </aside>
-
-  <!-- ARTICLE CONTENT -->
-  <main id="mw-content">
-
-    <h1 class="page-title">Welcome to Caspedia</h1>
-    <p class="page-subtitle">The free encyclopedia that anyone can edit — <a href="#">7,234,521</a> articles in English</p>
-
-    <div class="notice-box">
-      <span class="notice-icon">ℹ️</span>
-      <div>This is a <strong>demo page</strong> for Caspedia, built with plain HTML &amp; CSS. <a href="#">Start contributing</a> or <a href="#">browse all articles</a>.</div>
-    </div>
-
-    <!-- PORTAL GRID (Main page style) -->
-    <div class="portal-grid">
-
-      <div class="portal-cell">
-        <h3>⭐ Featured Article</h3>
-        <p><strong><a href="#">The Enigma Machine</a></strong> was a cipher device used in the early-to-mid 20th century to protect commercial, diplomatic, and military communication. It was employed extensively by Nazi Germany during World War II, in all branches of the German military.</p>
-        <p>The Enigma has an electromechanical rotor mechanism that scrambles the 26 letters of the alphabet. In typical use, one person types a message on the keyboard while another records the letters lit up on the lampboard. <a href="#">More…</a></p>
+    <!-- SIDEBAR -->
+    <aside id="mw-sidebar">
+      <div class="sidebar-logo-large">
+        <svg class="globe" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="27.5" cy="27.5" r="26" stroke="#a2a9b1" stroke-width="1.5" />
+          <ellipse cx="27.5" cy="27.5" rx="13" ry="26" stroke="#a2a9b1" stroke-width="1.5" />
+          <line x1="1.5" y1="27.5" x2="53.5" y2="27.5" stroke="#a2a9b1" stroke-width="1.5" />
+          <path d="M5 18 Q27.5 12 50 18" stroke="#a2a9b1" stroke-width="1.2" fill="none" />
+          <path d="M5 37 Q27.5 43 50 37" stroke="#a2a9b1" stroke-width="1.2" fill="none" />
+        </svg>
+        <span class="site-name">Caspedia</span>
+        <span class="tagline">The Free Encyclopedia</span>
       </div>
 
-      <div class="portal-cell">
-        <h3>📰 In the News</h3>
+      <div class="sidebar-section">
+        <h3>Navigation</h3>
         <ul>
-          <li><a href="#">International Space Station</a> marks its 25th anniversary of continuous human habitation.</li>
-          <li>Scientists announce the discovery of a <a href="#">new exoplanet</a> in the habitable zone of a nearby star.</li>
-          <li>The <a href="#">2026 World Chess Championship</a> concludes in Vienna.</li>
-          <li><a href="#">Mount Etna</a> erupts for the third time this year, prompting local evacuations.</li>
+          <li><a href="#">Main page</a></li>
+          <li><a href="#">Current events</a></li>
+          <li><a href="#">About Caspedia</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Meet our team</a></li>
         </ul>
       </div>
 
-      <div class="portal-cell">
-        <h3>🗓️ On This Day</h3>
-        <p><strong>June 1</strong> in history:</p>
+      <div class="sidebar-section">
+        <h3>Contribute</h3>
         <ul>
-          <li><strong>1792</strong> – Kentucky became the 15th <a href="#">state</a> to be admitted to the Union.</li>
-          <li><strong>1894</strong> – The <a href="#">Manchester Ship Canal</a> officially opened to traffic.</li>
-          <li><strong>1980</strong> – CNN, the world's first 24-hour all-news television network, launched.</li>
-          <li><strong>1967</strong> – The Beatles released <a href="#">Sgt. Pepper's Lonely Hearts Club Band</a>.</li>
+          <li><a href="#">Help</a></li>
+          <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/deployments">Recent changes</a></li>
+          <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/pulls">Suggest an Edit</a></li>
         </ul>
       </div>
 
-      <div class="portal-cell">
-        <h3>🖼️ Featured Picture</h3>
-        <div style="background: linear-gradient(135deg, #d0e8f5 0%, #87bedd 100%); height: 100px; display:flex; align-items:center; justify-content:center; font-size: 36px; border: 1px solid #c8dce8; margin-bottom: 8px; border-radius: 2px;">
-          🌌
-        </div>
-        <p style="font-size:12px; color: var(--text-muted); font-style:italic; margin:0;"><a href="#">Pillars of Creation</a> — A photograph taken by the Hubble Space Telescope showing columns of interstellar gas and dust in the Eagle Nebula, 6,500–7,000 light-years away.</p>
+      <div class="sidebar-section">
+        <h3>Languages</h3>
+        <ul>
+          <li><a href="#">English</a></li>
+          <li><a href="#">Arabic [In Development]</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- ARTICLE CONTENT -->
+    <main id="mw-content">
+
+      <h1 class="page-title">Welcome to Caspedia</h1>
+      <p class="page-subtitle">The free encyclopedia that anyone can edit — <a href="#">7,234,521</a> articles in
+        English</p>
+
+      <div class="notice-box">
+        <span class="notice-icon">ℹ️</span>
+        <div>This is a <strong>demo page</strong> for Caspedia, built with plain HTML &amp; CSS. <a href="#">Start
+            contributing</a> or <a href="#">browse all articles</a>.</div>
       </div>
 
-    </div>
+      <!-- PORTAL GRID (Main page style) -->
+      <div class="portal-grid">
 
-    <!-- SAMPLE ARTICLE -->
-    <div style="margin-top: 28px;">
-      <h1 class="page-title">Internet</h1>
-      <p class="page-subtitle">From Caspedia, the free encyclopedia</p>
-
-      <div class="article-body clearfix">
-
-        <!-- INFOBOX -->
-        <div class="infobox">
-          <div class="infobox-title">Internet</div>
-          <div class="infobox-image">
-            <div class="infobox-image-placeholder">🌐</div>
-          </div>
-          <div class="infobox-caption">A visualization of the Internet's routing paths</div>
-          <table>
-            <tr><td>Founded</td><td>January 1, 1983</td></tr>
-            <tr><td>Predecessor</td><td><a href="#">ARPANET</a></td></tr>
-            <tr><td>Users</td><td>5.4 billion (2024)</td></tr>
-            <tr><td>Protocols</td><td><a href="#">TCP/IP</a></td></tr>
-            <tr><td>Governing</td><td><a href="#">ICANN</a>, <a href="#">IETF</a></td></tr>
-          </table>
+        <div class="portal-cell">
+          <h3>⭐ Featured Article</h3>
+          <p><strong><a href="#">The Enigma Machine</a></strong> was a cipher device used in the early-to-mid 20th
+            century to protect commercial, diplomatic, and military communication. It was employed extensively by Nazi
+            Germany during World War II, in all branches of the German military.</p>
+          <p>The Enigma has an electromechanical rotor mechanism that scrambles the 26 letters of the alphabet. In
+            typical use, one person types a message on the keyboard while another records the letters lit up on the
+            lampboard. <a href="#">More…</a></p>
         </div>
 
-        <!-- TOC -->
-        <div class="toc">
-          <div class="toc-title">Contents</div>
-          <ol>
-            <li><a href="#">Etymology</a></li>
-            <li><a href="#">History</a>
-              <ol class="toc-sub">
-                <li><a href="#">Origins</a></li>
-                <li><a href="#">TCP/IP and the modern Internet</a></li>
-                <li><a href="#">World Wide Web</a></li>
-              </ol>
+        <div class="portal-cell">
+          <h3>📰 In the News</h3>
+          <ul>
+            <li><a href="#">International Space Station</a> marks its 25th anniversary of continuous human habitation.
             </li>
-            <li><a href="#">Infrastructure</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Society and culture</a></li>
-            <li><a href="#">See also</a></li>
-            <li><a href="#">References</a></li>
-          </ol>
+            <li>Scientists announce the discovery of a <a href="#">new exoplanet</a> in the habitable zone of a nearby
+              star.</li>
+            <li>The <a href="#">2026 World Chess Championship</a> concludes in Vienna.</li>
+            <li><a href="#">Mount Etna</a> erupts for the third time this year, prompting local evacuations.</li>
+          </ul>
         </div>
 
-        <p>The <b>Internet</b> (or <b>internet</b>) is the global system of interconnected <a href="#">computer networks</a> that uses the <a href="#">Internet protocol suite</a> (<a href="#">TCP/IP</a>) to communicate between networks and devices. It is a <i>network of networks</i> that consists of private, public, academic, business, and government networks of local to global scope, linked by a broad array of electronic, wireless, and optical networking technologies.<sup class="ref">[1]</sup></p>
+        <div class="portal-cell">
+          <h3>🗓️ On This Day</h3>
+          <p><strong>June 1</strong> in history:</p>
+          <ul>
+            <li><strong>1792</strong> – Kentucky became the 15th <a href="#">state</a> to be admitted to the Union.</li>
+            <li><strong>1894</strong> – The <a href="#">Manchester Ship Canal</a> officially opened to traffic.</li>
+            <li><strong>1980</strong> – CNN, the world's first 24-hour all-news television network, launched.</li>
+            <li><strong>1967</strong> – The Beatles released <a href="#">Sgt. Pepper's Lonely Hearts Club Band</a>.</li>
+          </ul>
+        </div>
 
-        <p>The Internet carries a vast range of information resources and services, such as the inter-linked <a href="#">hypertext</a> documents and <a href="#">applications</a> of the <a href="#">World Wide Web</a> (WWW), <a href="#">electronic mail</a>, <a href="#">telephony</a>, and <a href="#">file sharing</a>.<sup class="ref">[2]</sup></p>
-
-        <h2>History</h2>
-
-        <p>The origins of the Internet date back to the development of <a href="#">packet switching</a> and research commissioned by the <a href="#">United States Department of Defense</a> in the 1960s to enable time-sharing of computers.<sup class="ref">[3]</sup> The primary precursor network, the <a href="#">ARPANET</a>, initially served as a backbone for interconnection of regional academic and military networks in the 1980s.</p>
-
-        <p>The funding of the <a href="#">National Science Foundation Network</a> as a new backbone in the 1980s, as well as private funding for other commercial extensions, led to worldwide participation in the development of new networking technologies, and the merger of many networks. The term "internet" was popularized in 1974 by <a href="#">Vint Cerf</a> and <a href="#">Bob Kahn</a> in their landmark paper on <a href="#">TCP/IP</a>.<sup class="ref">[4]</sup></p>
-
-        <h3>TCP/IP and the modern Internet</h3>
-
-        <p>On <a href="#">January 1, 1983</a>, <a href="#">ARPANET</a> transitioned to <a href="#">TCP/IP</a>, and from that date, researchers began to assemble the "network of networks" that became the modern Internet. The term "internet" came to refer specifically to this global collection of networks.<sup class="ref">[5]</sup></p>
-
-        <h2>Infrastructure</h2>
-
-        <p>The Internet structure and its usage characteristics have been studied extensively and the possibility of usage charges has been eliminated. Instead, there has been a focus on providing a fast, secure, and reliable connection to as many users as possible.<sup class="ref">[6]</sup></p>
-
-        <ul>
-          <li><a href="#">Internet exchange points</a> (IXPs) connect major networks</li>
-          <li><a href="#">Submarine communications cables</a> carry most transoceanic traffic</li>
-          <li><a href="#">Internet service providers</a> (ISPs) provide access to end users</li>
-          <li><a href="#">Content delivery networks</a> (CDNs) distribute data globally</li>
-        </ul>
-
-        <div class="categories">
-          <strong>Categories:</strong>
-          <a href="#">Internet</a> ·
-          <a href="#">Computer networks</a> ·
-          <a href="#">History of the Internet</a> ·
-          <a href="#">Telecommunications</a> ·
-          <a href="#">TCP/IP</a>
+        <div class="portal-cell">
+          <h3>🖼️ Featured Picture</h3>
+          <div
+            style="background: linear-gradient(135deg, #d0e8f5 0%, #87bedd 100%); height: 100px; display:flex; align-items:center; justify-content:center; font-size: 36px; border: 1px solid #c8dce8; margin-bottom: 8px; border-radius: 2px;">
+            🌌
+          </div>
+          <p style="font-size:12px; color: var(--text-muted); font-style:italic; margin:0;"><a href="#">Pillars of
+              Creation</a> — A photograph taken by the Hubble Space Telescope showing columns of interstellar gas and
+            dust in the Eagle Nebula, 6,500–7,000 light-years away.</p>
         </div>
 
       </div>
-    </div>
 
-  </main>
-</div>
+      <!-- SAMPLE ARTICLE -->
+      <div style="margin-top: 28px;">
+        <h1 class="page-title">Internet</h1>
+        <p class="page-subtitle">From Caspedia, the free encyclopedia</p>
 
-<!-- FOOTER -->
-<footer id="mw-footer">
-  <ul>
-    <li><a href="#">Privacy policy</a></li>
-    <li><a href="#">About Caspedia</a></li>
-    <li><a href="#">Disclaimers</a></li>
-    <li><a href="#">Contact Caspedia</a></li>
-    <li><a href="#">Code of conduct</a></li>
-    <li><a href="#">Developers</a></li>
-    <li><a href="#">Statistics</a></li>
-    <li><a href="#">Cookie statement</a></li>
-  </ul>
-  <p>Text is available under the <a href="#">Creative Commons Attribution-ShareAlike License 4.0</a>; additional terms may apply.</p>
-  <p style="margin-top:6px;">Caspedia® is a registered trademark. Content is for demonstration purposes.</p>
-</footer>
+        <div class="article-body clearfix">
+
+          <!-- INFOBOX -->
+          <div class="infobox">
+            <div class="infobox-title">Internet</div>
+            <div class="infobox-image">
+              <div class="infobox-image-placeholder">🌐</div>
+            </div>
+            <div class="infobox-caption">A visualization of the Internet's routing paths</div>
+            <table>
+              <tr>
+                <td>Founded</td>
+                <td>January 1, 1983</td>
+              </tr>
+              <tr>
+                <td>Predecessor</td>
+                <td><a href="#">ARPANET</a></td>
+              </tr>
+              <tr>
+                <td>Users</td>
+                <td>5.4 billion (2024)</td>
+              </tr>
+              <tr>
+                <td>Protocols</td>
+                <td><a href="#">TCP/IP</a></td>
+              </tr>
+              <tr>
+                <td>Governing</td>
+                <td><a href="#">ICANN</a>, <a href="#">IETF</a></td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- TOC -->
+          <div class="toc">
+            <div class="toc-title">Contents</div>
+            <ol>
+              <li><a href="#">Etymology</a></li>
+              <li><a href="#">History</a>
+                <ol class="toc-sub">
+                  <li><a href="#">Origins</a></li>
+                  <li><a href="#">TCP/IP and the modern Internet</a></li>
+                  <li><a href="#">World Wide Web</a></li>
+                </ol>
+              </li>
+              <li><a href="#">Infrastructure</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Society and culture</a></li>
+              <li><a href="#">See also</a></li>
+              <li><a href="#">References</a></li>
+            </ol>
+          </div>
+
+          <p>The <b>Internet</b> (or <b>internet</b>) is the global system of interconnected <a href="#">computer
+              networks</a> that uses the <a href="#">Internet protocol suite</a> (<a href="#">TCP/IP</a>) to communicate
+            between networks and devices. It is a <i>network of networks</i> that consists of private, public, academic,
+            business, and government networks of local to global scope, linked by a broad array of electronic, wireless,
+            and optical networking technologies.<sup class="ref">[1]</sup></p>
+
+          <p>The Internet carries a vast range of information resources and services, such as the inter-linked <a
+              href="#">hypertext</a> documents and <a href="#">applications</a> of the <a href="#">World Wide Web</a>
+            (WWW), <a href="#">electronic mail</a>, <a href="#">telephony</a>, and <a href="#">file sharing</a>.<sup
+              class="ref">[2]</sup></p>
+
+          <h2>History</h2>
+
+          <p>The origins of the Internet date back to the development of <a href="#">packet switching</a> and research
+            commissioned by the <a href="#">United States Department of Defense</a> in the 1960s to enable time-sharing
+            of computers.<sup class="ref">[3]</sup> The primary precursor network, the <a href="#">ARPANET</a>,
+            initially served as a backbone for interconnection of regional academic and military networks in the 1980s.
+          </p>
+
+          <p>The funding of the <a href="#">National Science Foundation Network</a> as a new backbone in the 1980s, as
+            well as private funding for other commercial extensions, led to worldwide participation in the development
+            of new networking technologies, and the merger of many networks. The term "internet" was popularized in 1974
+            by <a href="#">Vint Cerf</a> and <a href="#">Bob Kahn</a> in their landmark paper on <a
+              href="#">TCP/IP</a>.<sup class="ref">[4]</sup></p>
+
+          <h3>TCP/IP and the modern Internet</h3>
+
+          <p>On <a href="#">January 1, 1983</a>, <a href="#">ARPANET</a> transitioned to <a href="#">TCP/IP</a>, and
+            from that date, researchers began to assemble the "network of networks" that became the modern Internet. The
+            term "internet" came to refer specifically to this global collection of networks.<sup class="ref">[5]</sup>
+          </p>
+
+          <h2>Infrastructure</h2>
+
+          <p>The Internet structure and its usage characteristics have been studied extensively and the possibility of
+            usage charges has been eliminated. Instead, there has been a focus on providing a fast, secure, and reliable
+            connection to as many users as possible.<sup class="ref">[6]</sup></p>
+
+          <ul>
+            <li><a href="#">Internet exchange points</a> (IXPs) connect major networks</li>
+            <li><a href="#">Submarine communications cables</a> carry most transoceanic traffic</li>
+            <li><a href="#">Internet service providers</a> (ISPs) provide access to end users</li>
+            <li><a href="#">Content delivery networks</a> (CDNs) distribute data globally</li>
+          </ul>
+
+          <div class="categories">
+            <strong>Categories:</strong>
+            <a href="#">Internet</a> ·
+            <a href="#">Computer networks</a> ·
+            <a href="#">History of the Internet</a> ·
+            <a href="#">Telecommunications</a> ·
+            <a href="#">TCP/IP</a>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="mw-footer">
+    <ul>
+      <li><a href="#">Privacy policy</a></li>
+      <li><a href="#">About Caspedia</a></li>
+      <li><a href="#">Disclaimers</a></li>
+      <li><a href="#">Contact Caspedia</a></li>
+      <li><a href="#">Code of conduct</a></li>
+      <li><a href="#">Developers</a></li>
+      <li><a href="#">Statistics</a></li>
+      <li><a href="#">Cookie statement</a></li>
+    </ul>
+    <p>Text is available under the <a href="#">Creative Commons Attribution-ShareAlike License 4.0</a>; additional terms
+      may apply.</p>
+    <p style="margin-top:6px;">Caspedia® is a registered trademark. Content is for demonstration purposes.</p>
+  </footer>
 
 </body>
+
 </html>
