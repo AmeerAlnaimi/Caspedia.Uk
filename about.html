@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caspedia:About – Caspedia</title>
+  <link rel="icon" type="image/jpeg" href="Cas_Junior_Logo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Linux+Libertine+Display:ital@0;1&family=Linux+Biolinum:wght@400;600&family=Georgia&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --white: #ffffff;
+      --bg: #f8f9fa;
+      --border: #a2a9b1;
+      --border-light: #eaecf0;
+      --link: #3366cc;
+      --link-visited: #795cb2;
+      --text: #202122;
+      --text-muted: #54595d;
+      --font-serif: 'Linux Libertine Display', 'Georgia', serif;
+      --font-sans: 'Linux Biolinum', 'Arial', sans-serif;
+      --font-body: 'Georgia', serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: var(--link-visited);
+    }
+
+    /* HEADER */
+    #mw-head {
+      background: var(--white);
+      border-bottom: 1px solid var(--border-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .mw-head-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 16px;
+      height: 50px;
+    }
+
+    .mw-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .mw-logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .mw-logo-text {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .mw-logo-text span {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .mw-search {
+      flex: 1;
+      max-width: 500px;
+      margin-left: auto;
+      position: relative;
+    }
+
+    .mw-search input {
+      width: 100%;
+      padding: 6px 36px 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 13px;
+      font-family: var(--font-sans);
+      background: var(--white);
+      color: var(--text);
+      outline: none;
+    }
+
+    .mw-search input:focus {
+      border-color: #3366cc;
+      box-shadow: 0 0 0 2px rgba(51, 102, 204, 0.15);
+    }
+
+    .mw-search-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 34px;
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      border-left: none;
+      border-radius: 0 2px 2px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .mw-search-btn:hover {
+      background: #e8e8e8;
+    }
+
+    .mw-nav-links {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+      font-family: var(--font-sans);
+      font-size: 12px;
+    }
+
+    .mw-nav-links a {
+      color: var(--text-muted);
+    }
+
+    .mw-nav-links a:hover {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    /* TABS */
+    #mw-tabs {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mw-tabs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 16px 0 200px;
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+    }
+
+    .mw-tab {
+      padding: 6px 14px;
+      border: 1px solid transparent;
+      border-bottom: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+      bottom: -1px;
+    }
+
+    .mw-tab.active {
+      background: var(--white);
+      border-color: var(--border);
+      border-bottom-color: var(--white);
+      color: var(--text);
+    }
+
+    .mw-tab:hover:not(.active) {
+      background: #f0f0f0;
+      border-color: #c8ccd1;
+    }
+
+    .mw-tab a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* LAYOUT */
+    #content-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      padding: 16px;
+      gap: 16px;
+    }
+
+    /* SIDEBAR */
+    #mw-sidebar {
+      width: 180px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo-large {
+      text-align: center;
+      padding: 12px 0 16px;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 12px;
+    }
+
+    .sidebar-logo-large img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      margin: 0 auto 6px;
+      display: block;
+    }
+
+    .sidebar-logo-large .site-name {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--text);
+      display: block;
+    }
+
+    .sidebar-logo-large .tagline {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 16px;
+    }
+
+    .sidebar-section h3 {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 6px;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-section ul li {
+      padding: 2px 0;
+    }
+
+    .sidebar-section ul li a {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      color: var(--link);
+    }
+
+    .sidebar-section ul li span {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+    }
+
+    /* CONTENT */
+    #mw-content {
+      flex: 1;
+      min-width: 0;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      padding: 24px 28px;
+    }
+
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: normal;
+      color: var(--text);
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+    }
+
+    .page-subtitle {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    /* TOC */
+    .toc {
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      display: inline-block;
+      padding: 12px 18px;
+      margin: 0 0 22px 0;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      min-width: 220px;
+    }
+
+    .toc-title {
+      font-weight: bold;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .toc ol {
+      padding-left: 20px;
+    }
+
+    .toc li {
+      padding: 2px 0;
+    }
+
+    .toc li a {
+      color: var(--link);
+    }
+
+    /* ARTICLE */
+    .article-body p {
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    .article-body h2 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: normal;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 3px;
+      margin: 26px 0 12px;
+    }
+
+    .article-body h3 {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: bold;
+      margin: 18px 0 8px;
+    }
+
+    .article-body ul {
+      margin: 0 0 14px 28px;
+    }
+
+    .article-body ul li {
+      margin-bottom: 5px;
+    }
+
+    /* NOTICE BOXES */
+    .notice-box {
+      border: 1px solid var(--border);
+      background: #f8f9fa;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-family: var(--font-sans);
+      font-size: 13px;
+    }
+
+    .notice-box .icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .notice-box.blue {
+      background: #eaf3fb;
+      border-color: #a2c8e0;
+    }
+
+    .notice-box.green {
+      background: #eaf4ea;
+      border-color: #7db87d;
+    }
+
+    .notice-box.yellow {
+      background: #fef9e7;
+      border-color: #d4ac0d;
+    }
+
+    .notice-box.red {
+      background: #fdf2f2;
+      border-color: #c0392b;
+    }
+
+    /* SUPPORT BUTTON */
+    .support-box {
+      border: 1px solid #d4b483;
+      background: #fdf8ef;
+      padding: 18px 20px;
+      margin: 24px 0;
+      text-align: center;
+      font-family: var(--font-sans);
+    }
+
+    .support-box p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .support-box strong {
+      color: var(--text);
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #24292e;
+      color: #ffffff;
+      padding: 9px 20px;
+      border-radius: 5px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .github-btn:hover {
+      background: #3a4047;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .github-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .star-count {
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2px 7px;
+      border-radius: 3px;
+      margin-left: 4px;
+    }
+
+    /* FOUNDER BOX */
+    .founder-box {
+      float: right;
+      clear: right;
+      margin: 0 0 16px 20px;
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-family: var(--font-sans);
+      width: 220px;
+    }
+
+    .founder-box-title {
+      background: #cee0f2;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: center;
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .founder-box table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .founder-box td {
+      padding: 5px 8px;
+      vertical-align: top;
+      border-top: 1px solid var(--border-light);
+      font-size: 12.5px;
+    }
+
+    .founder-box td:first-child {
+      color: var(--text-muted);
+      font-weight: bold;
+      width: 45%;
+    }
+
+    .founder-avatar {
+      text-align: center;
+      padding: 12px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .founder-avatar .avatar-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #cee0f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #1a4a7a;
+      margin: 0 auto 6px;
+      font-family: var(--font-sans);
+    }
+
+    .founder-avatar .caption {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* CATEGORIES */
+    .categories {
+      border-top: 1px solid var(--border);
+      margin-top: 28px;
+      padding-top: 10px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .categories strong {
+      color: var(--text);
+    }
+
+    .categories a {
+      margin: 0 4px;
+    }
+
+    /* FOOTER */
+    #mw-footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+      padding: 16px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    #mw-footer ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 8px;
+    }
+
+    #mw-footer ul li::after {
+      content: ' · ';
+    }
+
+    #mw-footer ul li:last-child::after {
+      content: '';
+    }
+
+    #mw-footer ul li a {
+      color: var(--link);
+    }
+
+    .clearfix::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div id="mw-head">
+    <div class="mw-head-inner">
+      <a class="mw-logo" href="index.html">
+        <img src="Cas_Junior_Logo.jpg" alt="Caspedia Logo" />
+        <div class="mw-logo-text">
+          Caspedia
+          <span>The Free Encyclopedia</span>
+        </div>
+      </a>
+      <div class="mw-search">
+        <input type="search" placeholder="Search Caspedia" />
+        <button class="mw-search-btn" aria-label="Search">&#128269;</button>
+      </div>
+      <nav class="mw-nav-links">
+        <a href="#">Create account</a>
+        <a href="#">Log in</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div id="mw-tabs">
+    <div class="mw-tabs-inner">
+      <div class="mw-tab"><a href="index.html">Article</a></div>
+      <div class="mw-tab"><a href="current-events.html">Current Events</a></div>
+      <div class="mw-tab active">About Caspedia</div>
+      <div class="mw-tab"><a href="#">Contact Us</a></div>
+      <div class="mw-tab"><a href="#">Meet Our Team</a></div>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div id="content-wrap">
+
+    <!-- SIDEBAR -->
+    <aside id="mw-sidebar">
+      <div class="sidebar-logo-large">
+        <img src="Cas_Junior_Logo.jpg" alt="Caspedia Logo" />
+        <span class="site-name">Caspedia</span>
+        <span class="tagline">The Free Encyclopedia</span>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="index.html">Main page</a></li>
+          <li><a href="current-events.html">Current events</a></li>
+          <li><a href="about.html">About Caspedia</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Meet our team</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Contribute</h3>
+        <ul>
+          <li><a href="#">Help</a></li>
+          <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/deployments">Recent changes</a></li>
+          <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/pulls">Suggest an Edit</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Languages</h3>
+        <ul>
+          <li><a href="#">English</a></li>
+          <li><span style="color: var(--text-muted); font-size: 12.5px;">Arabic <em>(coming soon)</em></span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main id="mw-content">
+      <h1 class="page-title">Caspedia:About</h1>
+      <p class="page-subtitle">From Caspedia, the free encyclopedia</p>
+
+      <!-- NOTICE BOXES -->
+      <div class="notice-box blue">
+        <span class="icon">ℹ️</span>
+        <div>This page describes what Caspedia is, who runs it, and what it is for. For help contributing, see <a
+            href="#">Caspedia:How to contribute</a>.</div>
+      </div>
+
+      <div class="notice-box red">
+        <span class="icon">⚠️</span>
+        <div><strong>Disclaimer:</strong> Caspedia is <strong>not affiliated</strong> with any school or educational
+          institution in any capacity. We are a fully independent, student-led organisation.</div>
+      </div>
+
+      <!-- TOC -->
+      <div class="toc">
+        <div class="toc-title">Contents</div>
+        <ol>
+          <li><a href="#what-is">What is Caspedia?</a></li>
+          <li><a href="#founding">Founding and ownership</a></li>
+          <li><a href="#purpose">Purpose and scope</a></li>
+          <li><a href="#contributors">Contributors</a></li>
+          <li><a href="#safety">Online safety compliance</a></li>
+          <li><a href="#support">Support Caspedia</a></li>
+          <li><a href="#disclaimer">Disclaimers</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body clearfix">
+
+        <!-- FOUNDER INFOBOX -->
+        <div class="founder-box">
+          <div class="founder-box-title">Caspedia</div>
+          <div class="founder-avatar">
+            <div class="avatar-circle">AMA</div>
+            <div class="caption">Ameer M. Alnaimi<br />Founder &amp; Sole Owner</div>
+          </div>
+          <table>
+            <tr>
+              <td>Founded</td>
+              <td>2025</td>
+            </tr>
+            <tr>
+              <td>Type</td>
+              <td>Student-led wiki</td>
+            </tr>
+            <tr>
+              <td>Founder</td>
+              <td>Ameer M. Alnaimi</td>
+            </tr>
+            <tr>
+              <td>Focus</td>
+              <td>Community events &amp; achievements</td>
+            </tr>
+            <tr>
+              <td>Language</td>
+              <td>English (Arabic coming soon)</td>
+            </tr>
+            <tr>
+              <td>Inspired by</td>
+              <td><a href="https://www.wikipedia.org" target="_blank">Wikipedia</a></td>
+            </tr>
+            <tr>
+              <td>Compliance</td>
+              <td><a href="https://www.gov.uk/government/collections/online-safety-act" target="_blank">UK Online Safety
+                  Act</a></td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- SECTION 1 -->
+        <h2 id="what-is">What is Caspedia?</h2>
+        <p>Caspedia is a free, student-run encyclopaedia and information hub built to document events, achievements, and
+          stories relevant to our school community. It is heavily inspired by <a href="https://www.wikipedia.org"
+            target="_blank">Wikipedia</a> and other open informational websites — in both its visual design and its
+          commitment to making information freely accessible to anyone who visits.</p>
+        <p>Like Wikipedia, Caspedia is built on the idea that knowledge should be easy to find, clearly written, and
+          honestly presented. Unlike Wikipedia, Caspedia is not a general encyclopaedia — it is focused specifically on
+          our community: the people in it, the things we do, and the events that happen around us.</p>
+        <p>Anyone is welcome to browse Caspedia, whether you are a member of our grade, a student from elsewhere in the
+          school, or simply a curious visitor who found their way here. The site is open to the public.</p>
+
+        <!-- SECTION 2 -->
+        <h2 id="founding">Founding and ownership</h2>
+        <p>Caspedia was founded and is solely owned by <strong>Ameer M. Alnaimi</strong>, a student who built this
+          project from scratch with the goal of creating something genuinely useful for the people around him. The idea
+          grew from a simple observation: there was no good place to look back at things our community had done, no
+          record of events, and no shared space for that kind of information to live.</p>
+        <p>Ameer handles the overall direction of the site, its infrastructure on GitHub, and the editorial standards
+          that contributors are expected to follow. All final decisions regarding content, structure, and policy rest
+          with him as the sole owner of the organisation.</p>
+
+        <!-- SECTION 3 -->
+        <h2 id="purpose">Purpose and scope</h2>
+        <p>Caspedia serves two main purposes:</p>
+        <ul>
+          <li><strong>Documenting events</strong> — matches, competitions, activities, and anything else worth recording
+            that happens within our community.</li>
+          <li><strong>Highlighting achievements</strong> — celebrating what our organisation and its members have
+            accomplished, so those efforts are not forgotten.</li>
+        </ul>
+        <p>Our primary audience is the students of Grade 10 (now almost Grade 11) who make up our core community.
+          However, the site is open to the entire school and to anyone outside it who is interested in what we do. Think
+          of it as a living archive — something that grows as our community does.</p>
+
+        <!-- SECTION 4 -->
+        <h2 id="contributors">Contributors</h2>
+        <p>Articles and event pages on Caspedia are written by Ameer M. Alnaimi and a small group of appointed
+          contributors. Contributors are trusted members of the community who have been specifically invited to help
+          document events and write content for the site.</p>
+        <p>If you believe you spotted an error in an article, or you would like to suggest something, you are welcome to
+          open a pull request or suggestion through the link in the sidebar. All suggestions are reviewed before any
+          changes are made.</p>
+
+        <!-- SECTION 5 -->
+        <h2 id="safety">Online safety compliance</h2>
+        <p>Caspedia takes online safety seriously. This website is operated in compliance with the <a
+            href="https://www.gov.uk/government/collections/online-safety-act" target="_blank">UK Online Safety Act</a>.
+          We are committed to ensuring that content published on this site is appropriate, honest, and does not cause
+          harm to any individual or group.</p>
+        <p>If you have a concern about any content on this site, please <a href="#">contact us</a> directly.</p>
+
+        <!-- SECTION 6: SUPPORT -->
+        <h2 id="support">Support Caspedia</h2>
+        <p>Caspedia is entirely student-built and student-run, with no funding, no sponsorship, and no institutional
+          backing. If you would like to show your support for this project, the simplest way is to star the repository
+          on GitHub. It costs nothing and it genuinely means a lot to know people find this useful.</p>
+
+        <div class="support-box">
+          <strong>⭐ Star Caspedia on GitHub</strong>
+          <p>Show your support for this student-led project by starring the repository. It helps others discover the
+            project and motivates continued development.</p>
+          <a class="github-btn" href="https://github.com/AmeerAlnaimi/caspedia.github.io" target="_blank">
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+            Star on GitHub
+            <span class="star-count">⭐ Support us</span>
+          </a>
+        </div>
+
+        <!-- SECTION 7 -->
+        <h2 id="disclaimer">Disclaimers</h2>
+        <p>The content on Caspedia reflects the views and records of its contributors and does not represent the
+          position of any school, teacher, or educational institution. We are an independent, student-led organisation
+          with no formal affiliation to any school whatsoever.</p>
+        <p>While we do our best to ensure accuracy, Caspedia does not guarantee that every article is entirely free of
+          errors. If you notice a mistake, please let us know through the <a
+            href="https://github.com/AmeerAlnaimi/caspedia.github.io/pulls" target="_blank">Suggest an Edit</a> page.
+        </p>
+        <p>Caspedia is inspired by Wikipedia but is not part of the Wikimedia Foundation and has no connection to it.
+        </p>
+
+      </div>
+
+      <div class="categories">
+        <strong>Categories:</strong>
+        <a href="#">Caspedia</a> ·
+        <a href="#">About pages</a> ·
+        <a href="#">Student projects</a> ·
+        <a href="#">Community wikis</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="mw-footer">
+    <ul>
+      <li><a href="#">Privacy policy</a></li>
+      <li><a href="about.html">About Caspedia</a></li>
+      <li><a href="#">Disclaimers</a></li>
+      <li><a href="#">Contact Caspedia</a></li>
+      <li><a href="#">Code of conduct</a></li>
+      <li><a href="#">Developers</a></li>
+      <li><a href="#">Statistics</a></li>
+      <li><a href="#">Cookie statement</a></li>
+    </ul>
+    <p>Text is available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+        Commons Attribution-ShareAlike License 4.0</a>; anyone reusing this content must
+      provide attribution and a link back to Caspedia.uk </p>
+    <p style="margin-top:6px;"><a>Caspedia™</a> is a student-run informational project. Content is for
+      demonstration and
+      educational purposes.</p>
+  </footer>
+
+</body>
+
+</html>
