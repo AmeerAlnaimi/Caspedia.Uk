@@ -708,15 +708,42 @@
         </div>
 
         <div class="portal-cell">
-          <h3>📰 In the News</h3>
-          <ul>
-            <li><a href="#">International Space Station</a> marks its 25th anniversary of continuous human habitation.
-            </li>
-            <li>Scientists announce the discovery of a <a href="#">new exoplanet</a> in the habitable zone of a nearby
-              star.</li>
-            <li>The <a href="#">2026 World Chess Championship</a> concludes in Vienna.</li>
-            <li><a href="#">Mount Etna</a> erupts for the third time this year, prompting local evacuations.</li>
-          </ul>
+          <h3>⏳ Term 3 Countdown</h3>
+          <div style="padding: 12px 5px; text-align: center; font-family: var(--font-sans);">
+            <p style="font-size: 14px; margin-bottom: 8px; color: var(--text-muted); font-weight: 600;">
+              Time remaining until the end of Term 3:
+            </p>
+            <div id="countdown-timer"
+              style="font-size: 38px; font-weight: bold; color: #3366cc; letter-spacing: 0.5px; background: #f8f9fa; border: 1px solid var(--border-light); padding: 10px; border-radius: 4px; display: inline-block; min-width: 220px;">
+              Loading countdown...
+            </div>
+          </div>
+
+          <script>
+            // Set your target end date here (Format: "Month Day, Year HH:MM:SS")
+            const targetDate = new Date("June 22, 2026 11:30:00").getTime();
+
+            const timerInterval = setInterval(function () {
+              const now = new Date().getTime();
+              const difference = targetDate - now;
+
+              // Time calculations for days, hours, minutes and seconds
+              const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+              const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+              const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+              // Display the result
+              if (difference < 0) {
+                clearInterval(timerInterval);
+                document.getElementById("countdown-timer").innerHTML = "Term 3 Ended! Officially marking the end of Grade 10! 🎉";
+                document.getElementById("countdown-timer").style.color = "#2e7d32";
+              } else {
+                document.getElementById("countdown-timer").innerHTML =
+                  days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+              }
+            }, 1000);
+          </script>
         </div>
 
         <div class="portal-cell">
