@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Current Events – Caspedia</title>
+  <link rel="icon" type="image/jpeg" href="Cas_Junior_Logo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Linux+Libertine+Display:ital@0;1&family=Linux+Biolinum:wght@400;600&family=Georgia&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --white: #ffffff;
+      --bg: #f8f9fa;
+      --bg-infobox: #f8f9fa;
+      --border: #a2a9b1;
+      --border-light: #eaecf0;
+      --link: #3366cc;
+      --link-visited: #795cb2;
+      --text: #202122;
+      --text-muted: #54595d;
+      --header-bg: #ffffff;
+      --font-serif: 'Linux Libertine Display', 'Georgia', serif;
+      --font-sans: 'Linux Biolinum', 'Arial', sans-serif;
+      --font-body: 'Georgia', serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: var(--link-visited);
+    }
+
+    /* ── TOP HEADER ── */
+    #mw-head {
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .mw-head-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 16px;
+      height: 50px;
+    }
+
+    .mw-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .mw-logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .mw-logo-text {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .mw-logo-text span {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .mw-search {
+      flex: 1;
+      max-width: 500px;
+      margin-left: auto;
+      position: relative;
+    }
+
+    .mw-search input {
+      width: 100%;
+      padding: 6px 36px 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 13px;
+      font-family: var(--font-sans);
+      background: var(--white);
+      color: var(--text);
+      outline: none;
+    }
+
+    .mw-search input:focus {
+      border-color: #3366cc;
+      box-shadow: 0 0 0 2px rgba(51, 102, 204, 0.15);
+    }
+
+    .mw-search-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 34px;
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      border-left: none;
+      border-radius: 0 2px 2px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .mw-search-btn:hover {
+      background: #e8e8e8;
+    }
+
+    .mw-nav-links {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+      font-family: var(--font-sans);
+      font-size: 12px;
+    }
+
+    .mw-nav-links a {
+      color: var(--text-muted);
+    }
+
+    .mw-nav-links a:hover {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    /* ── PAGE TABS ── */
+    #mw-tabs {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mw-tabs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 16px 0 200px;
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+    }
+
+    .mw-tab {
+      padding: 6px 14px;
+      border: 1px solid transparent;
+      border-bottom: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+      bottom: -1px;
+    }
+
+    .mw-tab.active {
+      background: var(--white);
+      border-color: var(--border);
+      border-bottom-color: var(--white);
+      color: var(--text);
+    }
+
+    .mw-tab:hover:not(.active) {
+      background: #f0f0f0;
+      border-color: #c8ccd1;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    #content-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      padding: 16px;
+      gap: 16px;
+    }
+
+    /* ── SIDEBAR ── */
+    #mw-sidebar {
+      width: 180px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo-large {
+      text-align: center;
+      padding: 12px 0 16px;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 12px;
+    }
+
+    .sidebar-logo-large img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      margin: 0 auto 6px;
+      display: block;
+    }
+
+    .sidebar-logo-large .site-name {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--text);
+      display: block;
+    }
+
+    .sidebar-logo-large .tagline {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 16px;
+    }
+
+    .sidebar-section h3 {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 6px;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-section ul li {
+      padding: 2px 0;
+    }
+
+    .sidebar-section ul li a {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      color: var(--link);
+    }
+
+    /* ── ARTICLE CONTENT ── */
+    #mw-content {
+      flex: 1;
+      min-width: 0;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      padding: 24px 28px;
+    }
+
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: normal;
+      color: var(--text);
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+    }
+
+    .page-subtitle {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    /* ── SECTION HEADINGS ── */
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: normal;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 3px;
+      margin: 28px 0 14px;
+    }
+
+    .section-heading.current {
+      color: #1a4a1a;
+      border-color: #5a9a5a;
+    }
+
+    .section-heading.past {
+      color: var(--text-muted);
+    }
+
+    /* ── EVENT DATE LABEL ── */
+    .event-date-label {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    /* ── MATCH BOX ── */
+    .match-box {
+      border: 1px solid var(--border);
+      background: var(--white);
+      margin-bottom: 20px;
+      font-family: var(--font-sans);
+    }
+
+    .match-box-header {
+      background: #1a3a6b;
+      color: #ffffff;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .match-box-header .match-type {
+      font-size: 11px;
+      opacity: 0.8;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .match-box-header .match-status-live {
+      background: #cc0000;
+      color: #fff;
+      padding: 2px 7px;
+      border-radius: 2px;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .match-box-header .match-status-final {
+      background: #555;
+      color: #fff;
+      padding: 2px 7px;
+      border-radius: 2px;
+      font-size: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .match-scoreline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 20px 16px 14px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .match-team {
+      flex: 1;
+      text-align: center;
+    }
+
+    .match-team-name {
+      font-size: 15px;
+      font-weight: bold;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .match-team-role {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .match-score-box {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-shrink: 0;
+      margin: 0 16px;
+    }
+
+    .match-score-num {
+      font-size: 42px;
+      font-weight: bold;
+      font-family: var(--font-serif);
+      color: var(--text);
+      width: 56px;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .match-score-sep {
+      font-size: 28px;
+      color: var(--text-muted);
+      font-weight: normal;
+      margin: 0 4px;
+      line-height: 1;
+    }
+
+    /* ── MATCH META ── */
+    .match-meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 10px 16px;
+      background: #f8f9fa;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .match-meta span strong {
+      color: var(--text);
+    }
+
+    /* ── MATCH EVENTS TABLE ── */
+    .match-events {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .match-events-col {
+      padding: 12px 16px;
+    }
+
+    .match-events-col:first-child {
+      border-right: 1px solid var(--border-light);
+    }
+
+    .match-events-col h4 {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .event-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 5px 0;
+      font-size: 12.5px;
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    .event-row:last-child {
+      border-bottom: none;
+    }
+
+    .event-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .event-time {
+      font-weight: bold;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      font-size: 11px;
+      min-width: 40px;
+    }
+
+    .event-desc {
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .event-desc strong {
+      color: var(--text);
+    }
+
+    .no-events {
+      color: var(--text-muted);
+      font-style: italic;
+      font-size: 12.5px;
+      padding: 6px 0;
+    }
+
+    /* ── MATCH OFFICIALS ── */
+    .match-officials {
+      padding: 10px 16px;
+      background: #fafafa;
+      border-top: 1px solid var(--border-light);
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .match-officials span strong {
+      color: var(--text);
+    }
+
+    /* ── CATEGORIES ── */
+    .categories {
+      border-top: 1px solid var(--border);
+      margin-top: 28px;
+      padding-top: 10px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .categories strong {
+      color: var(--text);
+    }
+
+    .categories a {
+      margin: 0 4px;
+    }
+
+    /* ── FOOTER ── */
+    #mw-footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+      padding: 16px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    #mw-footer ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 8px;
+    }
+
+    #mw-footer ul li::after {
+      content: ' · ';
+    }
+
+    #mw-footer ul li:last-child::after {
+      content: '';
+    }
+
+    #mw-footer ul li a {
+      color: var(--link);
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      display: inline-block;
+      padding: 12px 18px;
+      margin: 0 0 22px 0;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      min-width: 200px;
+    }
+
+    .toc-title {
+      font-weight: bold;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .toc ol {
+      padding-left: 20px;
+    }
+
+    .toc li {
+      padding: 2px 0;
+    }
+
+    .toc li a {
+      color: var(--link);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP HEADER -->
+  <div id="mw-head">
+    <div class="mw-head-inner">
+      <a class="mw-logo" href="index.html">
+        <img class="mw-logo-icon" src="Cas_Junior_Logo.jpg" alt="Caspedia Logo" />
+        <div class="mw-logo-text">
+          Caspedia
+          <span>The Free Encyclopedia</span>
+        </div>
+      </a>
+      <div class="mw-search">
+        <input type="search" placeholder="Search Caspedia" />
+        <button class="mw-search-btn" aria-label="Search">&#128269;</button>
+      </div>
+      <nav class="mw-nav-links">
+        <a href="#">Create account</a>
+        <a href="#">Log in</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- PAGE TABS -->
+  <div id="mw-tabs">
+    <div class="mw-tabs-inner">
+      <div class="mw-tab"><a href="index.html" style="color:inherit; text-decoration:none;">Article</a></div>
+      <div class="mw-tab active"><a href="current-events.html" style="color:inherit; text-decoration:none;">Current
+          Events</a></div>
+      <div class="mw-tab">About Caspedia</div>
+      <div class="mw-tab">Contact Us</div>
+      <div class="mw-tab">Meet Our Team</div>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div id="content-wrap">
+
+    <!-- SIDEBAR -->
+    <aside id="mw-sidebar">
+      <div class="sidebar-logo-large">
+        <img src="Cas_Junior_Logo.jpg" alt="Caspedia Logo" />
+        <span class="site-name">Caspedia</span>
+        <span class="tagline">The Free Encyclopedia</span>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="index.html">Main page</a></li>
+          <li><a href="current-events.html">Current events</a></li>
+          <li><a href="#">About Caspedia</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Meet our team</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Contribute</h3>
+        <ul>
+          <li><a href="#">Help</a></li>
+          <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/deployments">Recent changes</a></li>
+          <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/pulls">Suggest an Edit</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Languages</h3>
+        <ul>
+          <li><a href="#">English</a></li>
+          <li><span style="color: var(--text-muted); font-family: var(--font-sans); font-size: 12.5px;">Arabic
+              <em>(coming soon)</em></span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- ARTICLE CONTENT -->
+    <main id="mw-content">
+
+      <h1 class="page-title">Current Events</h1>
+      <p class="page-subtitle">From Caspedia, the free encyclopedia — a record of notable current and past events</p>
+
+      <!-- TOC -->
+      <div class="toc">
+        <div class="toc-title">Contents</div>
+        <ol>
+          <li><a href="#current">Current Events</a>
+            <ol style="padding-left:16px; list-style:decimal;">
+              <li><a href="#football">Football</a></li>
+            </ol>
+          </li>
+          <li><a href="#past">Past Events</a></li>
+        </ol>
+      </div>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- CURRENT EVENTS -->
+      <!-- ═══════════════════════════════════════ -->
+      <h2 class="section-heading current" id="current">🟢 Current Events</h2>
+
+      <h3
+        style="font-family: var(--font-sans); font-size: 14px; font-weight: bold; margin: 0 0 6px; color: var(--text);"
+        id="football">⚽ Football</h3>
+      <p class="event-date-label">Tuesday, 3 June 2026</p>
+
+      <!-- MATCH BOX -->
+      <div class="match-box">
+
+        <!-- Header -->
+        <div class="match-box-header">
+          <span class="match-type">Football · School League</span>
+          <span>3 June 2026</span>
+          <span class="match-status-final">Full Time</span>
+        </div>
+
+        <!-- Scoreline -->
+        <div class="match-scoreline">
+          <div class="match-team">
+            <div class="match-team-name">Haramball FC</div>
+            <div class="match-team-role">President: Malek Amro<br />Captain: Khalid Waleed</div>
+          </div>
+          <div class="match-score-box">
+            <div class="match-score-num">0</div>
+            <div class="match-score-sep">–</div>
+            <div class="match-score-num">1</div>
+          </div>
+          <div class="match-team">
+            <div class="match-team-name">Al Noor FC</div>
+            <div class="match-team-role">President &amp; Captain: Zaid Majdi</div>
+          </div>
+        </div>
+
+        <!-- Match meta -->
+        <div class="match-meta">
+          <span><strong>Date:</strong> 3 June 2026</span>
+          <span><strong>Result:</strong> Al Noor FC win</span>
+        </div>
+
+        <!-- Match events -->
+        <div class="match-events">
+
+          <!-- Haramball FC column -->
+          <div class="match-events-col">
+            <h4>Haramball FC</h4>
+            <p class="no-events">No match events recorded.</p>
+          </div>
+
+          <!-- Al Noor FC column -->
+          <div class="match-events-col">
+            <h4>Al Noor FC</h4>
+
+            <div class="event-row">
+              <span class="event-icon">⚽</span>
+              <span class="event-time">11:06</span>
+              <div class="event-desc"><strong>Goal — Sultan</strong><br />Al Noor FC take the lead. Score: 0–1</div>
+            </div>
+
+            <div class="event-row">
+              <span class="event-icon">🟨</span>
+              <span class="event-time">11:08</span>
+              <div class="event-desc"><strong>Yellow Card — Ward M.</strong><br />Caution issued.</div>
+            </div>
+
+            <div class="event-row">
+              <span class="event-icon">🟨</span>
+              <span class="event-time">11:08</span>
+              <div class="event-desc"><strong>Yellow Card — Yamen M.</strong><br />Caution issued.</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Officials -->
+        <div class="match-officials">
+          <span><strong>Haramball FC President:</strong> Malek Amro</span>
+          <span><strong>Haramball FC Captain:</strong> Khalid Waleed</span>
+          <span><strong>Al Noor FC President &amp; Captain:</strong> Zaid Majdi</span>
+        </div>
+
+      </div>
+      <!-- END MATCH BOX -->
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- PAST EVENTS -->
+      <!-- ═══════════════════════════════════════ -->
+      <h2 class="section-heading past" id="past">🗂️ Past Events</h2>
+      <p style="font-family: var(--font-sans); font-size: 13px; color: var(--text-muted); font-style: italic;">No past
+        events have been recorded yet. Past events will appear here once archived.</p>
+
+      <!-- CATEGORIES -->
+      <div class="categories">
+        <strong>Categories:</strong>
+        <a href="#">Current Events</a> ·
+        <a href="#">Football</a> ·
+        <a href="#">School League</a> ·
+        <a href="#">June 2026</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="mw-footer">
+    <ul>
+      <li><a href="#">Privacy policy</a></li>
+      <li><a href="#">About Caspedia</a></li>
+      <li><a href="#">Disclaimers</a></li>
+      <li><a href="#">Contact Caspedia</a></li>
+      <li><a href="#">Code of conduct</a></li>
+      <li><a href="#">Developers</a></li>
+      <li><a href="#">Statistics</a></li>
+      <li><a href="#">Cookie statement</a></li>
+    </ul>
+    <p>Text is available under the <a href="#">Creative Commons Attribution-ShareAlike License 4.0</a>; additional terms
+      may apply.</p>
+    <p style="margin-top:6px;">Caspedia® is a registered trademark. Content is for demonstration and educational
+      purposes.</p>
+  </footer>
+
+</body>
+
+</html>
