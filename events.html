@@ -618,6 +618,14 @@
     .toc li a {
       color: var(--link);
     }
+
+    #mw-content {
+      box-sizing: border-box;
+    }
+
+    .article-body {
+      width: 100%;
+    }
   </style>
 </head>
 
@@ -700,7 +708,7 @@
     </aside>
 
     <!-- ARTICLE CONTENT -->
-    <main id="mw-content">
+    <main id="mw-content" class="article-body clearfix">
 
       <h1 class="page-title">Events</h1>
       <p class="page-subtitle">From Caspedia, the free encyclopedia — a record of notable current and break football</p>
@@ -709,15 +717,19 @@
       <div class="toc">
         <div class="toc-title">Contents</div>
         <ol>
-          <li><a href="#current">Events</a>
+          <li>
+            <a href="#current">Events</a>
             <ol style="padding-left:16px; list-style:decimal;">
             </ol>
-
           </li>
-          <li><a href="#past">Break Football Events</a></li>
-          <ol style="padding-left:16px; list-style:decimal;">
-            <li><a href="#football">June 3 2026</a></li>
-          </ol>
+
+          <li>
+            <a href="#past">Break Football Events</a>
+            <ol style="padding-left:16px; list-style:decimal;">
+              <li><a href="#football">June 3 2026</a></li>
+            </ol>
+          </li>
+        </ol>
       </div>
 
       <!-- ═══════════════════════════════════════ -->
@@ -736,25 +748,25 @@
 
     </main>
   </div>
-  <!-FOOTER -->
-    <footer id="mw-footer">
-      <ul>
-        <li><a href="#">Privacy policy</a></li>
-        <li><a href="about.html">About Caspedia</a></li>
-        <li><a href="#">Disclaimers</a></li>
-        <li><a href="#">Contact Caspedia</a></li>
-        <li><a href="#">Code of conduct</a></li>
-        <li><a href="#">Developers</a></li>
-        <li><a href="#">Statistics</a></li>
-        <li><a href="#">Cookie statement</a></li>
-      </ul>
-      <p>Text is available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-          Commons Attribution-ShareAlike License 4.0</a>; anyone reusing this content must
-        provide attribution and a link back to Caspedia.uk </p>
-      <p style="margin-top:6px;"><a>Caspedia™</a> is a student-run informational project. Content is for
-        demonstration and
-        educational purposes.</p>
-    </footer>
+  <!--FOOTER -->
+  <footer id="mw-footer">
+    <ul>
+      <li><a href="#">Privacy policy</a></li>
+      <li><a href="about.html">About Caspedia</a></li>
+      <li><a href="#">Disclaimers</a></li>
+      <li><a href="#">Contact Caspedia</a></li>
+      <li><a href="#">Code of conduct</a></li>
+      <li><a href="#">Developers</a></li>
+      <li><a href="#">Statistics</a></li>
+      <li><a href="#">Cookie statement</a></li>
+    </ul>
+    <p>Text is available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+        Commons Attribution-ShareAlike License 4.0</a>; anyone reusing this content must
+      provide attribution and a link back to Caspedia.uk </p>
+    <p style="margin-top:6px;"><a>Caspedia™</a> is a student-run informational project. Content is for
+      demonstration and
+      educational purposes.</p>
+  </footer>
 
 </body>
 
