@@ -553,6 +553,57 @@
     }
 
     /* ── TOC ── */
+    /* ── TOC & IMAGE FLEX WRAPPER ── */
+    .toc-layout-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    /* ── WIKIPEDIA STYLE IMAGE BOX ── */
+    .wiki-thumb-box {
+      border: 1px solid var(--border);
+      background: #f8f9fa;
+      padding: 5px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+
+      flex: 1;
+      min-width: 320px;
+      max-width: 560px;
+      /* Shrunk down from 650px to keep the box footprint tight */
+    }
+
+    .wiki-thumb-box img {
+      width: 100%;
+      height: 260px;
+      /* Forces the height to be strictly shorter */
+      object-fit: cover;
+      /* Magic rule: crops the image nicely instead of squishing it */
+      object-position: center;
+      /* Keeps the center of the photo in view */
+      display: block;
+    }
+
+    .wiki-thumb-caption {
+      padding: 6px 4px 2px;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .wiki-thumb-credits {
+      display: block;
+      font-size: 10.5px;
+      color: var(--text-muted);
+      margin-top: 5px;
+      border-top: 1px solid var(--border-light);
+      padding-top: 4px;
+      font-style: italic;
+    }
+
     .toc {
       background: #f8f9fa;
       border: 1px solid var(--border);
@@ -885,7 +936,7 @@
       <div class="mw-tab"><a href="events.html" style="color:inherit; text-decoration:none;">Events</a></div>
       <div class="mw-tab active"><a href="football.html" style="color:inherit; text-decoration:none;">Football</a></div>
       <div class="mw-tab"><a href="about.html" style="color:inherit; text-decoration:none;">About Caspedia</a></div>
-      <div class="mw-tab">Contact Us</div>
+      <div class="mw-tab"><a href="contact_us.html" style="color:inherit; text-decoration:none;">Contact Us</a></div>
       <div class="mw-tab">Meet Our Team</div>
     </div>
   </div>
@@ -908,7 +959,7 @@
           <li><a href="events.html">Events</a></li>
           <li><a href="football.html">Football</a></li>
           <li><a href="about.html">About Caspedia</a></li>
-          <li><a href="#">Contact us</a></li>
+          <li><a href="contact_us.html">Contact us</a></li>
           <li><a href="#">Meet our team</a></li>
         </ul>
       </div>
@@ -947,26 +998,44 @@
       </div>
 
       <!-- TOC -->
-      <div class="toc">
-        <div class="toc-title">Contents</div>
-        <ol>
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#haramball">HaramBall FC</a>
-            <ol class="toc-sub">
-              <li><a href="#haramball-squad">Squad</a></li>
-            </ol>
-          </li>
-          <li><a href="#alnoor">Al Noor FC</a>
-            <ol class="toc-sub">
-              <li><a href="#alnoor-squad">Squad</a></li>
-            </ol>
-          </li>
-          <li><a href="#recorded-matches">Recorded Football Matches</a>
-            <ol class="toc-sub">
-              <li><a href="#match-legend">Competition Legend</a></li>
-            </ol>
-          </li>
-        </ol>
+      <!-- TOC & ARTICLE IMAGE WRAPPER -->
+      <div class="toc-layout-wrapper">
+
+        <!-- TOC -->
+        <div class="toc" style="margin: 0;">
+          <div class="toc-title">Contents</div>
+          <ol>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#haramball">HaramBall FC</a>
+              <ol class="toc-sub">
+                <li><a href="#haramball-squad">Squad</a></li>
+              </ol>
+            </li>
+            <li><a href="#alnoor">Al Noor FC</a>
+              <ol class="toc-sub">
+                <li><a href="#alnoor-squad">Squad</a></li>
+              </ol>
+            </li>
+            <li><a href="#recorded-matches">Recorded Football Matches</a>
+              <ol class="toc-sub">
+                <li><a href="#match-legend">Competition Legend</a></li>
+              </ol>
+            </li>
+          </ol>
+        </div>
+
+        <!-- WIKIPEDIA IMAGE BOX -->
+        <div class="wiki-thumb-box">
+          <!-- Replace placeholder image with your own image path -->
+          <img src="Picture1_football.jpg" alt="Football match on grass" />
+          <div class="wiki-thumb-caption">
+            Captain of our team discussing plans before the semi-finals in a heated atmosphere.
+            <span class="wiki-thumb-credits">Image credit: <a
+                href="https://www.instagram.com/p/DUP1Borkf-s/?img_index=7">City American School</a> - Marketing
+              Team</span>
+          </div>
+        </div>
+
       </div>
 
       <div class="article-body clearfix">

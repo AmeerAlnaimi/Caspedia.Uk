@@ -4,17 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Events – Caspedia</title>
-  <link rel="icon" type="image/jpeg" href="Cas_Junior_Logo.svg" />
+  <title>Contact Us – Caspedia</title>
+  <link rel="icon" type="image/jpeg" href="Cas_Junior_Logo.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Linux+Libertine+Display:ital@0;1&family=Linux+Biolinum:wght@400;600&family=Georgia&display=swap"
     rel="stylesheet" />
   <style>
-    html {
-      overflow-y: scroll;
-    }
-
     *,
     *::before,
     *::after {
@@ -26,14 +22,12 @@
     :root {
       --white: #ffffff;
       --bg: #f8f9fa;
-      --bg-infobox: #f8f9fa;
       --border: #a2a9b1;
       --border-light: #eaecf0;
       --link: #3366cc;
       --link-visited: #795cb2;
       --text: #202122;
       --text-muted: #54595d;
-      --header-bg: #ffffff;
       --font-serif: 'Linux Libertine Display', 'Georgia', serif;
       --font-sans: 'Linux Biolinum', 'Arial', sans-serif;
       --font-body: 'Georgia', serif;
@@ -60,9 +54,9 @@
       color: var(--link-visited);
     }
 
-    /* ── TOP HEADER ── */
+    /* ── HEADER ── */
     #mw-head {
-      background: var(--header-bg);
+      background: var(--white);
       border-bottom: 1px solid var(--border-light);
       position: sticky;
       top: 0;
@@ -172,7 +166,7 @@
       text-decoration: none;
     }
 
-    /* ── PAGE TABS ── */
+    /* ── TABS ── */
     #mw-tabs {
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -210,7 +204,7 @@
       border-color: #c8ccd1;
     }
 
-    /* ── MAIN LAYOUT ── */
+    /* ── LAYOUT ── */
     #content-wrap {
       max-width: 1200px;
       margin: 0 auto;
@@ -285,7 +279,7 @@
       color: var(--link);
     }
 
-    /* ── ARTICLE CONTENT ── */
+    /* ── CONTENT ── */
     #mw-content {
       flex: 1;
       min-width: 0;
@@ -298,7 +292,6 @@
       font-family: var(--font-serif);
       font-size: 28px;
       font-weight: normal;
-      color: var(--text);
       border-bottom: 1px solid var(--border-light);
       padding-bottom: 4px;
       margin-bottom: 4px;
@@ -312,233 +305,213 @@
       margin-bottom: 20px;
     }
 
-    /* ── SECTION HEADINGS ── */
-    .section-heading {
+    /* ── ARTICLE ── */
+    .article-body p {
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    .article-body h2 {
       font-family: var(--font-serif);
       font-size: 22px;
       font-weight: normal;
       border-bottom: 1px solid var(--border-light);
       padding-bottom: 3px;
-      margin: 28px 0 14px;
+      margin: 26px 0 12px;
     }
 
-    .section-heading.current {
-      color: #1a4a1a;
-      border-color: #5a9a5a;
+    .article-body ul {
+      margin: 0 0 16px 28px;
     }
 
-    .section-heading.past {
-      color: var(--text-muted);
-    }
-
-    /* ── EVENT DATE LABEL ── */
-    .event-date-label {
-      font-family: var(--font-sans);
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-      font-style: italic;
-    }
-
-    /* ── MATCH BOX ── */
-    .match-box {
-      border: 1px solid var(--border);
-      background: var(--white);
-      margin-bottom: 20px;
-      font-family: var(--font-sans);
-    }
-
-    .match-box-header {
-      background: #1a3a6b;
-      color: #ffffff;
-      padding: 8px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-    }
-
-    .match-box-header .match-type {
-      font-size: 11px;
-      opacity: 0.8;
-      font-weight: normal;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-    }
-
-    .match-box-header .match-status-live {
-      background: #cc0000;
-      color: #fff;
-      padding: 2px 7px;
-      border-radius: 2px;
-      font-size: 10px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .match-box-header .match-status-final {
-      background: #555;
-      color: #fff;
-      padding: 2px 7px;
-      border-radius: 2px;
-      font-size: 10px;
-      letter-spacing: 0.5px;
-    }
-
-    .match-scoreline {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      padding: 20px 16px 14px;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .match-team {
-      flex: 1;
-      text-align: center;
-    }
-
-    .match-team-name {
-      font-size: 15px;
-      font-weight: bold;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    .match-team-role {
-      font-size: 11px;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    .match-score-box {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      flex-shrink: 0;
-      margin: 0 16px;
-    }
-
-    .match-score-num {
-      font-size: 42px;
-      font-weight: bold;
-      font-family: var(--font-serif);
-      color: var(--text);
-      width: 56px;
-      text-align: center;
-      line-height: 1;
-    }
-
-    .match-score-sep {
-      font-size: 28px;
-      color: var(--text-muted);
-      font-weight: normal;
-      margin: 0 4px;
-      line-height: 1;
-    }
-
-    /* ── MATCH META ── */
-    .match-meta {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      padding: 10px 16px;
-      background: #f8f9fa;
-      border-bottom: 1px solid var(--border-light);
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .match-meta span strong {
-      color: var(--text);
-    }
-
-    /* ── MATCH EVENTS TABLE ── */
-    .match-events {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .match-events-col {
-      padding: 12px 16px;
-    }
-
-    .match-events-col:first-child {
-      border-right: 1px solid var(--border-light);
-    }
-
-    .match-events-col h4 {
-      font-size: 12px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-muted);
+    .article-body ul li {
       margin-bottom: 8px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .event-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      padding: 5px 0;
-      font-size: 12.5px;
-      border-bottom: 1px solid #f2f2f2;
-    }
-
-    .event-row:last-child {
-      border-bottom: none;
-    }
-
-    .event-icon {
       font-size: 14px;
+    }
+
+    /* ── NOTICE BOXES ── */
+    .notice-box {
+      padding: 11px 15px;
+      margin-bottom: 14px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      border: 1px solid;
+    }
+
+    .notice-box .icon {
+      font-size: 19px;
       flex-shrink: 0;
       margin-top: 1px;
     }
 
-    .event-time {
+    .notice-box.yellow {
+      background: #fef9e7;
+      border-color: #d4ac0d;
+    }
+
+    .notice-box.red {
+      background: #fdf2f2;
+      border-color: #c0392b;
+    }
+
+    .notice-box.blue {
+      background: #eaf3fb;
+      border-color: #a2c8e0;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      display: inline-block;
+      padding: 12px 18px;
+      margin: 0 0 22px 0;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      min-width: 220px;
+    }
+
+    .toc-title {
       font-weight: bold;
-      color: var(--text-muted);
-      flex-shrink: 0;
-      font-size: 11px;
-      min-width: 40px;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 8px;
     }
 
-    .event-desc {
+    .toc ol {
+      padding-left: 20px;
+    }
+
+    .toc li {
+      padding: 2px 0;
+    }
+
+    .toc li a {
+      color: var(--link);
+    }
+
+    /* ── EMAIL CONTACT BOX ── */
+    .contact-box {
+      border: 1px solid var(--border);
+      background: #f8f9fa;
+      padding: 20px 22px;
+      margin: 22px 0;
+      font-family: var(--font-sans);
+    }
+
+    .contact-box h3 {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 6px;
       color: var(--text);
-      line-height: 1.4;
     }
 
-    .event-desc strong {
-      color: var(--text);
-    }
-
-    .no-events {
+    .contact-box p {
+      font-size: 13px;
       color: var(--text-muted);
-      font-style: italic;
-      font-size: 12.5px;
-      padding: 6px 0;
+      margin-bottom: 14px;
     }
 
-    /* ── MATCH OFFICIALS ── */
-    .match-officials {
-      padding: 10px 16px;
-      background: #fafafa;
-      border-top: 1px solid var(--border-light);
+    .email-display {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .email-chip {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 9px 16px;
+      font-family: monospace;
+      font-size: 14px;
+      color: var(--text);
+      letter-spacing: 0.3px;
+      border-radius: 2px;
+    }
+
+    .email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #3366cc;
+      color: #fff;
+      padding: 9px 16px;
+      border-radius: 2px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .email-btn:hover {
+      background: #2255bb;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .email-hint {
       font-size: 12px;
       color: var(--text-muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
+      margin-top: 12px;
+      border-top: 1px solid var(--border-light);
+      padding-top: 10px;
+      line-height: 1.6;
     }
 
-    .match-officials span strong {
+    .email-hint strong {
       color: var(--text);
+    }
+
+    /* ── DISCLAIMER TABLE ── */
+    .disclaimer-list {
+      border: 1px solid var(--border);
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      margin: 16px 0 20px;
+    }
+
+    .disclaimer-list thead tr {
+      background: #eaf3fb;
+    }
+
+    .disclaimer-list th {
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: bold;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .disclaimer-list td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border-light);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .disclaimer-list tr:last-child td {
+      border-bottom: none;
+    }
+
+    .disclaimer-list tr:hover td {
+      background: #fafbfc;
+    }
+
+    .disclaimer-list td:first-child {
+      font-size: 16px;
+      width: 32px;
+      text-align: center;
     }
 
     /* ── CATEGORIES ── */
@@ -591,43 +564,12 @@
     #mw-footer ul li a {
       color: var(--link);
     }
-
-    /* ── TOC ── */
-    .toc {
-      background: #f8f9fa;
-      border: 1px solid var(--border);
-      display: inline-block;
-      padding: 12px 18px;
-      margin: 0 0 22px 0;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      min-width: 200px;
-    }
-
-    .toc-title {
-      font-weight: bold;
-      font-size: 13px;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .toc ol {
-      padding-left: 20px;
-    }
-
-    .toc li {
-      padding: 2px 0;
-    }
-
-    .toc li a {
-      color: var(--link);
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- TOP HEADER -->
+  <!-- HEADER -->
   <div id="mw-head">
     <div class="mw-head-inner">
       <a class="mw-logo" href="index.html">
@@ -645,24 +587,17 @@
         <a href="#">Create account</a>
         <a href="#">Log in</a>
       </nav>
-      <!-- Add this right next to your Log In or Sign Up list items -->
-      <li id="uae-clock-container"
-        style="color: #54595d; font-size: 0.75rem; padding: 0 10px; display: inline-flex; align-items: center;">
-        <span id="uae-clock"
-          style="font-weight: bold; margin-left: 5px; display: inline-block; width: 165px; font-variant-numeric: tabular-nums; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">Loading...</span>
-      </li>
     </div>
   </div>
 
-  <!-- PAGE TABS -->
+  <!-- TABS -->
   <div id="mw-tabs">
     <div class="mw-tabs-inner">
       <div class="mw-tab"><a href="index.html" style="color:inherit; text-decoration:none;">Article</a></div>
-      <div class="mw-tab active"><a href="events.html" style="color:inherit; text-decoration:none;">
-          Events</a></div>
+      <div class="mw-tab"><a href="events.html" style="color:inherit; text-decoration:none;">Events</a></div>
       <div class="mw-tab"><a href="football.html" style="color:inherit; text-decoration:none;">Football</a></div>
       <div class="mw-tab"><a href="about.html" style="color:inherit; text-decoration:none;">About Caspedia</a></div>
-      <div class="mw-tab"><a href="contact_us.html" style="color:inherit; text-decoration:none;">Contact Us</a></div>
+      <div class="mw-tab active">Contact Us</div>
       <div class="mw-tab">Meet Our Team</div>
     </div>
   </div>
@@ -709,90 +644,168 @@
       </div>
     </aside>
 
-    <!-- ARTICLE CONTENT -->
+    <!-- CONTENT -->
     <main id="mw-content">
 
-      <h1 class="page-title">Events</h1>
-      <p class="page-subtitle">From Caspedia, the free encyclopedia — a record of notable current and break football</p>
+      <h1 class="page-title">Caspedia:Contact Us</h1>
+      <p class="page-subtitle">From Caspedia, the free encyclopedia</p>
+
+      <div class="notice-box yellow">
+        <span class="icon">⚠️</span>
+        <div>Please read the disclaimers and guidance on this page <strong>before</strong> reaching out. Many common
+          questions are already answered below or in the <a href="about.html">About Caspedia</a> section.</div>
+      </div>
 
       <!-- TOC -->
       <div class="toc">
         <div class="toc-title">Contents</div>
         <ol>
-          <li>
-            <a href="#current">Events</a>
-            <ol style="padding-left:16px; list-style:decimal;">
-            </ol>
-          </li>
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#disclaimers">Important Disclaimers</a></li>
+          <li><a href="#how-to-contact">How to Contact Us</a></li>
+          <li><a href="#other">Other Resources</a></li>
+        </ol>
       </div>
 
-      <!-- ═══════════════════════════════════════ -->
-      <!-- Events -->
-      <!-- ═══════════════════════════════════════ -->
-      <h2 class="section-heading current" id="current">🟢 Events</h2>
-      <!-- ═══════════════════════════════════════ -->
-      <!-- CATEGORIES -->
+      <div class="article-body">
+
+        <!-- INTRO -->
+        <h2 id="intro">Introduction</h2>
+        <p>Thank you for your interest in contacting Caspedia. Whether you have spotted an error in an article, have a
+          complaint, or simply want to ask a question, we want to make sure your message reaches the right place and is
+          dealt with appropriately.</p>
+        <p>Before reaching out, we ask that you take a moment to read through the information on this page. It will help
+          set the right expectations and point you in the correct direction, which ultimately means a faster and more
+          useful response for you.</p>
+
+        <!-- DISCLAIMERS -->
+        <h2 id="disclaimers">Important Disclaimers</h2>
+        <p>Please take note of the following before submitting any inquiry or complaint:</p>
+
+        <table class="disclaimer-list">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Disclaimer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>⚖️</td>
+              <td>Caspedia.uk is not responsible for mistakes made by its editors and will not be held liable for them,
+                unless the content in question constitutes a violation of local cyber laws or the <a
+                  href="https://www.gov.uk/government/collections/online-safety-act" target="_blank">British Online
+                  Safety Act</a>.</td>
+            </tr>
+            <tr>
+              <td>🕐</td>
+              <td>Caspedia currently has one editor — <strong>Ameer M. Alnaimi</strong>. Please expect delays in
+                responding to inquiries or complaints. We appreciate your patience.</td>
+            </tr>
+            <tr>
+              <td>🌍</td>
+              <td>Although our domain registrar is based in the <strong>United Kingdom of Great Britain</strong>,
+                Caspedia is operated from the <strong>United Arab Emirates</strong> and is subject to UAE cyber laws in
+                addition to applicable UK legislation.</td>
+            </tr>
+            <tr>
+              <td>🏫</td>
+              <td>Caspedia is <strong>not affiliated</strong> with any school or educational institution in any
+                capacity. Please do not contact us expecting institutional representation or authority.</td>
+            </tr>
+            <tr>
+              <td>📋</td>
+              <td>If you have questions about the purpose or background of Caspedia, please visit the <a
+                  href="about.html">About Caspedia</a> page before reaching out — your question may already be answered
+                there.</td>
+            </tr>
+            <tr>
+              <td>✏️</td>
+              <td>If you wish to suggest a new article or addition to the site, please use the <a
+                  href="https://github.com/AmeerAlnaimi/caspedia.github.io/pulls" target="_blank">Suggest an Edit</a>
+                page rather than sending an email.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- HOW TO CONTACT -->
+        <h2 id="how-to-contact">How to Contact Us</h2>
+
+        <p>For all general inquiries, complaints, or reports of contradictory or false information in any article,
+          please contact us using the email address below. All correspondence is handled by Ameer M. Alnaimi.</p>
+
+        <div class="contact-box">
+          <h3>📧 General Inquiries &amp; Complaints</h3>
+          <p>Use this address for all contact including error reports, complaints, and content concerns.</p>
+          <div class="email-display">
+            <span class="email-chip">INQUIRES_CASPEDIA@TUTA.IO</span>
+            <a class="email-btn" href="mailto:INQUIRES_CASPEDIA@TUTA.IO">Send Email</a>
+          </div>
+          <div class="email-hint">
+            <strong>How to write your email:</strong> Please clearly state your reason in the subject line — for
+            example, <em>Subject: Complaint</em> or <em>Subject: False Information – [Article Name]</em>. In the body of
+            your message, provide as much detail as possible: which page the issue is on, what the problem is, and any
+            evidence or context you can share. This helps us address your concern as efficiently as possible.
+          </div>
+        </div>
+
+        <div class="notice-box red">
+          <span class="icon">🚫</span>
+          <div>Do <strong>not</strong> use this email for article suggestions or edit requests. Those should be
+            submitted via the <a href="https://github.com/AmeerAlnaimi/caspedia.github.io/pulls" target="_blank">Suggest
+              an Edit</a> page on GitHub.</div>
+        </div>
+
+        <!-- OTHER RESOURCES -->
+        <h2 id="other">Other Resources</h2>
+
+        <div class="notice-box blue">
+          <span class="icon">ℹ️</span>
+          <div>Before contacting us, you may find what you need through one of these pages:</div>
+        </div>
+
+        <ul>
+          <li><a href="about.html">About Caspedia</a> — learn about the project, its founder, purpose, and legal
+            compliance.</li>
+          <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/pulls" target="_blank">Suggest an Edit</a> —
+            propose a new article or correction through GitHub.</li>
+          <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/deployments" target="_blank">Recent
+              Changes</a> — see what has recently been updated on the site.</li>
+          <li><a href="https://www.gov.uk/government/collections/online-safety-act" target="_blank">UK Online Safety
+              Act</a> — the legislation Caspedia complies with.</li>
+        </ul>
+
+      </div>
+
       <div class="categories">
         <strong>Categories:</strong>
-        <a href="#">Events</a> ·
-        <a href="#">Football</a> ·
-        <a href="#">School League</a> ·
-        <a href="#">June 2026</a>
+        <a href="#">Caspedia</a> ·
+        <a href="#">Contact pages</a> ·
+        <a href="#">About pages</a>
       </div>
 
     </main>
   </div>
-  <!--FOOTER -->
+
+  <!-- FOOTER -->
   <footer id="mw-footer">
     <ul>
       <li><a href="#">Privacy policy</a></li>
       <li><a href="about.html">About Caspedia</a></li>
       <li><a href="#">Disclaimers</a></li>
-      <li><a href="#">Contact Caspedia</a></li>
+      <li><a href="contact_us.html">Contact Caspedia</a></li>
       <li><a href="#">Code of conduct</a></li>
       <li><a href="#">Developers</a></li>
       <li><a href="#">Statistics</a></li>
       <li><a href="#">Cookie statement</a></li>
     </ul>
     <p>Text is available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-        Commons Attribution-ShareAlike License 4.0</a>; anyone reusing this content must
-      provide attribution and a link back to Caspedia.uk </p>
-    <p style="margin-top:6px;"><a>Caspedia™</a> is a student-run informational project. Content is for
-      demonstration and
+        Commons Attribution-ShareAlike License 4.0</a>; anyone reusing this content must provide attribution and a link
+      back to Caspedia.uk</p>
+    <p style="margin-top:6px;">Caspedia™ is a student-run informational project. Content is for demonstration and
       educational purposes.</p>
   </footer>
-  <footer id="mw-footer">
-    ...
-  </footer>
 
-  <script>
-    function updateUAEClock() {
-      const clockElement = document.getElementById('uae-clock');
-      if (!clockElement) return;
-
-      const options = {
-        timeZone: 'Asia/Dubai',
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true
-      };
-
-      const uaeTimeStr = new Date().toLocaleString('en-US', options);
-      clockElement.textContent = uaeTimeStr;
-    }
-
-    // Run immediately and update every second
-    updateUAEClock();
-    setInterval(updateUAEClock, 1000);
-  </script>
-
-</body>
-
-</html>
 </body>
 
 </html>
