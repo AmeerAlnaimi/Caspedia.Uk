@@ -1,7 +1,7 @@
 ---
 name: Article request
 about: Suggest an Article
-title: "[Suggest_Article]"
+title: "[Suggest_an_Article]"
 labels: ''
 assignees: ''
 
