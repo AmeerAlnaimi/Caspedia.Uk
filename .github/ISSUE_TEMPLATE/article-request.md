@@ -13,6 +13,8 @@ assignees: ''
 
 - Any use of AI to completely write is prohibited, while AI's that focus on spelling corrections (such as Grammarly) is accepted.
 
-- If you wish to add pictures, please suggest below with a google drive link photo (make sure it is public), and the editor will implement that to your article if it is appropriate and relevant to your chosen topic.
+- If you wish to add pictures, please upload it here (bottom-left). and the editor will implement that to your article if it is appropriate and relevant to your chosen topic.
+
+- embedding videos, twitter posts, reels, gifs, etc... is permitted if appropriate and relevant.
 
 - Criticism, hate speech, racism, or any types of wrongful acts will be immediately terminated and potentially face consequences in further Caspedia.Uk events.
