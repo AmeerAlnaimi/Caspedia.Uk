@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributors – Caspedia</title>
+  <link rel="icon" type="image/jpeg" href="Cas_Junior_Logo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Linux+Libertine+Display:ital@0;1&family=Linux+Biolinum:wght@400;600&family=Georgia&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --white: #ffffff;
+      --bg: #f8f9fa;
+      --border: #a2a9b1;
+      --border-light: #eaecf0;
+      --link: #3366cc;
+      --link-visited: #795cb2;
+      --text: #202122;
+      --text-muted: #54595d;
+      --font-serif: 'Linux Libertine Display', 'Georgia', serif;
+      --font-sans: 'Linux Biolinum', 'Arial', sans-serif;
+      --font-body: 'Georgia', serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: var(--link-visited);
+    }
+
+    /* ── HEADER ── */
+    #mw-head {
+      background: var(--white);
+      border-bottom: 1px solid var(--border-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .mw-head-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 16px;
+      height: 50px;
+    }
+
+    .mw-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .mw-logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .mw-logo-text {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .mw-logo-text span {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .mw-search {
+      flex: 1;
+      max-width: 500px;
+      margin-left: auto;
+      position: relative;
+    }
+
+    .mw-search input {
+      width: 100%;
+      padding: 6px 36px 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 13px;
+      font-family: var(--font-sans);
+      background: var(--white);
+      color: var(--text);
+      outline: none;
+    }
+
+    .mw-search input:focus {
+      border-color: #3366cc;
+      box-shadow: 0 0 0 2px rgba(51, 102, 204, 0.15);
+    }
+
+    .mw-search-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 34px;
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      border-left: none;
+      border-radius: 0 2px 2px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .mw-search-btn:hover {
+      background: #e8e8e8;
+    }
+
+    .mw-nav-links {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+      font-family: var(--font-sans);
+      font-size: 12px;
+    }
+
+    .mw-nav-links a {
+      color: var(--text-muted);
+    }
+
+    .mw-nav-links a:hover {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    /* ── TABS ── */
+    #mw-tabs {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mw-tabs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 16px 0 200px;
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      flex-wrap: wrap;
+    }
+
+    .mw-tab {
+      padding: 6px 14px;
+      border: 1px solid transparent;
+      border-bottom: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+      bottom: -1px;
+    }
+
+    .mw-tab.active {
+      background: var(--white);
+      border-color: var(--border);
+      border-bottom-color: var(--white);
+      color: var(--text);
+    }
+
+    .mw-tab:hover:not(.active) {
+      background: #f0f0f0;
+      border-color: #c8ccd1;
+    }
+
+    /* ── LAYOUT ── */
+    #content-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      padding: 16px;
+      gap: 16px;
+    }
+
+    /* ── SIDEBAR ── */
+    #mw-sidebar {
+      width: 180px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo-large {
+      text-align: center;
+      padding: 12px 0 16px;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 12px;
+    }
+
+    .sidebar-logo-large img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      margin: 0 auto 6px;
+      display: block;
+    }
+
+    .sidebar-logo-large .site-name {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--text);
+      display: block;
+    }
+
+    .sidebar-logo-large .tagline {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 16px;
+    }
+
+    .sidebar-section h3 {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 6px;
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-section ul li {
+      padding: 2px 0;
+    }
+
+    .sidebar-section ul li a {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      color: var(--link);
+    }
+
+    /* ── CONTENT ── */
+    #mw-content {
+      flex: 1;
+      min-width: 0;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      padding: 24px 28px;
+    }
+
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: normal;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+    }
+
+    .page-subtitle {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    /* ── ARTICLE ── */
+    .article-body p {
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    .article-body h2 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: normal;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 3px;
+      margin: 28px 0 12px;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      display: inline-block;
+      padding: 12px 18px;
+      margin: 0 0 22px 0;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      min-width: 240px;
+    }
+
+    .toc-title {
+      font-weight: bold;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .toc ol {
+      padding-left: 20px;
+    }
+
+    .toc li {
+      padding: 2px 0;
+    }
+
+    .toc li a {
+      color: var(--link);
+    }
+
+    /* ── CONTRIBUTOR CARD ── */
+    .contributor-card {
+      border: 1px solid var(--border);
+      background: #f8f9fa;
+      margin-bottom: 22px;
+      display: flex;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .contributor-avatar {
+      width: 80px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-size: 26px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .contributor-avatar.blue {
+      background: #1a3a6b;
+    }
+
+    .contributor-avatar.green {
+      background: #1a5c1a;
+    }
+
+    .contributor-avatar.purple {
+      background: #4a1a6b;
+    }
+
+    .contributor-avatar.teal {
+      background: #0a5c5c;
+    }
+
+    .contributor-body {
+      flex: 1;
+      padding: 14px 18px;
+      border-left: 1px solid var(--border-light);
+    }
+
+    .contributor-name {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-weight: normal;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .contributor-role {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+
+    .role-founder {
+      background: #cee0f2;
+      color: #1a3a6b;
+    }
+
+    .role-social {
+      background: #e8f4e8;
+      color: #1a5c1a;
+    }
+
+    .role-gaming {
+      background: #ede8f4;
+      color: #4a1a6b;
+    }
+
+    .role-football {
+      background: #e8f4f4;
+      color: #0a5c5c;
+    }
+
+    .contributor-body p {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── MEMBER ROSTER BOX ── */
+    .roster-box {
+      border: 1px solid var(--border);
+      background: var(--white);
+      margin-top: 8px;
+    }
+
+    .roster-header {
+      background: #1a3a6b;
+      color: #fff;
+      padding: 10px 16px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .roster-header .count {
+      background: rgba(255, 255, 255, 0.18);
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 3px;
+      font-weight: normal;
+      letter-spacing: 0.3px;
+    }
+
+    .roster-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border-light);
+    }
+
+    .roster-cell {
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--border-light);
+      border-right: 1px solid var(--border-light);
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .roster-cell:nth-child(3n) {
+      border-right: none;
+    }
+
+    .roster-cell:nth-last-child(-n+3) {
+      border-bottom: none;
+    }
+
+    .roster-num {
+      font-size: 10px;
+      color: var(--text-muted);
+      min-width: 18px;
+      font-weight: bold;
+    }
+
+    .roster-name {
+      line-height: 1.35;
+    }
+
+    .roster-footer {
+      background: #f8f9fa;
+      border-top: 1px solid var(--border-light);
+      padding: 8px 14px;
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ── CATEGORIES ── */
+    .categories {
+      border-top: 1px solid var(--border);
+      margin-top: 28px;
+      padding-top: 10px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .categories strong {
+      color: var(--text);
+    }
+
+    .categories a {
+      margin: 0 4px;
+    }
+
+    /* ── FOOTER ── */
+    #mw-footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+      padding: 16px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    #mw-footer ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 8px;
+    }
+
+    #mw-footer ul li::after {
+      content: ' · ';
+    }
+
+    #mw-footer ul li:last-child::after {
+      content: '';
+    }
+
+    #mw-footer ul li a {
+      color: var(--link);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div id="mw-head">
+    <div class="mw-head-inner">
+      <a class="mw-logo" href="index.html">
+        <img class="mw-logo-icon" src="Cas_Junior_Logo.jpg" alt="Caspedia Logo" />
+        <div class="mw-logo-text">
+          Caspedia
+          <span>The Free Encyclopedia</span>
+        </div>
+      </a>
+      <div class="mw-search">
+        <input type="search" placeholder="Search Caspedia" />
+        <button class="mw-search-btn" aria-label="Search">&#128269;</button>
+      </div>
+      <nav class="mw-nav-links">
+        <a href="#">Create account</a>
+        <a href="#">Log in</a>
+      </nav>
+      <!-- Add this right next to your Log In or Sign Up list items -->
+      <li id="uae-clock-container"
+        style="color: #54595d; font-size: 0.75rem; padding: 0 10px; display: inline-flex; align-items: center;">
+        <span id="uae-clock"
+          style="font-weight: bold; margin-left: 5px; display: inline-block; width: 165px; font-variant-numeric: tabular-nums; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">Loading...</span>
+      </li>
+    </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- TABS -->
+  <div id="mw-tabs">
+    <div class="mw-tabs-inner">
+      <div class="mw-tab"><a href="index.html" style="color:inherit;text-decoration:none;">Article</a></div>
+      <div class="mw-tab"><a href="events.html" style="color:inherit;text-decoration:none;">Events</a></div>
+      <div class="mw-tab"><a href="football.html" style="color:inherit;text-decoration:none;">Football</a></div>
+      <div class="mw-tab"><a href="about.html" style="color:inherit;text-decoration:none;">About Caspedia</a></div>
+      <div class="mw-tab"><a href="contact_us.html" style="color:inherit;text-decoration:none;">Contact Us</a></div>
+      <div class="mw-tab active">Contributors</div>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div id="content-wrap">
+
+    <!-- SIDEBAR -->
+    <aside id="mw-sidebar">
+      <div class="sidebar-logo-large">
+        <img src="Cas_Junior_Logo.jpg" alt="Caspedia Logo" />
+        <span class="site-name">Caspedia</span>
+        <span class="tagline">The Free Encyclopedia</span>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="index.html">Main page</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="football.html">Football</a></li>
+          <li><a href="about.html">About Caspedia</a></li>
+          <li><a href="contact_us.html">Contact us</a></li>
+          <li><a href="contributors.html">Contributors</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Contribute</h3>
+        <ul>
+          <li><a href="#">Help</a></li>
+          <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/releases">Recent changes</a></li>
+          <li><a href="https://github.com/AmeerAlnaimi/caspedia.github.io/issues">Suggest an Edit</a></li>
+          <li><a href="https://form.jotform.com/261546469303056">Report a Bug</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Languages</h3>
+        <ul>
+          <li><a href="#">English</a></li>
+          <li><span style="color:var(--text-muted);font-family:var(--font-sans);font-size:12.5px;">Arabic <em>(coming
+                soon)</em></span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main id="mw-content">
+
+      <h1 class="page-title">Caspedia:Contributors</h1>
+      <p class="page-subtitle">From Caspedia, the free encyclopedia — the people behind Caspedia and its community</p>
+
+      <!-- TOC -->
+      <div class="toc">
+        <div class="toc-title">Contents</div>
+        <ol>
+          <li><a href="#ameer">Co-Founder of Caspedia — Ameer M. Alnaimi</a></li>
+          <li><a href="#arshil">Co-Founder of CasJuniors 2027 — Inqiad Haque Arshil</a></li>
+          <li><a href="#abdulrahman">Community Gaming Director — Abdulrahman Al Ahmar</a></li>
+          <li><a href="#football">Football Community Initiators — Malek Amro &amp; Yamen Mohammad A.</a></li>
+          <li><a href="#roster">Official Members of Caspedia</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body">
+
+        <!-- ══════════ AMEER ══════════ -->
+        <h2 id="ameer">Co-Founder of Caspedia — Ameer M. Alnaimi</h2>
+        <div class="contributor-card">
+          <div class="contributor-avatar blue">AMA</div>
+          <div class="contributor-body">
+            <div class="contributor-name">Ameer M. Alnaimi</div>
+            <span class="contributor-role role-founder">Co-Founder · Caspedia</span>
+            <p>Ameer M. Alnaimi is the driving force behind Caspedia.uk, having built the entire website from scratch
+              and established it as a free, community-driven information hub. His vision was simple but meaningful: to
+              create a space where students — both within the community and beyond — could document events, celebrate
+              achievements, and access knowledge in a clear and honest format. Ameer serves as the primary editor,
+              appointed referee for break football matches, and the overall steward of Caspedia's direction and
+              standards. We are officially working together for the good of the community.</p>
+          </div>
+        </div>
+
+        <!-- ══════════ ARSHIL ══════════ -->
+        <h2 id="arshil">Co-Founder of CasJuniors 2027 — Inqiad Haque Arshil</h2>
+        <div class="contributor-card">
+          <div class="contributor-avatar green">IHA</div>
+          <div class="contributor-body">
+            <div class="contributor-name">Inqiad Haque Arshil</div>
+            <span class="contributor-role role-social">Co-Founder · CasJuniors 2027</span>
+            <p>Inqiad Haque Arshil established and manages the official CasJuniors 2027 Instagram page, extending our
+              community's presence beyond this website and into social media. His goal is to grow the community's
+              digital footprint and eventually surpass the reach of CasVoice, the dominant rival Instagram page in the
+              school space. Arshil's work on social media complements Caspedia by broadening awareness and bringing more
+              of the community into the conversation.</p>
+          </div>
+        </div>
+
+        <!-- ══════════ ABDULRAHMAN ══════════ -->
+        <h2 id="abdulrahman">Community Gaming Director — Abdulrahman Al Ahmar</h2>
+        <div class="contributor-card">
+          <div class="contributor-avatar purple">AAA</div>
+          <div class="contributor-body">
+            <div class="contributor-name">Abdulrahman Al Ahmar</div>
+            <span class="contributor-role role-gaming">Community Gaming Director</span>
+            <p>Abdulrahman Al Ahmar successfully integrated his Minecraft server into the broader community ecosystem,
+              creating a shared virtual space that complements what Caspedia documents in the real world. His initiative
+              has helped increase engagement among members, fostered a spirit of collaboration, and further strengthened
+              the presence and identity of the community as a whole. The Minecraft server stands as one of the more
+              creative expansions of what this community has built together.</p>
+          </div>
+        </div>
+
+        <!-- ══════════ FOOTBALL ══════════ -->
+        <h2 id="football">Football Community Initiators — Malek Amro &amp; Yamen Mohammad A.</h2>
+        <div class="contributor-card">
+          <div class="contributor-avatar teal">FC</div>
+          <div class="contributor-body">
+            <div class="contributor-name">Malek Amro &amp; Yamen Mohammad A.</div>
+            <span class="contributor-role role-football">Football Community Initiators</span>
+            <p>Malek Amro and Yamen Mohammad A. were the ones who first proposed creating a dedicated football channel
+              within Caspedia — a place to formally document the break-time matches, results, and player achievements
+              that might otherwise go unrecorded. Their suggestion led directly to the creation of the Football section
+              of this site, which now serves as the official archive for HaramBall FC and Al Noor FC fixtures. Their
+              initiative is a good example of how community members can shape what Caspedia covers.</p>
+          </div>
+        </div>
+
+        <!-- ══════════ ROSTER ══════════ -->
+        <h2 id="roster">Official Members of Caspedia</h2>
+        <p>The following is the full list of official members of the Caspedia community, listed in the order they were
+          registered.</p>
+
+        <div class="roster-box">
+          <div class="roster-header">
+            <span>📋 Official Member Roster — Caspedia Community</span>
+            <span class="count">56 members</span>
+          </div>
+          <div class="roster-grid">
+            <div class="roster-cell"><span class="roster-num">1</span><span class="roster-name">Abdulrahman Mohammed
+                Talib</span></div>
+            <div class="roster-cell"><span class="roster-num">2</span><span class="roster-name">Amen Vadakkungara
+                Rahmathulla Vadakkungara</span></div>
+            <div class="roster-cell"><span class="roster-num">3</span><span class="roster-name">Abdulrahman Mohammed Al
+                Ahmar</span></div>
+            <div class="roster-cell"><span class="roster-num">4</span><span class="roster-name">Adam Rami Abedalqader
+                Allala</span></div>
+            <div class="roster-cell"><span class="roster-num">5</span><span class="roster-name">Ameer Majdi Ahmad Al
+                Naimi</span></div>
+            <div class="roster-cell"><span class="roster-num">6</span><span class="roster-name">Asad Abdul Majeed Abdul
+                Majeed</span></div>
+            <div class="roster-cell"><span class="roster-num">7</span><span class="roster-name">Ayham Aiman
+                Zaidan</span></div>
+            <div class="roster-cell"><span class="roster-num">8</span><span class="roster-name">Ayham Mohamed Ibrahim
+                Ahmed</span></div>
+            <div class="roster-cell"><span class="roster-num">9</span><span class="roster-name">Dhurgham Majid Hameed Al
+                Behadili</span></div>
+            <div class="roster-cell"><span class="roster-num">10</span><span class="roster-name">Ehab Goorani</span>
+            </div>
+            <div class="roster-cell"><span class="roster-num">11</span><span class="roster-name">Eshagh Mokhtar
+                Ahmadpoor</span></div>
+            <div class="roster-cell"><span class="roster-num">12</span><span class="roster-name">Essam Huthaifa Issam
+                Awwad</span></div>
+            <div class="roster-cell"><span class="roster-num">13</span><span class="roster-name">Fahd Sheikh Murtaza
+                Nazir</span></div>
+            <div class="roster-cell"><span class="roster-num">14</span><span class="roster-name">Faris Ibrahim Hasan
+                Freij</span></div>
+            <div class="roster-cell"><span class="roster-num">15</span><span class="roster-name">Hamdan Jassem Shaker
+                Albloushi</span></div>
+            <div class="roster-cell"><span class="roster-num">16</span><span class="roster-name">Hamdan M H
+                Albanna</span></div>
+            <div class="roster-cell"><span class="roster-num">17</span><span class="roster-name">Hamza Abdelrahman
+                Mostafa Mohamed</span></div>
+            <div class="roster-cell"><span class="roster-num">18</span><span class="roster-name">Hussain Ghalib Hameed
+                Al Juboori</span></div>
+            <div class="roster-cell"><span class="roster-num">19</span><span class="roster-name">Iman Ahmad
+                Seraji</span></div>
+            <div class="roster-cell"><span class="roster-num">20</span><span class="roster-name">Ibrahim Mehtab Maqbool
+                Maqbool</span></div>
+            <div class="roster-cell"><span class="roster-num">21</span><span class="roster-name">Inqiad Haque Arshil MD
+                Maftun Haque</span></div>
+            <div class="roster-cell"><span class="roster-num">22</span><span class="roster-name">Jhon Bishnu Prasad
+                Pudasaini</span></div>
+            <div class="roster-cell"><span class="roster-num">23</span><span class="roster-name">Khalid Elwalid Ahmed
+                Elagab</span></div>
+            <div class="roster-cell"><span class="roster-num">24</span><span class="roster-name">Khalifa Faleh Khalifa
+                Saif Almheiri</span></div>
+            <div class="roster-cell"><span class="roster-num">25</span><span class="roster-name">Khalifa Ahmed Hussain
+                Abdalla Al Ali</span></div>
+            <div class="roster-cell"><span class="roster-num">26</span><span class="roster-name">Meisam Ahmad Gostham
+                Nejad</span></div>
+            <div class="roster-cell"><span class="roster-num">27</span><span class="roster-name">Mohamed Abdelaziz
+                Samlali</span></div>
+            <div class="roster-cell"><span class="roster-num">28</span><span class="roster-name">Mohammed Omod K
+                Towfek</span></div>
+            <div class="roster-cell"><span class="roster-num">29</span><span class="roster-name">Muhammad Arshman Khan
+                Khan</span></div>
+            <div class="roster-cell"><span class="roster-num">30</span><span class="roster-name">Muhammad Shayan Khalid
+                Khalid Mahmood</span></div>
+            <div class="roster-cell"><span class="roster-num">31</span><span class="roster-name">Muhammad Talha Rafaqat
+                Ali</span></div>
+            <div class="roster-cell"><span class="roster-num">32</span><span class="roster-name">Mahmoud Essam
+                Abdelnasser Abdelrahman</span></div>
+            <div class="roster-cell"><span class="roster-num">33</span><span class="roster-name">Mahmoud Essam
+                Farouk</span></div>
+            <div class="roster-cell"><span class="roster-num">34</span><span class="roster-name">Majid Mostafa
+                Akbari</span></div>
+            <div class="roster-cell"><span class="roster-num">35</span><span class="roster-name">Malek Amro Hamed
+                Mostafa Elmeligy</span></div>
+            <div class="roster-cell"><span class="roster-num">36</span><span class="roster-name">Mansoor Ibrahim Obaid
+                Ibrahim Alsuwaidi</span></div>
+            <div class="roster-cell"><span class="roster-num">37</span><span class="roster-name">Matti Ullah Rizwan
+                Muhammad Rizwan</span></div>
+            <div class="roster-cell"><span class="roster-num">38</span><span class="roster-name">Mohannad Husam
+                Najjar</span></div>
+            <div class="roster-cell"><span class="roster-num">39</span><span class="roster-name">Muhammad Ayan
+                Nasir</span></div>
+            <div class="roster-cell"><span class="roster-num">40</span><span class="roster-name">Obada Hawa</span></div>
+            <div class="roster-cell"><span class="roster-num">41</span><span class="roster-name">Rabah Ahmad Rabah Al
+                Akhras</span></div>
+            <div class="roster-cell"><span class="roster-num">42</span><span class="roster-name">Rayan Nicolas
+                Kassab</span></div>
+            <div class="roster-cell"><span class="roster-num">43</span><span class="roster-name">Raham Mohammad Ebrahim
+                Nezafat</span></div>
+            <div class="roster-cell"><span class="roster-num">44</span><span class="roster-name">Rashid Muammer
+                Abdulla</span></div>
+            <div class="roster-cell"><span class="roster-num">45</span><span class="roster-name">Rashid Muammer
+                Alshourafa</span></div>
+            <div class="roster-cell"><span class="roster-num">46</span><span class="roster-name">Rashid Yaghoub
+                Saraji</span></div>
+            <div class="roster-cell"><span class="roster-num">47</span><span class="roster-name">Saif Mohamad Abdallah
+                Mussa</span></div>
+            <div class="roster-cell"><span class="roster-num">48</span><span class="roster-name">Sultan Waadh Abdallah
+                Al Siyabi</span></div>
+            <div class="roster-cell"><span class="roster-num">49</span><span class="roster-name">Salah Nasif Salah
+                Adam</span></div>
+            <div class="roster-cell"><span class="roster-num">50</span><span class="roster-name">Samir Mohammad Samir
+                Abu Shawish</span></div>
+            <div class="roster-cell"><span class="roster-num">51</span><span class="roster-name">Ward Mohammad Jalal
+                Ahmed AlShehadat</span></div>
+            <div class="roster-cell"><span class="roster-num">52</span><span class="roster-name">Yamen Mohammad Khalaf
+                Alawneh</span></div>
+            <div class="roster-cell"><span class="roster-num">53</span><span class="roster-name">Yaseen Zaid Jalil
+                Al-Gburi</span></div>
+            <div class="roster-cell"><span class="roster-num">54</span><span class="roster-name">Yazan Abdulkader Al
+                Fakouch</span></div>
+            <div class="roster-cell"><span class="roster-num">55</span><span class="roster-name">Zaid Majdi Hussein
+                Darwish</span></div>
+            <div class="roster-cell"><span class="roster-num">56</span><span class="roster-name">Mohab Moustafa Mohamed
+                Moustafa Mohamed</span></div>
+          </div>
+          <div class="roster-footer">All members listed are official members of the Caspedia community as of June 2026.
+            This list is maintained by Ameer M. Alnaimi.</div>
+        </div>
+
+      </div>
+
+      <div class="categories">
+        <strong>Categories:</strong>
+        <a href="#">Caspedia</a> ·
+        <a href="#">Contributors</a> ·
+        <a href="#">Community</a> ·
+        <a href="#">Grade 10 / 11</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="mw-footer">
+    <ul>
+      <li><a href="#">Privacy policy</a></li>
+      <li><a href="about.html">About Caspedia</a></li>
+      <li><a href="#">Disclaimers</a></li>
+      <li><a href="contact_us.html">Contact Caspedia</a></li>
+      <li><a href="#">Code of conduct</a></li>
+      <li><a href="#">Developers</a></li>
+      <li><a href="#">Statistics</a></li>
+      <li><a href="#">Cookie statement</a></li>
+    </ul>
+    <p>Text is available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+        Commons Attribution-ShareAlike License 4.0</a>; anyone reusing this content must provide attribution and a link
+      back to Caspedia.uk</p>
+    <p style="margin-top:6px;">Caspedia™ is a student-run informational project. Content is for demonstration and
+      educational purposes.</p>
+  </footer>
+  <script>
+    function updateUAEClock() {
+      const clockElement = document.getElementById('uae-clock');
+      if (!clockElement) return;
+
+      const options = {
+        timeZone: 'Asia/Dubai',
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      };
+
+      const uaeTimeStr = new Date().toLocaleString('en-US', options);
+      clockElement.textContent = uaeTimeStr;
+    }
+
+    // Run immediately and update every second
+    updateUAEClock();
+    setInterval(updateUAEClock, 1000);
+  </script>
+
+</body>
+
+</html>
