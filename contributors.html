@@ -321,6 +321,39 @@
       margin: 28px 0 12px;
     }
 
+    /* ── NOTICE BOXES ── */
+    .notice-box {
+      padding: 11px 15px;
+      margin-bottom: 14px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      border: 1px solid;
+    }
+
+    .notice-box .icon {
+      font-size: 19px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .notice-box.yellow {
+      background: #fef9e7;
+      border-color: #d4ac0d;
+    }
+
+    .notice-box.red {
+      background: #fdf2f2;
+      border-color: #c0392b;
+    }
+
+    .notice-box.blue {
+      background: #eaf3fb;
+      border-color: #a2c8e0;
+    }
+
     /* ── TOC ── */
     .toc {
       background: #f8f9fa;
@@ -665,7 +698,12 @@
 
       <h1 class="page-title">Contributors</h1>
       <p class="page-subtitle">From Caspedia, the free encyclopedia — the people behind Caspedia and its community</p>
-
+      <div class="notice-box yellow">
+        <span class="icon">⚠️</span>
+        <div>If you wish to modify, add or be removed from the member list below, please<strong> <a
+              href="contact_us.html">contact us</a> </strong>us so we can discuss
+          further.</div>
+      </div>
       <!-- TOC -->
       <div class="toc">
         <div class="toc-title">Contents</div>
