@@ -591,31 +591,32 @@
           </div>
         </div>
       </div>
-
       <script>
         window.addEventListener('DOMContentLoaded', (event) => {
-          var checkGC = setInterval(function () {
-            if (window.goatcounter && typeof window.goatcounter.visit_count === 'function') {
-              clearInterval(checkGC);
+          let r = new XMLHttpRequest();
 
-              // 1. Clean up the initial text placeholder FIRST
-              var placeholder = document.getElementById('total-site-counter');
-              if (placeholder && placeholder.innerText.includes('Loading...')) {
-                placeholder.innerText = '';
-              }
-
-              // 2. THEN append the GoatCounter data
-              window.goatcounter.visit_count({
-                append: '#total-site-counter',
-                path: 'TOTAL',
-                no_branding: true,
-                type: 'html'
-              });
+          // When the data loads, parse the JSON and inject it into your span
+          r.addEventListener('load', function () {
+            try {
+              let data = JSON.parse(this.responseText);
+              // data.count comes back as a formatted string with commas
+              document.getElementById('total-site-counter').innerText = data.count;
+            } catch (e) {
+              document.getElementById('total-site-counter').innerText = 'Error';
             }
-          }, 100);
+          });
+
+          // Optional: handle cases where the network request fails
+          r.addEventListener('error', function () {
+            console.error('Error fetching GoatCounter stats');
+            document.getElementById('total-site-counter').innerText = 'Unavailable';
+          });
+
+          // Open the connection specifically to the TOTAL.json endpoint
+          r.open('GET', 'https://ameeralnaimi.goatcounter.com/counter/TOTAL.json');
+          r.send();
         });
       </script>
-
       <div class="categories">
         <strong>Categories:</strong>
         <a href="#">Caspedia</a> ·
