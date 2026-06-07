@@ -574,18 +574,51 @@
           genuine visitor activity only — bots and automated traffic are filtered out by GoatCounter.</p>
       </div>
 
-      <div class="stats-embed-wrap">
-        <div class="stats-embed-header">
-          <span><span class="live-dot"></span>Live data · GoatCounter Analytics · ameeralnaimi.goatcounter.com</span>
-          <a href="https://ameeralnaimi.goatcounter.com" target="_blank">Open in new tab ↗</a>
+      <div class="stats-embed-wrap"
+        style="border: 1px solid var(--border-light); border-left: 4px solid var(--link); padding: 12px 16px; margin: 16px 0; background: #f8f9fa;">
+        <div
+          style="font-family: var(--font-sans); font-size: 13px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <span class="live-dot"
+              style="background: #2ea043; width: 8px; height: 8px; display: inline-block; border-radius: 50%; margin-right: 6px;"></span>
+            <strong>Total project traffic:</strong> <span id="total-site-counter"
+              style="font-weight: bold; color: var(--text);">Loading...</span>
+          </div>
+          <div style="font-size: 12px;">
+            <a href="https://ameeralnaimi.goatcounter.com" target="_blank" style="color: var(--link);">View full
+              analytics dashboard ↗</a>
+          </div>
         </div>
+      </div>
 
-        <div class="categories">
-          <strong>Categories:</strong>
-          <a href="#">Caspedia</a> ·
-          <a href="#">Statistics</a> ·
-          <a href="#">Analytics</a>
-        </div>
+      <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+          // Setting an interval loop handles script load timing reliably without breaking layouts
+          var checkGC = setInterval(function () {
+            if (window.goatcounter && typeof window.goatcounter.visit_count === 'function') {
+              clearInterval(checkGC);
+              window.goatcounter.visit_count({
+                append: '#total-site-counter',
+                path: 'TOTAL',       // Overrides individual page paths to return total site traffic
+                no_branding: true,   // Disables default GoatCounter branding text string
+                type: 'html'
+              });
+              // Clean up the initial text placeholder once the data populates
+              var placeholder = document.getElementById('total-site-counter');
+              if (placeholder && placeholder.innerText.includes('Loading...')) {
+                placeholder.innerText = '';
+              }
+            }
+          }, 100);
+        });
+      </script>
+
+      <div class="categories">
+        <strong>Categories:</strong>
+        <a href="#">Caspedia</a> ·
+        <a href="#">Statistics</a> ·
+        <a href="#">Analytics</a>
+      </div>
 
     </main>
   </div>
