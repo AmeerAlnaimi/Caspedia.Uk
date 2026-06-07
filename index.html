@@ -689,9 +689,27 @@
 
       <h1 class="page-title">Welcome to Caspedia</h1>
       The free encyclopedia that anyone can view —
-      <span id="gc-visits">...</span> Views
+      <a href="https://ameeralnaimi.goatcounter.com" target="_blank" rel="noopener">
+        <span id="gc-visits">Loading...</span> Views
+      </a>
 
       <script data-goatcounter="https://ameeralnaimi.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+      <script>
+        window.goatcounter = {
+          onload: function () {
+            // This fetches the count for the current page
+            var r = new XMLHttpRequest();
+            r.addEventListener('load', function () {
+              var data = JSON.parse(this.responseText);
+              // Updates the span with the formatted number of views
+              document.getElementById('gc-visits').innerText = data.count;
+            });
+            r.open('GET', 'https://ameeralnaimi.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json');
+            r.send();
+          }
+        };
+      </script>
 
       <div class="notice-box">
         <span class="notice-icon">ℹ️</span>
