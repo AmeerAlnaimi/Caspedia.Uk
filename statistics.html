@@ -594,21 +594,23 @@
 
       <script>
         window.addEventListener('DOMContentLoaded', (event) => {
-          // Setting an interval loop handles script load timing reliably without breaking layouts
           var checkGC = setInterval(function () {
             if (window.goatcounter && typeof window.goatcounter.visit_count === 'function') {
               clearInterval(checkGC);
-              window.goatcounter.visit_count({
-                append: '#total-site-counter',
-                path: 'TOTAL',       // Overrides individual page paths to return total site traffic
-                no_branding: true,   // Disables default GoatCounter branding text string
-                type: 'html'
-              });
-              // Clean up the initial text placeholder once the data populates
+
+              // 1. Clean up the initial text placeholder FIRST
               var placeholder = document.getElementById('total-site-counter');
               if (placeholder && placeholder.innerText.includes('Loading...')) {
                 placeholder.innerText = '';
               }
+
+              // 2. THEN append the GoatCounter data
+              window.goatcounter.visit_count({
+                append: '#total-site-counter',
+                path: 'TOTAL',
+                no_branding: true,
+                type: 'html'
+              });
             }
           }, 100);
         });
