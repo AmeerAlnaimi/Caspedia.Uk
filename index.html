@@ -932,54 +932,55 @@
           </div>
 
         </div>
-      </div>
-      <!-- FOOTER -->
-      <footer id="mw-footer">
-        <ul>
-          <li><a href="privacy_policy.html">Privacy policy</a></li>
-          <li><a href="about.html">About Caspedia</a></li>
-          <li><a href="#">Disclaimers</a></li>
-          <li><a href="#">Contact Caspedia</a></li>
-          <li><a href="#">Code of conduct</a></li>
-          <li><a href="#">Developers</a></li>
-          <li><a href="statistics.html">Statistics</a></li>
-          <li><a href="#">Cookie statement</a></li>
-        </ul>
-        <p>Text is available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/"
-            target="_blank">Creative Commons Attribution-ShareAlike License 4.0</a>; anyone reusing this content must
-          provide attribution and a link back to Caspedia.uk </p>
-        <p style="margin-top:6px;"><a>Caspedia™</a> is a student-run informational project. Content is for
-          demonstration and
-          educational purposes.</p>
-      </footer>
+    </main>
+  </div>
+  <!-- FOOTER -->
+  <footer id="mw-footer">
+    <ul>
+      <li><a href="privacy_policy.html">Privacy policy</a></li>
+      <li><a href="about.html">About Caspedia</a></li>
+      <li><a href="#">Disclaimers</a></li>
+      <li><a href="#">Contact Caspedia</a></li>
+      <li><a href="#">Code of conduct</a></li>
+      <li><a href="#">Developers</a></li>
+      <li><a href="statistics.html">Statistics</a></li>
+      <li><a href="#">Cookie statement</a></li>
+    </ul>
+    <p>Text is available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+        Commons Attribution-ShareAlike License 4.0</a>; anyone reusing this content must
+      provide attribution and a link back to Caspedia.uk </p>
+    <p style="margin-top:6px;"><a>Caspedia™</a> is a student-run informational project. Content is for
+      demonstration and
+      educational purposes.</p>
+  </footer>
 
-      <script>
-        function updateUAEClock() {
-          const clockElement = document.getElementById('uae-clock');
-          if (!clockElement) return;
+  <script>
+    function updateUAEClock() {
+      const clockElement = document.getElementById('uae-clock');
+      if (!clockElement) return;
 
-          const options = {
-            timeZone: 'Asia/Dubai',
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: true
-          };
+      const options = {
+        timeZone: 'Asia/Dubai',
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      };
 
-          const uaeTimeStr = new Date().toLocaleString('en-US', options);
-          clockElement.textContent = uaeTimeStr;
-        }
+      const uaeTimeStr = new Date().toLocaleString('en-US', options);
+      clockElement.textContent = uaeTimeStr;
+    }
 
-        // Run immediately and update every second
-        updateUAEClock();
-        setInterval(updateUAEClock, 1000);
-      </script>
-      <!-- Cloudflare Web Analytics -->
-      <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-        data-cf-beacon='{"token": "e43a790a8bc4440f9394a65385c4ed2e"}'></script><!-- End Cloudflare Web Analytics -->
+    // Run immediately and update every second
+    updateUAEClock();
+    setInterval(updateUAEClock, 1000);
+  </script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "e43a790a8bc4440f9394a65385c4ed2e"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 
 </html>
