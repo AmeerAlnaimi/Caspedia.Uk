@@ -691,17 +691,7 @@
       The free encyclopedia that anyone can view —
       <span id="gc-visits">...</span> Views
 
-      <script>
-        fetch('https://ameeralnaimi.goatcounter.com/counter/TOTAL.json')
-          .then(r => r.json())
-          .then(d => {
-            document.getElementById('gc-visits').textContent =
-              Number(d.count).toLocaleString();
-          })
-          .catch(() => {
-            document.getElementById('gc-visits').textContent = 'N/A';
-          });
-      </script>
+      <script data-goatcounter="https://ameeralnaimi.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
       <div class="notice-box">
         <span class="notice-icon">ℹ️</span>
