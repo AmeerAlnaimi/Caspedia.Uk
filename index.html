@@ -688,27 +688,28 @@
     <main id="mw-content">
 
       <h1 class="page-title">Welcome to Caspedia</h1>
+      <!-- The visible link and container -->
       The free encyclopedia that anyone can view —
       <a href="https://ameeralnaimi.goatcounter.com" target="_blank" rel="noopener">
-        <span id="gc-visits">Loading...</span> Views
+        <span id="gc-visits"></span> Views
       </a>
 
+      <!-- 1. GoatCounter Core Script -->
       <script data-goatcounter="https://ameeralnaimi.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
+      <!-- 2. Display Trigger Script -->
       <script>
-        window.goatcounter = {
-          onload: function () {
-            // This fetches the count for the current page
-            var r = new XMLHttpRequest();
-            r.addEventListener('load', function () {
-              var data = JSON.parse(this.responseText);
-              // Updates the span with the formatted number of views
-              document.getElementById('gc-visits').innerText = data.count;
+        // A small loop ensures the script waits until GoatCounter is fully loaded
+        var t = setInterval(function () {
+          if (window.goatcounter && window.goatcounter.visit_count) {
+            clearInterval(t);
+            // Inserts the count directly into your span id
+            window.goatcounter.visit_count({
+              append: '#gc-visits',
+              no_branding: true
             });
-            r.open('GET', 'https://ameeralnaimi.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json');
-            r.send();
           }
-        };
+        }, 100);
       </script>
 
       <div class="notice-box">
