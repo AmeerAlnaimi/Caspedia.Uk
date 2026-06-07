@@ -4,17 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Events – Caspedia</title>
-  <link rel="icon" type="image/jpeg" href="Cas_Junior_Logo.svg" />
+  <title>Statistics – Caspedia</title>
+  <link rel="icon" type="image/jpeg" href="Cas_Junior_Logo.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Linux+Libertine+Display:ital@0;1&family=Linux+Biolinum:wght@400;600&family=Georgia&display=swap"
     rel="stylesheet" />
   <style>
-    html {
-      overflow-y: scroll;
-    }
-
     *,
     *::before,
     *::after {
@@ -26,14 +22,12 @@
     :root {
       --white: #ffffff;
       --bg: #f8f9fa;
-      --bg-infobox: #f8f9fa;
       --border: #a2a9b1;
       --border-light: #eaecf0;
       --link: #3366cc;
       --link-visited: #795cb2;
       --text: #202122;
       --text-muted: #54595d;
-      --header-bg: #ffffff;
       --font-serif: 'Linux Libertine Display', 'Georgia', serif;
       --font-sans: 'Linux Biolinum', 'Arial', sans-serif;
       --font-body: 'Georgia', serif;
@@ -60,9 +54,8 @@
       color: var(--link-visited);
     }
 
-    /* ── TOP HEADER ── */
     #mw-head {
-      background: var(--header-bg);
+      background: var(--white);
       border-bottom: 1px solid var(--border-light);
       position: sticky;
       top: 0;
@@ -172,7 +165,6 @@
       text-decoration: none;
     }
 
-    /* ── PAGE TABS ── */
     #mw-tabs {
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -185,6 +177,7 @@
       padding: 0 16px 0 200px;
       font-family: var(--font-sans);
       font-size: 12.5px;
+      flex-wrap: wrap;
     }
 
     .mw-tab {
@@ -210,7 +203,6 @@
       border-color: #c8ccd1;
     }
 
-    /* ── MAIN LAYOUT ── */
     #content-wrap {
       max-width: 1200px;
       margin: 0 auto;
@@ -219,7 +211,6 @@
       gap: 16px;
     }
 
-    /* ── SIDEBAR ── */
     #mw-sidebar {
       width: 180px;
       flex-shrink: 0;
@@ -285,7 +276,6 @@
       color: var(--link);
     }
 
-    /* ── ARTICLE CONTENT ── */
     #mw-content {
       flex: 1;
       min-width: 0;
@@ -298,7 +288,6 @@
       font-family: var(--font-serif);
       font-size: 28px;
       font-weight: normal;
-      color: var(--text);
       border-bottom: 1px solid var(--border-light);
       padding-bottom: 4px;
       margin-bottom: 4px;
@@ -312,236 +301,112 @@
       margin-bottom: 20px;
     }
 
-    /* ── SECTION HEADINGS ── */
-    .section-heading {
+    .article-body p {
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    .article-body h2 {
       font-family: var(--font-serif);
       font-size: 22px;
       font-weight: normal;
       border-bottom: 1px solid var(--border-light);
       padding-bottom: 3px;
-      margin: 28px 0 14px;
+      margin: 26px 0 12px;
     }
 
-    .section-heading.current {
-      color: #1a4a1a;
-      border-color: #5a9a5a;
-    }
-
-    .section-heading.past {
-      color: var(--text-muted);
-    }
-
-    /* ── EVENT DATE LABEL ── */
-    .event-date-label {
+    .notice-box {
+      padding: 11px 15px;
+      margin-bottom: 14px;
       font-family: var(--font-sans);
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-      font-style: italic;
-    }
-
-    /* ── MATCH BOX ── */
-    .match-box {
-      border: 1px solid var(--border);
-      background: var(--white);
-      margin-bottom: 20px;
-      font-family: var(--font-sans);
-    }
-
-    .match-box-header {
-      background: #1a3a6b;
-      color: #ffffff;
-      padding: 8px 14px;
+      font-size: 13px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-    }
-
-    .match-box-header .match-type {
-      font-size: 11px;
-      opacity: 0.8;
-      font-weight: normal;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-    }
-
-    .match-box-header .match-status-live {
-      background: #cc0000;
-      color: #fff;
-      padding: 2px 7px;
-      border-radius: 2px;
-      font-size: 10px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .match-box-header .match-status-final {
-      background: #555;
-      color: #fff;
-      padding: 2px 7px;
-      border-radius: 2px;
-      font-size: 10px;
-      letter-spacing: 0.5px;
-    }
-
-    .match-scoreline {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      padding: 20px 16px 14px;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .match-team {
-      flex: 1;
-      text-align: center;
-    }
-
-    .match-team-name {
-      font-size: 15px;
-      font-weight: bold;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    .match-team-role {
-      font-size: 11px;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    .match-score-box {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      flex-shrink: 0;
-      margin: 0 16px;
-    }
-
-    .match-score-num {
-      font-size: 42px;
-      font-weight: bold;
-      font-family: var(--font-serif);
-      color: var(--text);
-      width: 56px;
-      text-align: center;
-      line-height: 1;
-    }
-
-    .match-score-sep {
-      font-size: 28px;
-      color: var(--text-muted);
-      font-weight: normal;
-      margin: 0 4px;
-      line-height: 1;
-    }
-
-    /* ── MATCH META ── */
-    .match-meta {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      padding: 10px 16px;
-      background: #f8f9fa;
-      border-bottom: 1px solid var(--border-light);
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .match-meta span strong {
-      color: var(--text);
-    }
-
-    /* ── MATCH EVENTS TABLE ── */
-    .match-events {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .match-events-col {
-      padding: 12px 16px;
-    }
-
-    .match-events-col:first-child {
-      border-right: 1px solid var(--border-light);
-    }
-
-    .match-events-col h4 {
-      font-size: 12px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .event-row {
-      display: flex;
+      gap: 11px;
       align-items: flex-start;
-      gap: 8px;
-      padding: 5px 0;
-      font-size: 12.5px;
-      border-bottom: 1px solid #f2f2f2;
+      border: 1px solid;
     }
 
-    .event-row:last-child {
-      border-bottom: none;
-    }
-
-    .event-icon {
-      font-size: 14px;
+    .notice-box .icon {
+      font-size: 18px;
       flex-shrink: 0;
       margin-top: 1px;
     }
 
-    .event-time {
-      font-weight: bold;
-      color: var(--text-muted);
-      flex-shrink: 0;
-      font-size: 11px;
-      min-width: 40px;
+    .notice-box.yellow {
+      background: #fef9e7;
+      border-color: #d4ac0d;
     }
 
-    .event-desc {
+    .notice-box.blue {
+      background: #eaf3fb;
+      border-color: #a2c8e0;
+    }
+
+    kbd {
+      display: inline-block;
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      border-bottom: 2px solid #a2a9b1;
+      border-radius: 3px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
       color: var(--text);
-      line-height: 1.4;
     }
 
-    .event-desc strong {
-      color: var(--text);
+    .stats-embed-wrap {
+      border: 1px solid var(--border);
+      background: var(--white);
+      margin: 16px 0;
+      overflow: hidden;
     }
 
-    .no-events {
-      color: var(--text-muted);
-      font-style: italic;
-      font-size: 12.5px;
-      padding: 6px 0;
-    }
-
-    /* ── MATCH OFFICIALS ── */
-    .match-officials {
-      padding: 10px 16px;
-      background: #fafafa;
-      border-top: 1px solid var(--border-light);
+    .stats-embed-header {
+      background: #f8f9fa;
+      border-bottom: 1px solid var(--border);
+      padding: 9px 14px;
+      font-family: var(--font-sans);
       font-size: 12px;
       color: var(--text-muted);
       display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .match-officials span strong {
-      color: var(--text);
+    .live-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: #2ea043;
+      border-radius: 50%;
+      margin-right: 6px;
+      animation: pulse 2s infinite;
     }
 
-    /* ── CATEGORIES ── */
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    .stats-embed-header a {
+      color: var(--link);
+      font-size: 12px;
+    }
+
+    .stats-iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+      display: block;
+    }
+
     .categories {
       border-top: 1px solid var(--border);
       margin-top: 28px;
@@ -559,7 +424,6 @@
       margin: 0 4px;
     }
 
-    /* ── FOOTER ── */
     #mw-footer {
       background: var(--white);
       border-top: 1px solid var(--border);
@@ -591,43 +455,11 @@
     #mw-footer ul li a {
       color: var(--link);
     }
-
-    /* ── TOC ── */
-    .toc {
-      background: #f8f9fa;
-      border: 1px solid var(--border);
-      display: inline-block;
-      padding: 12px 18px;
-      margin: 0 0 22px 0;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      min-width: 200px;
-    }
-
-    .toc-title {
-      font-weight: bold;
-      font-size: 13px;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .toc ol {
-      padding-left: 20px;
-    }
-
-    .toc li {
-      padding: 2px 0;
-    }
-
-    .toc li a {
-      color: var(--link);
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- TOP HEADER -->
   <div id="mw-head">
     <div class="mw-head-inner">
       <a class="mw-logo" href="index.html">
@@ -654,21 +486,17 @@
     </div>
   </div>
 
-  <!-- PAGE TABS -->
   <div id="mw-tabs">
     <div class="mw-tabs-inner">
-      <div class="mw-tab"><a href="index.html" style="color:inherit; text-decoration:none;">Article</a></div>
-      <div class="mw-tab active"><a href="events.html" style="color:inherit; text-decoration:none;">
-          Events</a></div>
-      <div class="mw-tab"><a href="football.html" style="color:inherit; text-decoration:none;">Football</a></div>
-      <div class="mw-tab"><a href="about.html" style="color:inherit; text-decoration:none;">About Caspedia</a></div>
-      <div class="mw-tab"><a href="contact_us.html" style="color:inherit; text-decoration:none;">Contact Us</a></div>
-      <div class="mw-tab"><a href="contributors.html" style="color:inherit; text-decoration:none;">Contributors</a>
-      </div>
+      <div class="mw-tab"><a href="index.html" style="color:inherit;text-decoration:none;">Article</a></div>
+      <div class="mw-tab"><a href="events.html" style="color:inherit;text-decoration:none;">Events</a></div>
+      <div class="mw-tab"><a href="football.html" style="color:inherit;text-decoration:none;">Football</a></div>
+      <div class="mw-tab"><a href="about.html" style="color:inherit;text-decoration:none;">About Caspedia</a></div>
+      <div class="mw-tab"><a href="contact_us.html" style="color:inherit;text-decoration:none;">Contact Us</a></div>
+      <div class="mw-tab"><a href="contributors.html" style="color:inherit;text-decoration:none;">Contributors</a></div>
     </div>
   </div>
 
-  <!-- MAIN LAYOUT -->
   <div id="content-wrap">
 
     <!-- SIDEBAR -->
@@ -705,72 +533,80 @@
         <h3>Languages</h3>
         <ul>
           <li><a href="#">English</a></li>
-          <li><span style="color: var(--text-muted); font-family: var(--font-sans); font-size: 12.5px;">Arabic
-              <em>(coming soon)</em></span></li>
+          <li><span style="color:var(--text-muted);font-family:var(--font-sans);font-size:12.5px;">Arabic <em>(coming
+                soon)</em></span></li>
         </ul>
       </div>
     </aside>
 
-    <!-- ARTICLE CONTENT -->
+
     <main id="mw-content">
 
-      <h1 class="page-title">Events</h1>
-      <p class="page-subtitle">From Caspedia, the free encyclopedia — a record of notable current and break football</p>
+      <h1 class="page-title">Caspedia:Statistics</h1>
+      <p class="page-subtitle">From Caspedia, the free encyclopedia — live visitor and page view data powered by
+        GoatCounter</p>
 
-      <!-- TOC -->
-      <div class="toc">
-        <div class="toc-title">Contents</div>
-        <ol>
-          <li>
-            <a href="#current">Events</a>
-            <ol style="padding-left:16px; list-style:decimal;">
-            </ol>
-          </li>
+      <div class="notice-box yellow">
+        <span class="icon">⚠️</span>
+        <div>
+          <strong>If statistics show 0 or N/A:</strong> please refresh the page using <kbd>Ctrl</kbd> + <kbd>Shift</kbd>
+          + <kbd>R</kbd> or <kbd>Ctrl</kbd> + <kbd>F5</kbd> to force a full reload. If the dashboard still fails to load
+          after refreshing, it is likely temporarily down or under maintenance — please check back later.
+        </div>
       </div>
 
-      <!-- ═══════════════════════════════════════ -->
-      <!-- Events -->
-      <!-- ═══════════════════════════════════════ -->
-      <h2 class="section-heading current" id="current">🟢 Events</h2>
-      <!-- ═══════════════════════════════════════ -->
-      <!-- CATEGORIES -->
-      <div class="categories">
-        <div class="page-info"
-          style="font-family: var(--font-sans); font-size: 11.9px; color: #494949; border-top: 1px solid var(); padding-top: 1px; margin-top: 1px; margin-bottom: 4px;">
-          This page was last edited on 06 June 2026, at 10:57 (GMT+4).
+      <div class="notice-box blue">
+        <span class="icon">ℹ️</span>
+        <div>Statistics are provided by <a href="https://www.goatcounter.com" target="_blank">GoatCounter</a>, a
+          privacy-friendly open-source analytics platform. Data reflects real visitor activity on Caspedia.uk. You can
+          also view the dashboard directly at <a href="https://ameeralnaimi.goatcounter.com"
+            target="_blank">ameeralnaimi.goatcounter.com ↗</a>.</div>
+      </div>
+
+      <div class="article-body">
+        <h2>Live Dashboard</h2>
+        <p>The dashboard below displays real-time and historical statistics for Caspedia.uk, including total page views,
+          unique visitors, most visited pages, and traffic by country. The data updates automatically and reflects
+          genuine visitor activity only — bots and automated traffic are filtered out by GoatCounter.</p>
+      </div>
+
+      <div class="stats-embed-wrap">
+        <div class="stats-embed-header">
+          <span><span class="live-dot"></span>Live data · GoatCounter Analytics · ameeralnaimi.goatcounter.com</span>
+          <a href="https://ameeralnaimi.goatcounter.com" target="_blank">Open in new tab ↗</a>
         </div>
+        <iframe class="stats-iframe" src="https://ameeralnaimi.goatcounter.com"
+          title="Caspedia Statistics – GoatCounter" loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+      </div>
+
+      <div class="categories">
         <strong>Categories:</strong>
-        <a href="#">Events</a> ·
-        <a href="#">Football</a> ·
-        <a href="#">School League</a> ·
-        <a href="#">June 2026</a>
+        <a href="#">Caspedia</a> ·
+        <a href="#">Statistics</a> ·
+        <a href="#">Analytics</a>
       </div>
 
     </main>
   </div>
-  <!--FOOTER -->
+
   <footer id="mw-footer">
     <ul>
       <li><a href="privacy_policy.html">Privacy policy</a></li>
       <li><a href="about.html">About Caspedia</a></li>
       <li><a href="#">Disclaimers</a></li>
-      <li><a href="#">Contact Caspedia</a></li>
+      <li><a href="contact_us.html">Contact Caspedia</a></li>
       <li><a href="#">Code of conduct</a></li>
       <li><a href="#">Developers</a></li>
       <li><a href="statistics.html">Statistics</a></li>
       <li><a href="#">Cookie statement</a></li>
     </ul>
     <p>Text is available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-        Commons Attribution-ShareAlike License 4.0</a>; anyone reusing this content must
-      provide attribution and a link back to Caspedia.uk </p>
-    <p style="margin-top:6px;"><a>Caspedia™</a> is a student-run informational project. Content is for
-      demonstration and
+        Commons Attribution-ShareAlike License 4.0</a>; anyone reusing this content must provide attribution and a link
+      back to Caspedia.uk</p>
+    <p style="margin-top:6px;">Caspedia™ is a student-run informational project. Content is for demonstration and
       educational purposes.</p>
   </footer>
-  <footer id="mw-footer">
-    ...
-  </footer>
-
   <script>
     function updateUAEClock() {
       const clockElement = document.getElementById('uae-clock');
@@ -795,13 +631,12 @@
     updateUAEClock();
     setInterval(updateUAEClock, 1000);
   </script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "e43a790a8bc4440f9394a65385c4ed2e"}'></script><!-- End Cloudflare Web Analytics -->
 
-</body>
+  <script data-goatcounter="https://ameeralnaimi.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-</html>
-<!-- Cloudflare Web Analytics -->
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-  data-cf-beacon='{"token": "e43a790a8bc4440f9394a65385c4ed2e"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 
 </html>
