@@ -688,21 +688,7 @@
     <main id="mw-content">
 
       <h1 class="page-title">Welcome to Caspedia</h1>
-      <p class="page-subtitle">The free encyclopedia that anyone can view —
-        <span id="gc-visits">...</span> Views
-      </p>
-
-      <script>
-        fetch('https://ameeralnaimi.goatcounter.com/counter/TOTAL.json')
-          .then(r => r.json())
-          .then(d => {
-            document.getElementById('gc-visits').textContent =
-              Number(d.count).toLocaleString();
-          })
-          .catch(() => {
-            document.getElementById('gc-visits').textContent = 'N/A';
-          });
-      </script>
+      <p class="page-subtitle">The free encyclopedia that anyone can view — <a href="statistics.html">Views</a>
 
       <div class="notice-box">
         <span class="notice-icon">ℹ️</span>
