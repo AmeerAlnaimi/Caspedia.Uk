@@ -688,30 +688,21 @@
     <main id="mw-content">
 
       <h1 class="page-title">Welcome to Caspedia</h1>
-      <!-- The visible link and container -->
       The free encyclopedia that anyone can view —
-      <a href="https://ameeralnaimi.goatcounter.com" target="_blank" rel="noopener">
-        <span id="gc-visits"></span> Views
-      </a>
+      <span id="gc-visits">...</span> Views
 
-      <!-- 1. GoatCounter Core Script -->
-      <script data-goatcounter="https://ameeralnaimi.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
-      <!-- 2. Display Trigger Script -->
       <script>
-        // A small loop ensures the script waits until GoatCounter is fully loaded
-        var t = setInterval(function () {
-          if (window.goatcounter && window.goatcounter.visit_count) {
-            clearInterval(t);
-            // Inserts the count directly into your span id
-            window.goatcounter.visit_count({
-              append: '#gc-visits',
-              no_branding: true
-            });
-          }
-        }, 100);
+        fetch('https://ameeralnaimi.goatcounter.com/counter/TOTAL.json')
+          .then(r => r.json())
+          .then(d => {
+            document.getElementById('gc-visits').textContent =
+              Number(d.count).toLocaleString();
+          })
+          .catch(() => {
+            document.getElementById('gc-visits').textContent = 'N/A';
+          });
       </script>
-      <script data-goatcounter="https://ameeralnaimi.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
       <div class="notice-box">
         <span class="notice-icon">ℹ️</span>
         <div>Caspedia is an <strong>Independent, student-built informational project</strong>. It is not
