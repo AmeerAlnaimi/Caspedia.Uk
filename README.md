@@ -1,4 +1,4 @@
-# Caspedia.Uk – The Free Encyclopedia 🎓✨
+# Caspedia.Uk – The Free Encyclopedia
 
 [![License: MIT](https://img.shields.io/badge/Code_License-MIT-blue.svg)](LICENSE)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/Content_License-CC_BY--SA_4.0-lightgrey.svg)](LICENSE-CC-BY-SA.txt)
