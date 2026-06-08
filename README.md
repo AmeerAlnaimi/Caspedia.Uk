@@ -9,7 +9,7 @@ Inspired by classic wiki layouts, Caspedia provides a clean, familiar informatio
 
 ---
 
-## 🚀 Key Features
+# 🚀 Key Features
 
 * **Classic Wiki UI:** Formatted with a clean, distraction-free aesthetic using traditional academic typographic scales (featuring *Linux Libertine Display*, *Linux Biolinum*, and *Georgia*).
 * **Live UAE Time Tracker:** A native JavaScript engine that hooks into the `Asia/Dubai` timezone to display a real-time, ticking clock for local campus schedules.
@@ -18,7 +18,7 @@ Inspired by classic wiki layouts, Caspedia provides a clean, familiar informatio
 
 ---
 
-## 📁 Repository Structure
+# 📁 Repository Structure
 
 ```text
 ├── index.html            # Main landing page & wiki homepage
