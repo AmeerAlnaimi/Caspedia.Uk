@@ -43,7 +43,7 @@ Student-run digital encyclopedia dedicated to documenting and preserving communi
 
 There are three ways to contribute to the development of Caspedia.Uk, and each way has its own specific methods.
 
-### 1. Software Contribution
+### 1) Software Contribution
  
 If you want to contribute directly to the codebase — fixing layout issues, improving styling, adding features, or updating pages — follow the standard **Fork → Clone → Branch → Commit → Pull Request** workflow.
 
@@ -93,7 +93,7 @@ Go to your fork on GitHub and click **"Compare & pull request"**. Write a clear 
  
 > Your pull request will be reviewed by **Ameer M. Alnaimi**. Please be patient — Caspedia currently has one maintainer.
 
- ### 2. Article Suggestion / Contribution
+ ### 2) Article Suggestion / Contribution
  
 If you would like to suggest or contribute a new article or page to Caspedia.Uk, **do not open a blank Pull Request**. Instead, submit your suggestion through the GitHub Issues page using the correct template.
 1. Go to: **[https://github.com/AmeerAlnaimi/Caspedia.Uk/issues](https://github.com/AmeerAlnaimi/Caspedia.Uk/issues)**
@@ -101,6 +101,24 @@ If you would like to suggest or contribute a new article or page to Caspedia.Uk,
 3. Select the **"Article Suggestion"** template — do **not** click "Blank Issue", as it will be swiftly ignored
 4. Fill in the template with as much detail as possible about the article you are proposing
 
-### 3. Bug Report
+### 3) Bug Report
  
-If you have found a bug, broken link, display issue, or any other problem on Caspedia.Uk, please report it using the form below.
+If you have found a bug, broken link, display issue, or any other problem on Caspedia.Uk, and don't have the technical skill for it, please report it using the form below.
+Submit your bug report here:
+**[https://form.jotform.com/261546469303056](https://form.jotform.com/261546469303056)**
+ 
+Please include:
+- Which page the bug appears on
+- What the bug is and what you expected to happen
+- Your browser and operating system if relevant
+
+---
+
+# Credits
+![Static Badge](https://img.shields.io/badge/Inquid%20Haque%20Arshil..%20-Significant%20Contributor-yellow?style=flat-square) | Big thanks to Arshil for cooperating with Caspedia.Uk with his <a href="https://www.instagram.com/cas.jrs27/"> Instagram Page</a>.
+
+![Static Badge](https://img.shields.io/badge/Adam%20A.%20-Contributor-darkblue?style=flat-square) | Big thanks to Adam A. for creating the symbolic logo for Caspedia.Uk and Cas.jrs '2027.
+
+![Static Badge](https://img.shields.io/badge/Abdulrahman%20Al%20A..%20-Contributor-red?style=flat-square) | The mastermind of the Minecraft channel. He contributed to Caspedia.Uk by integrating Minecraft to the website.
+
+![Static Badge](https://img.shields.io/badge/Yamen%20Muhammad%20A.%20-Contributor-red?style=flat-square) | Thanks to Yamen Muhammad A. for suggesting the football idea to the developer.
