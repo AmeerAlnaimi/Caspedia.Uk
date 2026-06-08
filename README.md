@@ -100,6 +100,7 @@ If you would like to suggest or contribute a new article or page to Caspedia.Uk,
 2. Click **"New Issue"**
 3. Select the **"Article Suggestion"** template — do **not** click "Blank Issue", as it will be swiftly ignored
 4. Fill in the template with as much detail as possible about the article you are proposing
+5. Make sure it complies with the <a href="caspedia.uk/code_of_conduct.html" a>Code of Conduct</a>.
 
 ### 3) Bug Report
  
