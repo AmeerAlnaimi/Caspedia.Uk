@@ -11,23 +11,26 @@
   
 </div>
 
-# 
-Welcome to **Caspedia**, an open-source, student-run digital encyclopedia dedicated to documenting community events, spotlighting school clubs, and preserving shared student history. 
+<p align="center">
+Student-run digital encyclopedia dedicated to documenting and preserving community events: <a href="https://caspedia.uk"><strong>Caspedia.Uk</strong></a></p>
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#download">Download</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#related">Related</a> •
+  <a href="#license">License</a>
+</p>
 
-Inspired by classic wiki layouts, Caspedia provides a clean, familiar informational hub built entirely on lightweight, vanilla web technologies.
-
----
-
-# 🚀 Key Features
+# Key Features
 
 * **Classic Wiki UI:** Formatted with a clean, distraction-free aesthetic using traditional academic typographic scales (featuring *Linux Libertine Display*, *Linux Biolinum*, and *Georgia*).
 * **Live UAE Time Tracker:** A native JavaScript engine that hooks into the `Asia/Dubai` timezone to display a real-time, ticking clock for local campus schedules.
 * **Privacy-First Analytics:** Features seamlessly integrated, lightweight telemetry via **GoatCounter** and **Cloudflare Web Analytics** to track page views ethically without tracking student data.
 * **Fully Responsive Architecture:** Designed from the ground up with native CSS variables to ensure perfect readability on both desktop monitors and mobile screens.
 
----
 
-# 📁 Repository Structure
+# Repository Structure
 
 ```text
 ├── index.html            # Main landing page & wiki homepage
