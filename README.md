@@ -18,7 +18,7 @@ Student-run digital encyclopedia dedicated to documenting and preserving communi
   <a href="#repository-structure">Repository Structure</a> •
   <a href="#contribute">Contribute</a> •
   <a href="#credits">Credits</a> •
-  <a href="#related">Powered By</a> •
+  <a href="#powered by">Powered By</a> •
   <a href="#license">License</a>
 </p>
 
