@@ -38,3 +38,69 @@ Student-run digital encyclopedia dedicated to documenting and preserving communi
 ├── Cas_Junior_Logo.svg   # Official platform branding assets
 ├── LICENSE               # Software license (MIT)
 └── LICENSE-CONTENT.txt   # Content distribution license (CC BY-SA 4.0)
+```
+# Contribute
+
+There are three ways to contribute to the development of Caspedia.Uk, and each way has its own specific methods.
+
+### 1. Software Contribution
+ 
+If you want to contribute directly to the codebase — fixing layout issues, improving styling, adding features, or updating pages — follow the standard **Fork → Clone → Branch → Commit → Pull Request** workflow.
+
+**Step 1 — Fork the repository**
+ 
+Click the **Fork** button on the top right of the repository page to create your own copy.
+ 
+**Step 2 — Clone your fork locally**
+ 
+```bash
+git clone https://github.com/ameeralnaimi/Caspedia.Uk.git
+cd Caspedia.Uk
+```
+ 
+**Step 3 — Create a new branch**
+ 
+Always work on a new branch, never directly on `main`.
+ 
+```bash
+git checkout -b your-branch-name
+# Example:
+git checkout -b fix/footer-links
+```
+ 
+**Step 4 — Make your changes**
+ 
+Edit the relevant HTML/CSS files in your code editor (e.g. VS Code).
+ 
+**Step 5 — Stage and commit your changes**
+ 
+```bash
+git add .
+git commit -m "Brief description of what you changed"
+# Example:
+git commit -m "Fix broken contact link in footer"
+```
+ 
+**Step 6 — Push your branch to GitHub**
+ 
+```bash
+git push origin your-branch-name
+```
+ 
+**Step 7 — Open a Pull Request**
+ 
+Go to your fork on GitHub and click **"Compare & pull request"**. Write a clear description of what you changed and why, then submit.
+ 
+> Your pull request will be reviewed by **Ameer M. Alnaimi**. Please be patient — Caspedia currently has one maintainer.
+
+ ### 2. Article Suggestion / Contribution
+ 
+If you would like to suggest or contribute a new article or page to Caspedia.Uk, **do not open a blank Pull Request**. Instead, submit your suggestion through the GitHub Issues page using the correct template.
+1. Go to: **[https://github.com/AmeerAlnaimi/Caspedia.Uk/issues](https://github.com/AmeerAlnaimi/Caspedia.Uk/issues)**
+2. Click **"New Issue"**
+3. Select the **"Article Suggestion"** template — do **not** click "Blank Issue", as it will be swiftly ignored
+4. Fill in the template with as much detail as possible about the article you are proposing
+
+### 3. Bug Report
+ 
+If you have found a bug, broken link, display issue, or any other problem on Caspedia.Uk, please report it using the form below.
