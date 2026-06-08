@@ -1,7 +1,7 @@
 # Caspedia.Uk – The Free Encyclopedia 🎓✨
 
 [![License: MIT](https://img.shields.io/badge/Code_License-MIT-blue.svg)](LICENSE)
-[![License: CC BY-SA 4.0](https://img.shields.io/badge/Content_License-CC_BY--SA_4.0-lightgrey.svg)](LICENSE-CONTENT.txt)
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/Content_License-CC_BY--SA_4.0-lightgrey.svg)](LICENSE-CC-BY-SA.txt)
 
 Welcome to **Caspedia**, an open-source, student-run digital encyclopedia dedicated to documenting community events, spotlighting school clubs, and preserving shared student history. 
 
