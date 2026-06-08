@@ -12,7 +12,7 @@
 </div>
 
 <p align="center">
-Student-run digital encyclopedia dedicated to documenting and preserving community events: <a href="https://caspedia.uk"><strong>Caspedia.Uk</strong></a></p>
+Student-run digital encyclopedia dedicated to documenting and preserving community events: <a href="http://caspedia.uk" target="_blank">Caspedia.Uk</a></strong></a>
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
