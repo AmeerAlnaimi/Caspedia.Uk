@@ -130,3 +130,6 @@ Thank you all for contributing to the development of Caspedia.uk. You're dedicat
 # Powered By
 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTJnbGd6MnF1bTBjM2UxdXZjY29kajNwdGd2ejdwaHVobHk2MWh0bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3vRfNA1p0rvhMSvS/giphy.gif" alt="Dancing" width="250"> <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXJqNHg0cTViazc2eWhiNDVveWliM25mZHViNjhrN2lvOHdjb2M1eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SvFocn0wNMx0iv2rYz/giphy.gif" alt="Dancing" width="100">
 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXZlbXNhenNuMGJtMzNva3Ntbm93N2Zzb2t2NGxlcWVnbHhxd3h6YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kH6CqYiquZawmU1HI6/giphy.gif" alt="Dancing" width="220">
+
+# License
+<a href="caspedia.uk/license"> MIT</a> and <a href="LICENSE-CC-BY-SA.txt">CC-BY-SA </a>
