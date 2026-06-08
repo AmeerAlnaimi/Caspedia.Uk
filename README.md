@@ -2,14 +2,14 @@
   <img src="readme_images/repository-open-graph-template.png" width="50%" alt="Repository Open Graph Template">
 </div>
 
-<div align="center">
+<div align="center"><h1>
   <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date-pre/ameeralnaimi/caspedia.uk?style=plastic">
   <img alt="Static Badge" src="https://img.shields.io/badge/HTML-Powered-yellow?style=plastic">
   <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/ameeralnaimi/caspedia.uk?style=plastic">
   <img alt="GitHub License" src="https://img.shields.io/github/license/ameeralnaimi/caspedia.uk?style=plastic">
   <a href="LICENSE-CC-BY-SA.txt"><img src="https://img.shields.io/badge/Content_License-CC_BY--SA_4.0-lightgrey.svg?style=plastic" alt="License: CC BY-SA 4.0"></a>
   
-</div>
+</div></h1>
 
 <p align="center">
 Student-run digital encyclopedia dedicated to documenting and preserving community events: <a href="http://caspedia.uk" target="_blank">Caspedia.Uk</a></strong></a>
