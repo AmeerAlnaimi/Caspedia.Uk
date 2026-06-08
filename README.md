@@ -117,8 +117,16 @@ Please include:
 # Credits
 ![Static Badge](https://img.shields.io/badge/Inquid%20Haque%20Arshil..%20-Significant%20Contributor-yellow?style=flat-square) | Big thanks to Arshil for cooperating with Caspedia.Uk with his <a href="https://www.instagram.com/cas.jrs27/"> Instagram Page</a>.
 
-![Static Badge](https://img.shields.io/badge/Adam%20A.%20-Contributor-darkblue?style=flat-square) | Big thanks to Adam A. for creating the symbolic logo for Caspedia.Uk and Cas.jrs '2027.
+![Static Badge](https://img.shields.io/badge/Adam%20A.%20-Graphic%20Design%20Contributor-darkblue?style=flat-square) | Big thanks to Adam A. for creating the symbolic logo for Caspedia.Uk and Cas.jrs '2027.
 
 ![Static Badge](https://img.shields.io/badge/Abdulrahman%20Al%20A..%20-Contributor-red?style=flat-square) | The mastermind of the Minecraft channel. He contributed to Caspedia.Uk by integrating Minecraft to the website.
 
-![Static Badge](https://img.shields.io/badge/Yamen%20Muhammad%20A.%20-Contributor-red?style=flat-square) | Thanks to Yamen Muhammad A. for suggesting the football idea to the developer.
+![Static Badge](https://img.shields.io/badge/Yamen%20Muhammad%20A.%20-Contributor-red?style=flat-square) | Thanks for suggesting the football idea to the developer.
+
+
+![Static Badge](https://img.shields.io/badge/Malek%20Amro%20E.%20-Contributor-red?style=flat-square) | Thanks for his committement to the community-made football team, <a href="caspedia.uk/football.html"> Haramball FC. </a>
+
+Thank you all for contributing to the development of Caspedia.uk. You're dedication, committement, and perseverance is the key reason why this organization was established.
+# Powered By
+<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTJnbGd6MnF1bTBjM2UxdXZjY29kajNwdGd2ejdwaHVobHk2MWh0bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3vRfNA1p0rvhMSvS/giphy.gif" alt="Dancing" width="250"> <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXJqNHg0cTViazc2eWhiNDVveWliM25mZHViNjhrN2lvOHdjb2M1eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SvFocn0wNMx0iv2rYz/giphy.gif" alt="Dancing" width="100">
+<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXZlbXNhenNuMGJtMzNva3Ntbm93N2Zzb2t2NGxlcWVnbHhxd3h6YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kH6CqYiquZawmU1HI6/giphy.gif" alt="Dancing" width="220">
