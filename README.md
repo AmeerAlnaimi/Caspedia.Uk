@@ -132,4 +132,4 @@ Thank you all for contributing to the development of Caspedia.uk. You're dedicat
 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXZlbXNhenNuMGJtMzNva3Ntbm93N2Zzb2t2NGxlcWVnbHhxd3h6YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kH6CqYiquZawmU1HI6/giphy.gif" alt="Dancing" width="220">
 
 # License
-<a href="caspedia.uk/license"> MIT</a> and <a href="LICENSE-CC-BY-SA.txt">CC-BY-SA </a>
+<a href="LICENSE"> MIT</a> and <a href="LICENSE-CC-BY-SA.txt">CC-BY-SA </a>
