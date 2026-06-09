@@ -914,6 +914,127 @@
       display: table;
       clear: both;
     }
+
+    /* Hide Search Bar and Time on Mobile Devices */
+    @media (max-width: 768px) {
+
+      .mw-search,
+      #uae-clock-container {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #github-latest-version {
+        display: none;
+        /* Completely hides the version tag on mobile viewports */
+      }
+    }
+
+    /* ── COMPLETE MOBILE RESPONSIVENESS SYSTEM ── */
+    @media (max-width: 768px) {
+
+      /* 1. Header Wrap Strategy: Allow header elements to stack nicely */
+      #mw-head {
+        height: auto;
+      }
+
+      .mw-head-inner {
+        height: auto;
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .mw-search {
+        flex: none;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        order: 4;
+        /* Smoothly drops the search bar to its own clean row below the logo */
+      }
+
+      .mw-nav-links {
+        margin-left: auto;
+        /* Keeps navigation items neat on the right side */
+      }
+
+      .header-version-tag {
+        position: static;
+        /* Removes absolute positioning so it doesn't overwrite text */
+        font-size: 12px;
+        order: 2;
+      }
+
+      /* 2. Navigation Tabs Fix */
+      .mw-tabs-inner {
+        padding-left: 16px;
+        overflow-x: auto;
+        /* Allows users to slide across tabs with their thumb if they overflow */
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* 3. Main Body Split Fix*/
+      #content-wrap {
+        flex-direction: column-reverse;
+        /* Puts the core article on top, and sidebar menus down below */
+        padding: 12px;
+      }
+
+      #mw-sidebar {
+        width: 100%;
+        border-top: 1px solid var(--border-light);
+        padding-top: 20px;
+        margin-top: 20px;
+      }
+
+      .sidebar-logo-large {
+        display: none;
+        /* Hides duplicate sidebar logo to eliminate mobile page clutter */
+      }
+
+      #mw-content {
+        padding: 16px;
+      }
+
+      /* 4. Portal Blocks Alignment: Changes homepage layout grid from 2 columns to 1 */
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* 5. Infobox & Table of Contents: Transform into elegant full-width cards */
+      .infobox {
+        float: none;
+        width: 100%;
+        margin: 16px 0;
+        clear: both;
+      }
+
+      .toc {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      /* Extreme phone adjustments */
+      #uae-clock-container {
+        display: none !important;
+        /* Conceals the wide clock to save critical header space */
+      }
+
+      #countdown-timer {
+        font-size: 28px;
+        min-width: 100%;
+      }
+
+      .page-title {
+        font-size: 24px;
+      }
+    }
   </style>
 </head>
 
