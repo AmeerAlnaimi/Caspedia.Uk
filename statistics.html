@@ -632,6 +632,267 @@
           r.send();
         });
       </script>
+      <div class="wiki-stats-container">
+        <h2 class="wiki-main-title">Project Statistics & Revision History</h2>
+        <div class="wiki-layout-grid">
+
+          <div class="wiki-main-content">
+            <p class="wiki-notice-text">
+              The table below provides a real-time chronological log of recent revisions, edits, and modifications
+              submitted directly to the primary source repository.
+            </p>
+
+            <ul id="wiki-history-log" class="wiki-log-list wiki-loading-state">
+              Synchronizing repository edit logs...
+            </ul>
+          </div>
+
+          <div class="wiki-infobox">
+            <div class="wiki-infobox-header">Repository Metadata</div>
+            <table class="wiki-infobox-table">
+              <tbody>
+                <tr>
+                  <th>Active Editors</th>
+                  <td id="wiki-stat-contributors">...</td>
+                </tr>
+                <tr>
+                  <th>Open Proposals / Issues</th>
+                  <td id="wiki-stat-issues">...</td>
+                </tr>
+                <tr>
+                  <th>Repository Forks</th>
+                  <td id="wiki-stat-forks">...</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="wiki-infobox-footer">Data sourced via Live GitHub API</div>
+          </div>
+
+        </div>
+      </div>
+
+      <style>
+        .wiki-stats-container {
+          max-width: 1000px;
+          margin: 30px auto;
+          /* Uses your --font-serif variable with standard serif fallbacks */
+          font-family: var(--font-serif, Georgia, Cambria, "Times New Roman", Times, serif);
+          color: #202122;
+          padding: 0 20px;
+          line-height: 1.6;
+          /* Explicitly forces text flow from left to right */
+          direction: ltr;
+          text-align: left;
+        }
+
+        .wiki-main-title {
+          font-size: 26px;
+          font-weight: normal;
+          color: #000000;
+          border-bottom: 1px solid #a2a9b1;
+          padding-bottom: 5px;
+          margin-bottom: 20px;
+          text-align: left;
+        }
+
+        /* Two Column Layout Grid */
+        .wiki-layout-grid {
+          display: grid;
+          grid-template-columns: 1fr 300px;
+          gap: 30px;
+          align-items: start;
+        }
+
+        @media (max-width: 768px) {
+          .wiki-layout-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .wiki-infobox {
+            order: -1;
+          }
+        }
+
+        /* Main Body Texts */
+        .wiki-section-subtitle {
+          font-size: 18px;
+          font-weight: normal;
+          color: #000000;
+          border-bottom: 1px solid #c8ccd1;
+          padding-bottom: 3px;
+          margin-bottom: 12px;
+          text-align: left;
+        }
+
+        .wiki-notice-text {
+          font-size: 14px;
+          color: #54595d;
+          margin-bottom: 15px;
+          text-align: left;
+        }
+
+        /* Revision List Style */
+        .wiki-log-list {
+          list-style-type: square;
+          padding-left: 20px;
+          font-size: 14px;
+          text-align: left;
+        }
+
+        .wiki-log-item {
+          margin-bottom: 10px;
+          text-align: left;
+        }
+
+        .wiki-log-timestamp {
+          color: #54595d;
+          font-variant-numeric: tabular-nums;
+        }
+
+        .wiki-log-author {
+          color: #202122;
+        }
+
+        .wiki-log-msg {
+          font-weight: 500;
+          color: #0b2247;
+        }
+
+        /* Classic Wiki Infobox Card */
+        .wiki-infobox {
+          background-color: #f8f9fa;
+          border: 1px solid #a2a9b1;
+          padding: 5px;
+          font-size: 13px;
+          width: 100%;
+          text-align: left;
+        }
+
+        .wiki-infobox-header {
+          background-color: #eaecf0;
+          font-weight: bold;
+          text-align: left;
+          /* Changed from center to left */
+          padding: 6px 10px;
+          border: 1px solid #a2a9b1;
+          font-size: 14px;
+        }
+
+        .wiki-infobox-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 5px;
+        }
+
+        .wiki-infobox-table th,
+        .wiki-infobox-table td {
+          padding: 6px 10px;
+          text-align: left;
+          /* Forced strict left alignment */
+          vertical-align: top;
+          border-bottom: 1px solid #eaecf0;
+        }
+
+        .wiki-infobox-table th {
+          font-weight: bold;
+          width: 55%;
+        }
+
+        .wiki-infobox-table td {
+          font-weight: bold;
+          color: #2563eb;
+        }
+
+        .wiki-infobox-footer {
+          text-align: left;
+          /* Changed from center to left */
+          padding-left: 10px;
+          font-size: 11px;
+          color: #72777d;
+          padding-top: 8px;
+          padding-bottom: 4px;
+        }
+
+        .wiki-loading-state {
+          color: #72777d;
+          font-style: italic;
+          text-align: left;
+        }
+      </style>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const owner = "AmeerAlnaimi";
+          const repo = "Caspedia.Uk";
+
+          fetchWikiMetrics(owner, repo);
+          fetchWikiContributors(owner, repo);
+          fetchWikiRevisionHistory(owner, repo);
+        });
+
+        async function fetchWikiMetrics(owner, repo) {
+          try {
+            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+            if (!response.ok) throw new Error();
+            const data = await response.json();
+
+            document.getElementById("wiki-stat-issues").textContent = data.open_issues_count;
+            document.getElementById("wiki-stat-forks").textContent = data.forks_count;
+          } catch (err) {
+            document.getElementById("wiki-stat-issues").textContent = "Error";
+            document.getElementById("wiki-stat-forks").textContent = "Error";
+          }
+        }
+
+        async function fetchWikiContributors(owner, repo) {
+          try {
+            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contributors`);
+            if (!response.ok) throw new Error();
+            const data = await response.json();
+
+            document.getElementById("wiki-stat-contributors").textContent = data.length;
+          } catch (err) {
+            document.getElementById("wiki-stat-contributors").textContent = "Error";
+          }
+        }
+
+        async function fetchWikiRevisionHistory(owner, repo) {
+          const logList = document.getElementById("wiki-history-log");
+          try {
+            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/commits`);
+            if (!response.ok) throw new Error();
+            const commits = await response.json();
+
+            logList.innerHTML = "";
+            logList.classList.remove("wiki-loading-state");
+
+            commits.slice(0, 6).forEach(item => {
+              const commit = item.commit;
+              const msg = commit.message.split("\n")[0];
+              const author = commit.author.name;
+
+              const dateObj = new Date(commit.author.date);
+              const timestamp = dateObj.toLocaleDateString(undefined, {
+                month: 'short', day: 'numeric', year: 'numeric'
+              }) + " " + dateObj.toLocaleTimeString(undefined, {
+                hour: '2-digit', minute: '2-digit', hour12: false
+              });
+
+              const li = document.createElement("li");
+              li.className = "wiki-log-item";
+              li.innerHTML = `
+          <span class="wiki-log-timestamp">(${timestamp})</span> 
+          <span class="wiki-log-author"><strong>${author}</strong></span> 
+          <span class="wiki-log-action">modified:</span> 
+          <span class="wiki-log-msg">"${msg}"</span>
+        `;
+              logList.appendChild(li);
+            });
+          } catch (err) {
+            logList.innerHTML = `<li style="color: #d33; list-style: none; text-align: left;">Error: Failed to fetch change logs from the repository index.</li>`;
+          }
+        }
+      </script>
       <div class="categories">
         <div class="page-info"
           style="font-family: var(--font-sans); font-size: 11.9px; color: #494949; border-top: 1px solid var(); padding-top: 1px; margin-top: 1px; margin-bottom: 4px;">
