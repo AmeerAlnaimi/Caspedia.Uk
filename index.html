@@ -71,7 +71,7 @@
     #mw-head {
       background: var(--header-bg);
       border-bottom: 1px solid var(--border-light);
-      position: sticky;
+      position: relative;
       top: 0;
       z-index: 100;
     }
@@ -176,6 +176,21 @@
     .mw-nav-links a:hover {
       color: var(--link);
       text-decoration: none;
+    }
+
+    .header-version-tag {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+
+      font-family: var(--font-serif, Georgia, serif);
+      font-size: 13px;
+      font-weight: 600;
+      color: #000000;
+      /* Subtle slate gray text */
+
+      direction: ltr;
+      text-align: left;
     }
 
     /* ── PAGE TABS ── */
@@ -661,6 +676,8 @@
           style="font-weight: bold; margin-left: 5px; display: inline-block; width: 165px; font-variant-numeric: tabular-nums; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">Loading...</span>
       </li>
     </div>
+    <!-- Live GitHub Version Tag -->
+    <span id="github-latest-version" class="header-version-tag">Loading...</span>
   </div>
 
   <!-- PAGE TABS -->
@@ -1019,6 +1036,34 @@
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
     data-cf-beacon='{"token": "e43a790a8bc4440f9394a65385c4ed2e"}'></script><!-- End Cloudflare Web Analytics -->
+  <script>
+    document.addEventListener("DOMContentLoaded", fetchLatestReleaseVersion);
+
+    async function fetchLatestReleaseVersion() {
+      const owner = "AmeerAlnaimi";
+      const repo = "Caspedia.Uk";
+      const versionTag = document.getElementById("github-latest-version");
+
+      try {
+        // Queries GitHub specifically for the latest published release object
+        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`);
+
+        if (!response.ok) {
+          // If no releases exist yet (404), fallback gracefully
+          versionTag.textContent = "v1.0.0";
+          return;
+        }
+
+        const data = await response.json();
+        // data.tag_name extracts the version text (e.g., "v1.2.3")
+        versionTag.textContent = data.tag_name;
+
+      } catch (err) {
+        // Soft backup display if the user is offline or hitting rate limits
+        versionTag.textContent = "v1.0.0";
+      }
+    }
+  </script>
 </body>
 
 </html>
