@@ -800,6 +800,319 @@
     <!-- Live GitHub Version Tag -->
     <span id="github-latest-version" class="header-version-tag">Loading...</span>
   </div>
+  <div id="popup-screen-overlay" class="screen-overlay-bg">
+
+    <div id="central-disclaimer-card" class="center-banner-card">
+      <button class="center-banner-close" onclick="closeCentralDisclaimer()"
+        aria-label="Dismiss disclaimer">&times;</button>
+      <h4 class="center-banner-title">💥 Caspedia Disclaimer & Notice</h4>
+      <p class="center-banner-text">
+        Welcome to Caspedia.Uk. This platform functions as a community-driven information repository and digital
+        directory.
+        By continuing to use this website, you acknowledge that all articles, system statistics, and documentation are
+        provided
+        solely for educational, archival, and research purposes.
+      </p>
+      <footer class="center-banner-footer">
+        <div class="center-banner-links">
+          <a href="privacy_policy.html" class="center-banner-link">Privacy Policy</a>
+          <span class="center-banner-divider">•</span>
+          <a href="code_of_conduct.html" class="center-banner-link">Code of Conduct</a>
+          <span class="center-banner-divider">•</span>
+          <a href="cookie_statement" class="center-banner-link">Cookie Statement</a>
+          <span class="center-banner-divider">•</span>
+          <a href="statistics.html" class="center-banner-link">Statistics</a>
+        </div>
+        <span class="center-banner-copyright">© 2026 Caspedia.Uk</span>
+      </footer>
+    </div>
+
+    <div id="mobile-notice-card" class="mobile-only-banner">
+      <button class="mobile-banner-close" onclick="closeMobileNotice()" aria-label="Dismiss notice">&times;</button>
+      <h4 class="mobile-banner-title">Desktop Optimization Notice</h4>
+      <p class="mobile-banner-text">
+        Caspedia is designed as a deep information repository and is best experienced on a <strong>desktop
+          computer</strong> or in <strong>landscape mode</strong>. Please turn your device sideways for the best reading
+        layout.
+      </p>
+      <div class="tenor-gif-embed" data-postid="17400422" data-share-method="host" data-aspect-ratio="1.05263"
+        data-width="100%"><a href="https://tenor.com/view/tilt-your-phone-turn-your-phone-phone-gif-17400422">Tilt Your
+          Phone Turn Your Phone Sticker</a>from <a href="https://tenor.com/search/tilt+your+phone-stickers">Tilt Your
+          Phone Stickers</a></div>
+      <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+      <p class="mobile-banner-text contributor-callout">
+        Interested in expanding this knowledge base? Make sure to review our contributor guidelines to join the team.
+      </p>
+      <footer class="mobile-banner-footer">
+        <a href="https://github.com/AmeerAlnaimi/Caspedia.Uk#readme" target="_blank"
+          class="mobile-banner-link">Contributor Site</a>
+        <span class="mobile-banner-copyright">© 2026 Caspedia.Uk</span>
+      </footer>
+    </div>
+
+  </div>
+
+  <style>
+    /* ── 🖤 FULL-SCREEN DARK BACKGROUND OVERLAY ── */
+    .screen-overlay-bg {
+      display: none;
+      /* Hidden completely by default */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Pure black color with 40% visibility opacity */
+      z-index: 199999;
+      /* Sits directly right beneath the cards, but above the rest of the site */
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Transition visibility state classes */
+    .screen-overlay-bg.is-triggered {
+      display: block;
+    }
+
+    .screen-overlay-bg.is-active {
+      opacity: 1;
+    }
+
+    /* ── SHARED LAYOUT STYLES ── */
+    .center-banner-card,
+    .mobile-only-banner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.88);
+      opacity: 0;
+      background-color: var(--white, #ffffff);
+      border: 1px solid var(--border, #a2a9b1);
+      border-radius: 8px;
+      z-index: 200000;
+      /* Stays slightly layered on top of the dark overlay background */
+      direction: ltr;
+      text-align: left;
+      display: none;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+    }
+
+    /* ── DISCLAIMER LAYOUT ── */
+    .center-banner-card {
+      width: 90%;
+      max-width: 480px;
+      padding: 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .center-banner-card.is-triggered {
+      display: block;
+    }
+
+    .center-banner-card.is-active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* ── MOBILE NOTICE LAYOUT (UNDER 768PX PORTRAIT ONLY) ── */
+    .mobile-only-banner {
+      width: 88%;
+      max-width: 360px;
+      padding: 20px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) and (orientation: portrait) {
+      .mobile-only-banner.is-triggered {
+        display: block;
+      }
+
+      .mobile-only-banner.is-active {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    /* ── TYPOGRAPHY & INTERNAL BOX COMPONENTS ── */
+    .center-banner-title,
+    .mobile-banner-title {
+      font-family: 'Linux Biolinum', 'Georgia', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #202122;
+      margin-bottom: 10px;
+      padding-right: 20px;
+    }
+
+    .center-banner-text,
+    .mobile-banner-text {
+      font-family: 'Georgia', serif;
+      font-size: 13px;
+      color: #404244;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .contributor-callout {
+      background-color: #f8f9fa;
+      border-left: 3px solid #3366cc;
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+
+    .center-banner-footer,
+    .mobile-banner-footer {
+      border-top: 1px solid var(--border-light, #eaecf0);
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .center-banner-links {
+      display: flex;
+      gap: 6px;
+    }
+
+    .center-banner-link,
+    .mobile-banner-link {
+      font-family: var(--font-sans, Arial, sans-serif);
+      font-size: 11.5px;
+      color: #3366cc;
+      text-decoration: none;
+    }
+
+    .mobile-banner-link {
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .center-banner-link:hover,
+    .mobile-banner-link:hover {
+      text-decoration: underline;
+    }
+
+    .center-banner-divider,
+    .center-banner-copyright,
+    .mobile-banner-copyright {
+      color: #72777d;
+      font-size: 11px;
+      font-family: var(--font-sans, Arial, sans-serif);
+    }
+
+    .center-banner-close,
+    .mobile-banner-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #72777d;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .center-banner-close:hover,
+    .mobile-banner-close:hover {
+      color: #000000;
+    }
+
+    @media (max-width: 480px) {
+      .center-banner-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+  </style>
+
+  <script>
+    // ── POPUP CHAINING & TIMED REMINDER ENGINE WITH OVERLAY MANAGING ──
+
+    const ONE_HOUR_IN_MS = 3600000;
+
+    // Phase 1: Fade overlay and open the disclaimer card if cache timer has expired
+    function openCentralDisclaimer() {
+      const lastDismissed = localStorage.getItem('caspediaDisclaimerDismissedAt');
+      const now = Date.now();
+
+      if (lastDismissed && (now - lastDismissed < ONE_HOUR_IN_MS)) {
+        return;
+      }
+
+      const overlay = document.getElementById('popup-screen-overlay');
+      const card = document.getElementById('central-disclaimer-card');
+
+      if (overlay && card) {
+        // Bring up overlay background frame
+        overlay.classList.add('is-triggered');
+        card.classList.add('is-triggered');
+
+        setTimeout(() => {
+          overlay.classList.add('is-active');
+          card.classList.add('is-active');
+        }, 20);
+      }
+    }
+
+    // Phase 2: Close disclaimer box and evaluate mobile redirection rule handoff
+    function closeCentralDisclaimer() {
+      const overlay = document.getElementById('popup-screen-overlay');
+      const card = document.getElementById('central-disclaimer-card');
+
+      if (card) card.classList.remove('is-active');
+
+      setTimeout(() => {
+        if (card) card.classList.remove('is-triggered');
+
+        localStorage.setItem('caspediaDisclaimerDismissedAt', Date.now());
+
+        // Secondary Evaluation: Open secondary reminder on phone devices
+        const isMobilePortrait = window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches;
+
+        if (isMobilePortrait) {
+          openMobileNotice();
+        } else {
+          // If not on mobile, drop the background dark overlay entirely
+          if (overlay) {
+            overlay.classList.remove('is-active');
+            setTimeout(() => overlay.classList.remove('is-triggered'), 300);
+          }
+        }
+      }, 200);
+    }
+
+    // Phase 3: Transition to mobile notice layout
+    function openMobileNotice() {
+      const card = document.getElementById('mobile-notice-card');
+      if (!card) return;
+      card.classList.add('is-triggered');
+      setTimeout(() => card.classList.add('is-active'), 20);
+    }
+
+    // Phase 4: Wipe completely clear and shut down the active screen background overlay wrapper
+    function closeMobileNotice() {
+      const overlay = document.getElementById('popup-screen-overlay');
+      const card = document.getElementById('mobile-notice-card');
+
+      if (card) card.classList.remove('is-active');
+      if (overlay) overlay.classList.remove('is-active');
+
+      setTimeout(() => {
+        if (card) card.classList.remove('is-triggered');
+        if (overlay) overlay.classList.remove('is-triggered');
+      }, 300);
+    }
+
+    // Automation Initializer Hook
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(openCentralDisclaimer, 1500);
+    });
+  </script>
 
   <!-- PAGE TABS -->
   <div id="mw-tabs">
