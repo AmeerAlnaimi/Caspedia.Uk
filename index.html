@@ -768,10 +768,8 @@
         </div>
       </a>
       <div class="mw-search">
-        <input type="search" id="search-input" placeholder="Search Caspedia"
-          onkeydown="if(event.key==='Enter'){ event.preventDefault(); handleSearch(); }" />
-        <button class="mw-search-btn" aria-label="Search"
-          onclick="event.preventDefault(); handleSearch();">&#128269;</button>
+        <input type="search" placeholder="Search Caspedia" />
+        <button class="mw-search-btn" aria-label="Search">&#128269;</button>
       </div>
       <nav class="mw-nav-links">
         <a href="#">Create account</a>
@@ -799,14 +797,6 @@
           style="font-weight: bold; margin-left: 5px; display: inline-block; width: 165px; font-variant-numeric: tabular-nums; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">Loading...</span>
       </li>
     </div>
-    <script>
-      function handleSearch() {
-        const query = document.getElementById('search-input').value.trim();
-        if (!query) return;
-        // Replace this with your actual search logic or URL
-        alert('Searching for: ' + query);
-      }
-    </script>
     <!-- Live GitHub Version Tag -->
     <span id="github-latest-version" class="header-version-tag">Loading...</span>
   </div>
