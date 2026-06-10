@@ -1031,17 +1031,20 @@
   </style>
 
   <script>
-    // ── POPUP CHAINING & TIMED REMINDER ENGINE WITH OVERLAY MANAGING ──
-
-    const ONE_HOUR_IN_MS = 60 * 60 * 1000; // 3,600,000 ms
+    const ONE_DAY_IN_MS = 24 * 60 * 60 * 1000;
 
     function openCentralDisclaimer() {
+      const lastDismissed = localStorage.getItem('caspediaDisclaimerDismissedAt');
+      const now = Date.now();
+
+      if (lastDismissed && (now - lastDismissed < ONE_DAY_IN_MS)) {
+        return;
+      }
 
       const overlay = document.getElementById('popup-screen-overlay');
       const card = document.getElementById('central-disclaimer-card');
 
       if (overlay && card) {
-        // Bring up overlay background frame
         overlay.classList.add('is-triggered');
         card.classList.add('is-triggered');
 
@@ -1052,7 +1055,6 @@
       }
     }
 
-    // Phase 2: Close disclaimer box and evaluate mobile redirection rule handoff
     function closeCentralDisclaimer() {
       const overlay = document.getElementById('popup-screen-overlay');
       const card = document.getElementById('central-disclaimer-card');
@@ -1064,13 +1066,11 @@
 
         localStorage.setItem('caspediaDisclaimerDismissedAt', Date.now());
 
-        // Secondary Evaluation: Open secondary reminder on phone devices
         const isMobilePortrait = window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches;
 
         if (isMobilePortrait) {
           openMobileNotice();
         } else {
-          // If not on mobile, drop the background dark overlay entirely
           if (overlay) {
             overlay.classList.remove('is-active');
             setTimeout(() => overlay.classList.remove('is-triggered'), 300);
@@ -1079,7 +1079,6 @@
       }, 200);
     }
 
-    // Phase 3: Transition to mobile notice layout
     function openMobileNotice() {
       const card = document.getElementById('mobile-notice-card');
       if (!card) return;
@@ -1087,7 +1086,6 @@
       setTimeout(() => card.classList.add('is-active'), 20);
     }
 
-    // Phase 4: Wipe completely clear and shut down the active screen background overlay wrapper
     function closeMobileNotice() {
       const overlay = document.getElementById('popup-screen-overlay');
       const card = document.getElementById('mobile-notice-card');
@@ -1101,7 +1099,6 @@
       }, 300);
     }
 
-    // Automation Initializer Hook
     document.addEventListener("DOMContentLoaded", () => {
       setTimeout(openCentralDisclaimer, 1500);
     });
