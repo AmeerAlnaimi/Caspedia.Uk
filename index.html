@@ -1031,18 +1031,25 @@
   </style>
 
   <script>
-    const overlay = document.getElementById('popup-screen-overlay');
-    const card = document.getElementById('central-disclaimer-card');
+    // ── POPUP CHAINING & TIMED REMINDER ENGINE WITH OVERLAY MANAGING ──
 
-    if (overlay && card) {
-      // Bring up overlay background frame
-      overlay.classList.add('is-triggered');
-      card.classList.add('is-triggered');
+    const ONE_HOUR_IN_MS = 60 * 60 * 1000; // 3,600,000 ms
 
-      setTimeout(() => {
-        overlay.classList.add('is-active');
-        card.classList.add('is-active');
-      }, 20);
+    function openCentralDisclaimer() {
+
+      const overlay = document.getElementById('popup-screen-overlay');
+      const card = document.getElementById('central-disclaimer-card');
+
+      if (overlay && card) {
+        // Bring up overlay background frame
+        overlay.classList.add('is-triggered');
+        card.classList.add('is-triggered');
+
+        setTimeout(() => {
+          overlay.classList.add('is-active');
+          card.classList.add('is-active');
+        }, 20);
+      }
     }
 
     // Phase 2: Close disclaimer box and evaluate mobile redirection rule handoff
