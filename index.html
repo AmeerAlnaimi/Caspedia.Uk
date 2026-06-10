@@ -1031,32 +1031,18 @@
   </style>
 
   <script>
-    // ── POPUP CHAINING & TIMED REMINDER ENGINE WITH OVERLAY MANAGING ──
+    const overlay = document.getElementById('popup-screen-overlay');
+    const card = document.getElementById('central-disclaimer-card');
 
-    const ONE_HOUR_IN_MS = 60 * 60 * 1000; // 3,600,000 ms
+    if (overlay && card) {
+      // Bring up overlay background frame
+      overlay.classList.add('is-triggered');
+      card.classList.add('is-triggered');
 
-    // Phase 1: Fade overlay and open the disclaimer card if cache timer has expired
-    function openCentralDisclaimer() {
-      const lastDismissed = localStorage.getItem('caspediaDisclaimerDismissedAt');
-      const now = Date.now();
-
-      if (lastDismissed && (now - lastDismissed < ONE_HOUR_IN_MS)) {
-        return;
-      }
-
-      const overlay = document.getElementById('popup-screen-overlay');
-      const card = document.getElementById('central-disclaimer-card');
-
-      if (overlay && card) {
-        // Bring up overlay background frame
-        overlay.classList.add('is-triggered');
-        card.classList.add('is-triggered');
-
-        setTimeout(() => {
-          overlay.classList.add('is-active');
-          card.classList.add('is-active');
-        }, 20);
-      }
+      setTimeout(() => {
+        overlay.classList.add('is-active');
+        card.classList.add('is-active');
+      }, 20);
     }
 
     // Phase 2: Close disclaimer box and evaluate mobile redirection rule handoff
