@@ -632,6 +632,12 @@
       /* Keeps it black on hover */
     }
 
+    @media (max-width: 426px) {
+      #auth-nav-links {
+        display: none;
+      }
+    }
+
     /* Hide Search Bar and Time on Mobile Devices */
     @media (max-width: 768px) {
 
@@ -771,7 +777,7 @@
         <input type="search" placeholder="Search Caspedia" />
         <button class="mw-search-btn" aria-label="Search">&#128269;</button>
       </div>
-      <nav class="mw-nav-links">
+      <nav class="mw-nav-links" id="auth-nav-links">
         <a href="#">Create account</a>
         <a href="#">Log in</a>
       </nav>
