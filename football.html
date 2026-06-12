@@ -705,6 +705,87 @@
       white-space: nowrap;
     }
 
+    /* ── PENALTY SCOREBOARD ── */
+    .pen-scoreboard {
+      background: #302f2f;
+      border-radius: 6px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 12px 16px;
+      font-family: var(--font-sans);
+    }
+
+    .pen-team-name {
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .pen-dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .pen-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .pen-dot.scored {
+      background: #00e676;
+    }
+
+    .pen-dot.missed {
+      background: #e53935;
+    }
+
+    .pen-dot.empty {
+      background: transparent;
+      border: 2px solid #555;
+    }
+
+    .pen-score {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .pen-score-num {
+      color: #ffffff;
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .pen-score-sep {
+      color: #aaaaaa;
+      font-size: 22px;
+    }
+
+    .pen-right {
+      text-align: right;
+    }
+
+    .pen-label {
+      background: #2d1a47;
+      color: #ccaaff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 4px 12px;
+      font-family: var(--font-sans);
+      border-bottom: 1px solid #3d2060;
+    }
+
     /* ── MEMBER GRID ── */
     .member-grid-wrap {
       margin: 14px 0 20px;
@@ -836,6 +917,10 @@
       background: #1a6b1a;
     }
 
+    .legend-dot.wc {
+      background: #b8860b;
+    }
+
     .legend-label {
       font-size: 13px;
       font-weight: bold;
@@ -851,6 +936,10 @@
 
     .legend-label.fm {
       color: #1a6b1a;
+    }
+
+    .legend-label.wc {
+      color: #b8860b;
     }
 
     .legend-desc {
@@ -1465,11 +1554,175 @@
             <span class="legend-label fm">Friendly Match</span>
             <span class="legend-desc">— Non-competitive fixture</span>
           </div>
+          <div class="legend-row">
+            <div class="legend-dot wc"></div>
+            <span class="legend-label wc">World Cup</span>
+            <span class="legend-desc">— International tournament fixture</span>
+          </div>
         </div>
 
         <p
           style="margin-top: 18px; font-family: var(--font-sans); font-size: 13px; color: var(--text-muted); font-style: italic;">
           Latest recorded matches will appear below as they are played and logged.</p>
+        <!-- MATCH BOX JUNE 9 - WORLD CUP -->
+        <div class="match-box">
+
+          <div class="match-box-header" style="background: #b8860b;">
+            <span class="match-type">World Cup — Semi Final | 2/2</span>
+            <span>9 June 2026</span>
+            <span class="match-status-final">Full Time</span>
+          </div>
+
+          <!-- Scoreline -->
+          <div class="match-scoreline">
+            <div class="match-team">
+              <div class="match-team-name">Haramball FC</div>
+              <div class="match-team-role">Nation: <strong>Salman</strong></div>
+            </div>
+            <div class="match-score-box">
+              <div class="match-score-num">2</div>
+              <div class="match-score-sep">–</div>
+              <div class="match-score-num">1</div>
+            </div>
+            <div class="match-team">
+              <div class="match-team-name">Al Noor FC</div>
+              <div class="match-team-role">Nation: <strong>Pedri</strong></div>
+            </div>
+          </div>
+
+          <!-- Match meta -->
+          <div class="match-meta">
+            <span><strong>Date:</strong> 9 June 2026</span>
+            <span><strong>Result:</strong> Haramball FC win</span>
+          </div>
+
+          <!-- Match events -->
+          <div class="match-events">
+
+            <!-- Haramball FC column -->
+            <div class="match-events-col">
+              <h4>Haramball FC</h4>
+              <div class="event-row">
+                <span class="event-icon">🟨</span>
+                <span class="event-time">11:02 AM</span>
+                <div class="event-desc"><strong>Yellow Card — Rashid Y.</strong><br />Caution issued.</div>
+              </div>
+              <div class="event-row">
+                <span class="event-icon">⚽</span>
+                <span class="event-time">11:04 AM</span>
+                <div class="event-desc"><strong>Goal — Mohammad Emad</strong><br />Haramball FC take the lead. Score:
+                  1–0</div>
+              </div>
+              <div class="event-row">
+                <span class="event-icon">⚽</span>
+                <span class="event-time">11:08 AM</span>
+                <div class="event-desc"><strong>Goal — Mohammad Emad</strong><br />Haramball FC extend the lead. Score:
+                  2–1</div>
+              </div>
+            </div>
+
+            <!-- Al Noor FC column -->
+            <div class="match-events-col">
+              <h4>Al Noor FC</h4>
+              <div class="event-row">
+                <span class="event-icon">⚽</span>
+                <span class="event-time">11:07 AM</span>
+                <div class="event-desc"><strong>Goal — Khalid W.</strong><br />Al Noor FC pull one back. Score: 1–1
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Officials -->
+          <div class="match-officials">
+            <span><strong>Appointed Referee:</strong> Ameer M. Alnaimi</span>
+          </div>
+
+        </div>
+        <!-- END MATCH BOX JUNE 9 - WORLD CUP -->
+        <!-- MATCH BOX JUNE 8 - WORLD CUP -->
+        <div class="match-box">
+
+          <div class="match-box-header" style="background: #b8860b;">
+            <span class="match-type">World Cup — Semi Final | 1/2</span>
+            <span>8 June 2026</span>
+            <span class="match-status-final">Full Time (Pen)</span>
+          </div>
+
+          <!-- Scoreline -->
+          <div class="match-scoreline">
+            <div class="match-team">
+              <div class="match-team-name">Haramball FC</div>
+              <div class="match-team-role">Nation: <strong>Germany</strong></div>
+            </div>
+            <div class="match-score-box">
+              <div class="match-score-num">0</div>
+              <div class="match-score-sep">–</div>
+              <div class="match-score-num">0</div>
+            </div>
+            <div class="match-team">
+              <div class="match-team-name">Al Noor FC</div>
+              <div class="match-team-role">Nation: <strong>Brazil</strong></div>
+            </div>
+          </div>
+
+          <!-- Match meta -->
+          <div class="match-meta">
+            <span><strong>Date:</strong> 8 June 2026</span>
+            <span><strong>Result:</strong> 0–0 (AET) — Al Noor FC win on penalties (1–2)</span>
+          </div>
+
+          <!-- Match events -->
+          <div class="match-events">
+
+            <!-- Haramball FC column -->
+            <div class="match-events-col">
+              <h4>Haramball FC</h4>
+              <div class="event-row">
+                <span class="event-icon">🟨</span>
+                <span class="event-time">11:04 AM</span>
+                <div class="event-desc"><strong>Yellow Card — Ward Muhammad J.</strong><br />Caution issued.</div>
+              </div>
+            </div>
+
+            <!-- Al Noor FC column -->
+            <div class="match-events-col">
+              <h4>Al Noor FC</h4>
+              <p class="no-events">No match events recorded.</p>
+            </div>
+          </div>
+
+          <!-- Penalty Shootout Scoreboard -->
+          <div class="pen-scoreboard">
+            <div>
+              <div class="pen-team-name">Haramball FC</div>
+              <div class="pen-dots">
+                <span class="pen-dot missed"></span>
+                <span class="pen-dot scored"></span>
+              </div>
+            </div>
+            <div class="pen-score">
+              <span class="pen-score-num">(1</span>
+              <span class="pen-score-sep">–</span>
+              <span class="pen-score-num">2)</span>
+            </div>
+            <div class="pen-right">
+              <div class="pen-team-name">Al Noor FC</div>
+              <div class="pen-dots" style="justify-content:flex-end;">
+                <span class="pen-dot scored"></span>
+                <span class="pen-dot scored"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Officials -->
+          <div class="match-officials">
+            <span><strong>Appointed Referee:</strong> Ameer M. Alnaimi</span>
+          </div>
+
+        </div>
+        <!-- END MATCH BOX JUNE 8 - WORLD CUP -->
+
         <!-- MATCH BOX JUNE 4 -->
         <div class="match-box">
 
@@ -1625,11 +1878,12 @@
       <div class="categories">
         <div class="page-info"
           style="font-family: var(--font-sans); font-size: 11.9px; color: #494949; border-top: 1px solid var(); padding-top: 1px; margin-top: 1px; margin-bottom: 4px;">
-          This page was last edited on 06 June 2026, at 10:57 (GMT+4).
+          This page was last edited on 13 June 2026, at 02:46 (GMT+4).
         </div>
         <strong>Categories:</strong>
         <a href="#">Football</a> ·
         <a href="#">Break Football</a> ·
+        <a href="#" style="color: #b8860b;">World Cup</a> ·
         <a href="#">HaramBall FC</a> ·
         <a href="#">Al Noor FC</a> ·
         <a href="#">2026</a>
