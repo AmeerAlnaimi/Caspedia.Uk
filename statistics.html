@@ -9,7 +9,9 @@
   <script data-goatcounter="https://ameeralnaimi.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
       --primary: #1e40af;
@@ -42,7 +44,11 @@
     }
 
     /* Arrow turns White on Click */
-    html:active, body:active, *:active, html.cursor-active, html.cursor-active * {
+    html:active,
+    body:active,
+    *:active,
+    html.cursor-active,
+    html.cursor-active * {
       cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%23ffffff' stroke='%231e40af' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M3 3l7 18 3-7 7-3L3 3z'/%3E%3C/svg%3E"), auto !important;
     }
 
@@ -55,8 +61,14 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: var(--primary); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
 
     /* ── HEADER ── */
     #mw-head {
@@ -132,7 +144,9 @@
       outline: none;
     }
 
-    .mw-search input:focus { border-color: var(--primary); }
+    .mw-search input:focus {
+      border-color: var(--primary);
+    }
 
     .mw-search-btn {
       position: absolute;
@@ -160,7 +174,9 @@
       font-weight: 500;
     }
 
-    .mw-nav-links a { color: var(--text-muted); }
+    .mw-nav-links a {
+      color: var(--text-muted);
+    }
 
     .social-icon-link {
       display: inline-flex;
@@ -170,7 +186,9 @@
       padding: 4px;
     }
 
-    .social-icon-link:hover { color: var(--text-main); }
+    .social-icon-link:hover {
+      color: var(--text-main);
+    }
 
     .uae-clock-pill {
       font-size: 12px;
@@ -230,7 +248,9 @@
       background: var(--bg-body);
     }
 
-    .mw-tab:hover:not(.active) { color: var(--text-main); }
+    .mw-tab:hover:not(.active) {
+      color: var(--text-main);
+    }
 
     /* ── LAYOUT ── */
     #content-wrap {
@@ -314,7 +334,9 @@
       padding: 2px 0;
     }
 
-    .sidebar-card ul li a:hover { color: var(--primary); }
+    .sidebar-card ul li a:hover {
+      color: var(--primary);
+    }
 
     /* ── MAIN CONTENT ── */
     #mw-content {
@@ -356,7 +378,9 @@
       align-items: flex-start;
     }
 
-    .notice-box .notice-icon { flex-shrink: 0; }
+    .notice-box .notice-icon {
+      flex-shrink: 0;
+    }
 
     /* ── INFOBOX ── */
     .infobox {
@@ -405,7 +429,10 @@
       font-style: italic;
     }
 
-    .infobox table { width: 100%; border-collapse: collapse; }
+    .infobox table {
+      width: 100%;
+      border-collapse: collapse;
+    }
 
     .infobox td {
       padding: 6px 10px;
@@ -438,12 +465,24 @@
       margin-bottom: 8px;
     }
 
-    .toc ol { padding-left: 18px; }
-    .toc li { margin-bottom: 2px; }
-    .toc .toc-sub { padding-left: 14px; list-style: decimal; }
+    .toc ol {
+      padding-left: 18px;
+    }
+
+    .toc li {
+      margin-bottom: 2px;
+    }
+
+    .toc .toc-sub {
+      padding-left: 14px;
+      list-style: decimal;
+    }
 
     /* ── ARTICLE BODY ── */
-    .article-body p { margin-bottom: 14px; line-height: 1.65; }
+    .article-body p {
+      margin-bottom: 14px;
+      line-height: 1.65;
+    }
 
     .article-body h2 {
       font-family: var(--font-serif);
@@ -464,9 +503,13 @@
     }
 
     .article-body ul,
-    .article-body ol { margin: 0 0 14px 22px; }
+    .article-body ol {
+      margin: 0 0 14px 22px;
+    }
 
-    .article-body li { margin-bottom: 4px; }
+    .article-body li {
+      margin-bottom: 4px;
+    }
 
     .categories {
       border-top: 1px solid var(--border);
@@ -476,8 +519,13 @@
       color: var(--text-muted);
     }
 
-    .categories strong { color: var(--text-main); }
-    .categories .page-info { margin-bottom: 4px; }
+    .categories strong {
+      color: var(--text-main);
+    }
+
+    .categories .page-info {
+      margin-bottom: 4px;
+    }
 
     /* ── FOOTER ── */
     #mw-footer {
@@ -499,10 +547,19 @@
       margin-bottom: 10px;
     }
 
-    #mw-footer ul li a { color: var(--text-muted); }
-    #mw-footer ul li a:hover { color: var(--primary); }
+    #mw-footer ul li a {
+      color: var(--text-muted);
+    }
 
-    .clearfix::after { content: ''; display: table; clear: both; }
+    #mw-footer ul li a:hover {
+      color: var(--primary);
+    }
+
+    .clearfix::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -512,45 +569,118 @@
         flex-wrap: wrap;
       }
 
-      .mw-search { order: 4; width: 100%; max-width: 100%; }
+      .mw-search {
+        order: 4;
+        width: 100%;
+        max-width: 100%;
+      }
 
-      .mw-tabs-inner { padding-left: 16px; overflow-x: auto; }
+      .mw-tabs-inner {
+        padding-left: 16px;
+        overflow-x: auto;
+      }
 
-      #content-wrap { flex-direction: column-reverse; padding: 12px; }
+      #content-wrap {
+        flex-direction: column-reverse;
+        padding: 12px;
+      }
 
-      #mw-sidebar { width: 100%; }
+      #mw-sidebar {
+        width: 100%;
+      }
 
-      .sidebar-logo-large { display: none; }
+      .sidebar-logo-large {
+        display: none;
+      }
 
-      #mw-content { padding: 16px; }
+      #mw-content {
+        padding: 16px;
+      }
 
-      .infobox, .founder-box, .team-infobox { float: none; width: 100%; margin: 16px 0; }
+      .infobox,
+      .founder-box,
+      .team-infobox {
+        float: none;
+        width: 100%;
+        margin: 16px 0;
+      }
 
-      .toc { display: block; width: 100%; }
+      .toc {
+        display: block;
+        width: 100%;
+      }
     }
 
     @media (max-width: 480px) {
-      #uae-clock-container { display: none !important; }
-      .page-title { font-size: 24px; }
+      #uae-clock-container {
+        display: none !important;
+      }
+
+      .page-title {
+        font-size: 24px;
+      }
     }
 
     @media (max-width: 426px) {
-      #auth-nav-links { display: none; }
+      #auth-nav-links {
+        display: none;
+      }
     }
 
-    .mw-tab a { color: inherit; text-decoration: none; }
+    .mw-tab a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     /* ── NOTICE VARIANTS ── */
-    .notice-box .icon { flex-shrink: 0; font-size: 18px; line-height: 1.4; }
-    .notice-box.blue { }
-    .notice-box.yellow { border-left-color: #b45309; background: #fffbeb; border-color: #fde68a; border-left-width: 3px; }
-    .notice-box.red    { border-left-color: #b91c1c; background: #fef2f2; border-color: #fecaca; border-left-width: 3px; }
-    .notice-box.green  { border-left-color: #15803d; background: #f0fdf4; border-color: #bbf7d0; border-left-width: 3px; }
+    .notice-box .icon {
+      flex-shrink: 0;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .notice-box.blue {}
+
+    .notice-box.yellow {
+      border-left-color: #b45309;
+      background: #fffbeb;
+      border-color: #fde68a;
+      border-left-width: 3px;
+    }
+
+    .notice-box.red {
+      border-left-color: #b91c1c;
+      background: #fef2f2;
+      border-color: #fecaca;
+      border-left-width: 3px;
+    }
+
+    .notice-box.green {
+      border-left-color: #15803d;
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+      border-left-width: 3px;
+    }
 
     /* ── ARTICLE EXTRAS ── */
-    .article-body h4 { font-size: 14px; font-weight: 700; color: #111827; margin: 16px 0 6px; }
-    .article-body ol ol { margin: 6px 0 6px 22px; list-style: lower-alpha; }
-    .meta-text { font-size: 12.5px; color: var(--text-muted); margin-bottom: 20px; }
+    .article-body h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #111827;
+      margin: 16px 0 6px;
+    }
+
+    .article-body ol ol {
+      margin: 6px 0 6px 22px;
+      list-style: lower-alpha;
+    }
+
+    .meta-text {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
     blockquote {
       background: var(--bg-body);
       border: 1px solid var(--border-light);
@@ -561,41 +691,198 @@
       font-size: 13px;
     }
 
-    html { overflow-y: scroll; }
+    html {
+      overflow-y: scroll;
+    }
 
     /* ── STATISTICS ── */
-    kbd { display: inline-block; background: var(--bg-body); border: 1px solid var(--border); border-bottom-width: 2px; border-radius: var(--radius); padding: 1px 6px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: var(--text-main); }
+    kbd {
+      display: inline-block;
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-bottom-width: 2px;
+      border-radius: var(--radius);
+      padding: 1px 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: var(--text-main);
+    }
 
-    .stats-embed-wrap { border: 1px solid var(--border); border-left: 3px solid var(--primary); border-radius: var(--radius); background: var(--bg-body); padding: 12px 16px; margin: 16px 0; }
-    .stats-embed-row { font-size: 13px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-    .stats-embed-link { font-size: 12px; }
-    #total-site-counter { font-weight: 700; color: var(--text-main); }
-    .live-dot { display: inline-block; width: 8px; height: 8px; background: #16a34a; border-radius: 50%; margin-right: 6px; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-    @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+    .stats-embed-wrap {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      border-radius: var(--radius);
+      background: var(--bg-body);
+      padding: 12px 16px;
+      margin: 16px 0;
+    }
 
-    .wiki-stats-container { margin: 28px 0 0; text-align: left; direction: ltr; }
-    .wiki-main-title { font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: #111827; border-bottom: 1px solid var(--border-light); padding-bottom: 4px; margin-bottom: 16px; }
-    .wiki-layout-grid { display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; }
-    .wiki-notice-text { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
-    .wiki-log-list { list-style: square; padding-left: 20px; font-size: 13px; }
-    .wiki-log-item { margin-bottom: 10px; }
-    .wiki-log-timestamp { color: var(--text-muted); font-variant-numeric: tabular-nums; }
-    .wiki-log-author { color: var(--text-main); }
-    .wiki-log-msg { font-weight: 500; color: var(--primary-hover); }
-    .wiki-infobox { background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius); font-size: 12.5px; width: 100%; overflow: hidden; }
-    .wiki-infobox-header { background: var(--bg-body); font-weight: 700; text-align: center; padding: 8px 10px; border-bottom: 1px solid var(--border); font-size: 13.5px; }
-    .wiki-infobox-table { width: 100%; border-collapse: collapse; }
-    .wiki-infobox-table th, .wiki-infobox-table td { padding: 6px 10px; text-align: left; vertical-align: top; border-top: 1px solid var(--border-light); }
-    .wiki-infobox-table tr:first-child th, .wiki-infobox-table tr:first-child td { border-top: none; }
-    .wiki-infobox-table th { font-weight: 600; color: var(--text-muted); width: 55%; }
-    .wiki-infobox-table td { font-weight: 700; color: var(--primary); }
-    .wiki-infobox-footer { padding: 8px 10px; font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border-light); }
-    .wiki-loading-state { color: var(--text-muted); font-style: italic; }
+    .stats-embed-row {
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .stats-embed-link {
+      font-size: 12px;
+    }
+
+    #total-site-counter {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .live-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #16a34a;
+      border-radius: 50%;
+      margin-right: 6px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .live-dot {
+        animation: none;
+      }
+    }
+
+    .wiki-stats-container {
+      margin: 28px 0 0;
+      text-align: left;
+      direction: ltr;
+    }
+
+    .wiki-main-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: #111827;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 4px;
+      margin-bottom: 16px;
+    }
+
+    .wiki-layout-grid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .wiki-notice-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .wiki-log-list {
+      list-style: square;
+      padding-left: 20px;
+      font-size: 13px;
+    }
+
+    .wiki-log-item {
+      margin-bottom: 10px;
+    }
+
+    .wiki-log-timestamp {
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .wiki-log-author {
+      color: var(--text-main);
+    }
+
+    .wiki-log-msg {
+      font-weight: 500;
+      color: var(--primary-hover);
+    }
+
+    .wiki-infobox {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 12.5px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .wiki-infobox-header {
+      background: var(--bg-body);
+      font-weight: 700;
+      text-align: center;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+    }
+
+    .wiki-infobox-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .wiki-infobox-table th,
+    .wiki-infobox-table td {
+      padding: 6px 10px;
+      text-align: left;
+      vertical-align: top;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .wiki-infobox-table tr:first-child th,
+    .wiki-infobox-table tr:first-child td {
+      border-top: none;
+    }
+
+    .wiki-infobox-table th {
+      font-weight: 600;
+      color: var(--text-muted);
+      width: 55%;
+    }
+
+    .wiki-infobox-table td {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .wiki-infobox-footer {
+      padding: 8px 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-light);
+    }
+
+    .wiki-loading-state {
+      color: var(--text-muted);
+      font-style: italic;
+    }
 
     @media (max-width: 768px) {
-      .wiki-layout-grid { grid-template-columns: 1fr; }
-      .wiki-infobox { order: -1; }
+      .wiki-layout-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wiki-infobox {
+        order: -1;
+      }
     }
   </style>
 </head>
@@ -805,7 +1092,7 @@
         </div>
       </div>
 
-      
+
       <script>
         document.addEventListener("DOMContentLoaded", () => {
           const owner = "AmeerAlnaimi";
@@ -956,7 +1243,7 @@
 
         if (!response.ok) {
           // If no releases exist yet (404), fallback gracefully
-          versionTag.textContent = "v1.0.0";
+          versionTag.textContent = "v1.1.0";
           return;
         }
 
@@ -966,7 +1253,7 @@
 
       } catch (err) {
         // Soft backup display if the user is offline or hitting rate limits
-        versionTag.textContent = "v1.0.0";
+        versionTag.textContent = "v1.1.0";
       }
     }
   </script>

@@ -1108,7 +1108,7 @@
 
       if (!response.ok) {
         // If no releases exist yet (404), fallback gracefully
-        versionTag.textContent = "v1.0.0";
+        versionTag.textContent = "v1.1.0";
         return;
       }
 
@@ -1118,7 +1118,7 @@
 
     } catch (err) {
       // Soft backup display if the user is offline or hitting rate limits
-      versionTag.textContent = "v1.0.0";
+      versionTag.textContent = "v1.1.0";
     }
   }
 </script>
