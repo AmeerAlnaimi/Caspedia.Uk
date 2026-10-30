@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Community Constitution | Caspedia.Uk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,500;1,700&family=Roboto+Slab:wght@400;500;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --page: #e9e9ee;
+      --sheet: #fff;
+      --ink: #1b1b1b;
+      --muted: #6b6b75;
+      --line: #3b2fd6;
+      --rule: #1a1a1a;
+      --accent: #3b2fd6;
+      --down: #e0245e;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: "Roboto Slab", Georgia, serif;
+      line-height: 1.55;
+      padding: 32px 16px 64px
+    }
+
+    /* ---------- Sheets (pages of the PDF) ---------- */
+    .sheet {
+      max-width: 860px;
+      margin: 0 auto 28px;
+      background: var(--sheet);
+      padding: 48px 56px 28px;
+      box-shadow: 0 2px 18px rgba(20, 20, 60, .12);
+      min-height: 1000px;
+      display: flex;
+      flex-direction: column
+    }
+
+    .sheet>.content {
+      flex: 1
+    }
+
+    /* Header */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 22px
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-right: 16px;
+      border-right: 1px solid #999
+    }
+
+    .logo img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block
+    }
+
+    .logo .ph {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #3a5bd0, #0d1b4d);
+      border: 3px solid #2b2b2b;
+      flex: none
+    }
+
+    .logo b {
+      font-family: Roboto, sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      letter-spacing: -.5px
+    }
+
+    .slogan {
+      font-family: Roboto, sans-serif;
+      font-style: italic;
+      font-weight: 700;
+      color: #6d6d75;
+      font-size: 25px;
+      line-height: 1.15
+    }
+
+    .thick {
+      height: 5px;
+      background: var(--rule);
+      border-radius: 2px;
+      margin-bottom: 24px
+    }
+
+    h1 {
+      font-weight: 800;
+      font-size: 2.35rem;
+      margin: 0 0 28px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e2e2e2;
+      letter-spacing: -.3px
+    }
+
+    h2 {
+      display: inline-block;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 22px 0 14px;
+      padding-bottom: 3px;
+      border-bottom: 2px solid var(--line);
+      scroll-margin-top: 20px
+    }
+
+    .intro {
+      margin: 0 0 12px;
+      font-size: 1rem
+    }
+
+    ol {
+      margin: 0;
+      padding-left: 30px
+    }
+
+    li {
+      margin: 0 0 16px;
+      padding-left: 4px;
+      font-size: .97rem
+    }
+
+    li::marker {
+      font-size: .9rem
+    }
+
+    li b {
+      font-weight: 700
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px
+    }
+
+    a:hover {
+      color: var(--accent)
+    }
+
+    sup {
+      font-size: .65em
+    }
+
+    /* Footer */
+    .foot {
+      margin-top: 30px;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      font-family: Roboto, sans-serif;
+      font-weight: 700;
+      color: #555;
+      font-size: 14px
+    }
+
+    .foot img,
+    .foot .ph {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover
+    }
+
+    .foot .ph {
+      background: radial-gradient(circle at 35% 30%, #3a5bd0, #0d1b4d);
+      border: 2px solid #444
+    }
+
+    /* ---------- Footnote markers (plain number, jumps to Notes page) ---------- */
+    sup.note {
+      scroll-margin-top: 26px
+    }
+
+    sup.note a {
+      color: var(--accent);
+      font-family: Roboto, sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 0 1px;
+      transition: background .3s ease;
+    }
+
+    sup.note a:hover {
+      text-decoration: underline
+    }
+
+    sup.note:target a {
+      background: rgba(59, 47, 214, .18);
+      border-radius: 3px
+    }
+
+    .notes-list {
+      padding-left: 26px
+    }
+
+    .notes-list li {
+      scroll-margin-top: 26px;
+      font-size: .92rem;
+      margin-bottom: 14px;
+      transition: background .5s ease;
+      border-radius: 8px
+    }
+
+    .notes-list li:target {
+      background: rgba(59, 47, 214, .07)
+    }
+
+    .note-back {
+      font-family: Roboto, sans-serif;
+      font-weight: 700;
+      font-size: .8rem;
+      text-decoration: none;
+      color: var(--muted);
+      margin-right: 6px
+    }
+
+    .note-back:hover {
+      color: var(--accent)
+    }
+
+    /* ---------- Scroll reveal (single, subtle) ---------- */
+    .sheet {
+      animation: rise .6s ease both
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(14px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @media (max-width:640px) {
+      .sheet {
+        padding: 28px 20px 20px;
+        min-height: 0
+      }
+
+      h1 {
+        font-size: 1.75rem
+      }
+
+      .slogan {
+        font-size: 18px
+      }
+
+      .logo b {
+        font-size: 19px
+      }
+
+      .logo img,
+      .logo .ph {
+        width: 48px;
+        height: 48px
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .sheet {
+        animation: none
+      }
+
+      html {
+        scroll-behavior: auto
+      }
+    }
+
+    /* ---------- Custom cursor: modern arrow pointer (fine pointers only) ---------- */
+    @media (pointer:fine) {
+
+      html,
+      body,
+      a {
+        cursor: none
+      }
+
+      .cur-pointer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0
+      }
+
+      .cur-on .cur-pointer {
+        opacity: 1
+      }
+
+      .cur-svg {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: 5px 3px;
+        transform: scale(1) rotate(0deg);
+        filter: drop-shadow(0 2px 5px rgba(20, 20, 60, .35));
+        transition: transform .14s cubic-bezier(.2, .8, .3, 1);
+      }
+
+      .cur-svg path {
+        fill: var(--accent);
+        stroke: #fff;
+        stroke-width: 1.3;
+        stroke-linejoin: round;
+        transition: fill .14s ease
+      }
+
+      /* hovering a clickable element */
+      .cur-link .cur-svg {
+        transform: scale(1.2) rotate(-8deg)
+      }
+
+      /* holding the click */
+      .cur-down .cur-svg {
+        transform: scale(.8) rotate(0deg)
+      }
+
+      .cur-down .cur-svg path {
+        fill: var(--down)
+      }
+
+      .cur-link.cur-down .cur-svg {
+        transform: scale(.88) rotate(-8deg)
+      }
+
+      .cur-ripple {
+        position: fixed;
+        pointer-events: none;
+        z-index: 9998;
+        width: 9px;
+        height: 9px;
+        margin: -4.5px 0 0 -4.5px;
+        border-radius: 50%;
+        border: 1.5px solid var(--accent);
+        animation: ripple .42s ease-out forwards
+      }
+
+      @keyframes ripple {
+        to {
+          transform: scale(4.5);
+          opacity: 0
+        }
+      }
+    }
+
+    @media (pointer:coarse) {
+      .cur-pointer {
+        display: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======== PAGE 1 ======== -->
+  <section class="sheet">
+    <div class="content">
+      <header>
+        <div class="brand">
+          <div class="logo"><span class="logo-img"></span><b>Caspedia.Uk</b></div>
+          <div class="slogan">United Under<br>One Banner</div>
+        </div>
+        <div class="thick"></div>
+      </header>
+
+      <h1>The Community Constitution</h1>
+
+      <h2 id="article-1">Article 1: Core Foundations</h2>
+      <p class="intro">In this Community, we must uphold these crucial promises to ensure stability:</p>
+      <ol>
+        <li>We are united as <b>one people</b><sup class="note" id="src-1"><a href="#note-1">1</a></sup>, regardless of
+          race, ethnicity, culture, beliefs, heritage, nationality, and skin color.</li>
+        <li>An act of bullying, harassment, racial discrimination, violence or disrespect that is directed at one of our
+          members is considered a <b>direct attack</b><sup class="note" id="src-2"><a href="#note-2">2</a></sup> on our
+          entire community; we stand <b>united</b> to protect, support, and defend one another while using reasonable
+          measures and in accordance with school rules.</li>
+        <li>We are committed to <b>supporting</b><sup class="note" id="src-3"><a href="#note-3">3</a></sup> our peers,
+          especially new students, in academic activities, fostering strong bonds among us, and supporting them in
+          <b>every way</b> possible.</li>
+        <li>We must be <b>responsible</b><sup class="note" id="src-4"><a href="#note-4">4</a></sup> in all of our
+          actions, ensure the highest level of honesty, and share crucial information with everyone to ensure fairness
+          while following school institution laws.</li>
+      </ol>
+
+      <h2 id="article-2">Article 2: Rights for Members</h2>
+      <p class="intro">As this community have multiple groups (School Info , 2<sup>nd</sup> Family, and C.O.G.11), there
+        are rights:</p>
+      <ol>
+        <li>Any students who are in Grade 11, whether they are new or old, always have the <b>right</b> to <b>join</b>
+          and <b>leave</b><sup class="note" id="src-5"><a href="#note-5">5</a></sup> the community/groups with no
+          difficulty or reprecussions.</li>
+        <li>Every member, whether new or old, has the <b>absolute right</b><sup class="note" id="src-6"><a
+              href="#note-6">6</a></sup> to freely share their opinions, ideas, and present feedback in group
+          discussions or conversations without facing fear of judgement, discrimination, or exclusion if the speech does
+          not violate <a href="#" onclick="return false">UAE cyber laws</a>.</li>
+        <li>Members, whether new or old, have the <b>right</b><sup class="note" id="src-7"><a href="#note-7">7</a></sup>
+          to access and request academic assistance, homework reminders, and study materials without experiencing
+          gatekeeping or resource hoarding from peers.</li>
+        <li>Every member, whether new or old, has the <b>right</b> to personal privacy (subject to UAE &amp; School
+          Law). This includes <b>private messages</b><sup class="note" id="src-8"><a href="#note-8">8</a></sup> and
+          personal details, and discreet messages may not be sent in public group chats.</li>
+        <li>Every member, whether new or old, has the <b>right</b><sup class="note" id="src-9"><a
+              href="#note-9">9</a></sup> to have access to <b>School Info</b> no matter what violations he committed
+          unless he voluntarily leaves.</li>
+        <li>Every member, whether new or old, has the <b>right</b><sup class="note" id="src-10"><a
+              href="#note-10">10</a></sup> to vote on <b>matters</b> such as football polls, potential hangouts,
+          peer-to-peer sessions, and structural changes that may occur occasionally on School Info and other platforms.
+        </li>
+      </ol>
+    </div>
+    <footer class="foot"><span class="logo-img small"></span>Caspedia.Uk</footer>
+  </section>
+
+  <!-- ======== PAGE 2 ======== -->
+  <section class="sheet">
+    <div class="content">
+      <h2 id="article-3">Article 3: Admin Rights &amp; Responsibility for the Community</h2>
+      <p class="intro">In this Community, admins must follow these rules and acknoleadge their rights and obligations:
+      </p>
+      <ol>
+        <li>Admins <b>must</b><sup class="note" id="src-11"><a href="#note-11">11</a></sup> share academic resources,
+          quiz dates, homework deadlines, and any information related to our school without intentionally withholding
+          critical information. (e.g., not sharing exam resources with others who require them.)</li>
+        <li>Admins <b>must</b><sup class="note" id="src-12"><a href="#note-12">12</a></sup> support their peers
+          <b>academically</b> to the best of their abilities. without causing inconvenience for the admins (e.g., a
+          personal session for a long period of time during exam season)</li>
+        <li>Admins <b>must</b><sup class="note" id="src-13"><a href="#note-13">13</a></sup> maintain a
+          <b>professional</b>, <b>non-biased</b> tone when sending announcements, helping their peers, and sending
+          important reminders &amp; notes without causing confusion or misinformation.</li>
+        <li>Admins <b>must</b><sup class="note" id="src-14"><a href="#note-14">14</a></sup> respect the community’s
+          rules (as they are not exempt from Articles 1 and 2), the school’s rules, and the government’s rules.</li>
+        <li>Admins have the <b>right</b> to <b>decline</b><sup class="note" id="src-15"><a href="#note-15">15</a></sup>
+          support to a fellow member if they are making excessive demands (such as a 2-hour study session personally or
+          any aid that is extensive), or if that admin is busy with projects, exams, or personal matters.</li>
+        <li>Admins have the <b>right</b> to <b>temporarily</b><sup class="note" id="src-16"><a
+              href="#note-16">16</a></sup> appoint an admin from the members if if an active admin is absent,
+          overwhelmed during exam periods, or unable to perform their duties.</li>
+        <li>Admins have the <b>right</b> to <b>step down</b><sup class="note" id="src-17"><a
+              href="#note-17">17</a></sup> (resign) from their position at any time with a 14-day deliberation grace
+          period to reconsider before the resignation is formally finalized.</li>
+      </ol>
+
+      <h2 id="article-4" style="margin-top:36px">Article 4: Code of Conduct (Digitally &amp; Phyisically)</h2>
+      <p class="intro">To ensure stability, peace, and security. We must follow these guidlines :</p>
+      <ol>
+        <li>Members <b>must</b><sup class="note" id="src-18"><a href="#note-18">18</a></sup> resolve all forms of
+          personal disagreements through private conversations (usually with an admin) or peer mediation before
+          escalating to 2<sup>nd</sup> family or C.O.G.11.</li>
+        <li>If a member within our community verbally or physically attacks another member (within the community),
+          <b>Article 1</b> will <b>NOT</b> be activated<sup class="note" id="src-19"><a href="#note-19">19</a></sup>;
+          instead, other members <b>must</b> de-escalate the fight with these measures of diplomacy; if that fails, use
+          reasonable force to break the fight or altercation, and report it to the nearest teachers or the school
+          supervisor (If the incident occurred on the school premises).</li>
+        <li>Members <b>must</b><sup class="note" id="src-20"><a href="#note-20">20</a></sup> avoid spamming stickers,
+          pictures, videos, or messages in the community’s group.</li>
+        <li>Members are <b>prohibited</b><sup class="note" id="src-21"><a href="#note-21">21</a></sup> from sending
+          these messages/content to the groups, including: Adult content (inappropriate content in general), racial
+          slurs, words that incite violence, discrimination, misleading videos, misinformation, gambling, drugs, private
+          pictures (even if it is appropriate; violates their privacy), scam websites, grabbify-type of links, harsh
+          racism, edited &amp; altered pictures (includes the use of AI), unverified groups, sensitive political
+          opinions, phrases that indicate bullying, leaked exam papers (in all fields; graded assignments, tasks,
+          etc...), impersonation (on all forms), and all forms of digital privacy violations contents.</li>
+      </ol>
+    </div>
+    <footer class="foot"><span class="logo-img small"></span>Caspedia.Uk</footer>
+  </section>
+
+  <!-- ======== PAGE 3 ======== -->
+  <section class="sheet">
+    <div class="content">
+      <h2 id="article-5">Article 5: Recognition of The Admins</h2>
+      <p class="intro">All members must know and recognize the admins of the community:</p>
+      <ol>
+        <li>All members <b>must</b><sup class="note" id="src-22"><a href="#note-22">22</a></sup> acknowledge that the
+          following six admins, <b>Ameer Alnaimi</b>, <b>Ibrahim Mehtab</b>, <b>Yamen Alawneh</b>, <b>Essam H.</b>,
+          <b>Fares Ibrahim</b> and Unknown, are the legitimate admins of <b>School Info</b> and the entire Community.
+        </li>
+        <li>All members <b>are recommended to</b><sup class="note" id="src-23"><a href="#note-23">23</a></sup> respect
+          the admins’ efforts in supporting the group (It’s not as easy as you think it is)</li>
+        <li>All members <b>must</b><sup class="note" id="src-24"><a href="#note-24">24</a></sup> refrain from
+          impersonating, intentionally undermining, or spreading rumours of a recognized admin.</li>
+      </ol>
+    </div>
+    <footer class="foot"><span class="logo-img small"></span>Caspedia.Uk</footer>
+  </section>
+
+  <!-- ======== PAGE 4: NOTES ======== -->
+  <section class="sheet">
+    <div class="content">
+      <h2 id="notes" style="margin-top:0">Notes</h2>
+      <p class="intro">Plain-language clarifications for the numbered terms above. Tap the arrow to jump back to where
+        you were.</p>
+      <ol class="notes-list">
+        <li id="note-1"><a class="note-back" href="#src-1" aria-label="Back to reference 1">↩</a>Means every member is
+          treated as part of one community, no matter their race, ethnicity, culture, beliefs, heritage, nationality or
+          skin color.</li>
+        <li id="note-2"><a class="note-back" href="#src-2" aria-label="Back to reference 2">↩</a>Mistreating one member
+          — bullying, harassment, racial discrimination, violence or disrespect — is treated as an attack on the whole
+          community, not just that person.</li>
+        <li id="note-3"><a class="note-back" href="#src-3" aria-label="Back to reference 3">↩</a>The community actively
+          helps members, especially new students, with schoolwork and fitting in — not just in theory.</li>
+        <li id="note-4"><a class="note-back" href="#src-4" aria-label="Back to reference 4">↩</a>Every member is
+          expected to act with honesty and share important information fairly, while still following school rules.</li>
+        <li id="note-5"><a class="note-back" href="#src-5" aria-label="Back to reference 5">↩</a>Any Grade 11 student
+          can join or leave the community or its groups whenever they want, with no penalty for leaving.</li>
+        <li id="note-6"><a class="note-back" href="#src-6" aria-label="Back to reference 6">↩</a>Members can share
+          opinions and feedback openly without fear of judgment or exclusion — as long as it doesn’t break UAE cyber
+          law.</li>
+        <li id="note-7"><a class="note-back" href="#src-7" aria-label="Back to reference 7">↩</a>No one can gatekeep or
+          hoard study materials — every member can ask for and receive academic help.</li>
+        <li id="note-8"><a class="note-back" href="#src-8" aria-label="Back to reference 8">↩</a>Private messages and
+          personal details stay private; sensitive or discreet matters shouldn’t be posted in public group chats.</li>
+        <li id="note-9"><a class="note-back" href="#src-9" aria-label="Back to reference 9">↩</a>A member keeps access
+          to the School Info channel even after a rule violation — access is only lost if they choose to leave.</li>
+        <li id="note-10"><a class="note-back" href="#src-10" aria-label="Back to reference 10">↩</a>Members get a vote
+          on community matters like hangouts, polls, and changes to how the groups are structured.</li>
+        <li id="note-11"><a class="note-back" href="#src-11" aria-label="Back to reference 11">↩</a>Admins are required
+          to share exam dates, deadlines and resources with everyone — not just a select few.</li>
+        <li id="note-12"><a class="note-back" href="#src-12" aria-label="Back to reference 12">↩</a>Admins help with
+          schoolwork as much as they reasonably can, but aren’t obligated to give unlimited time (e.g. hours-long
+          sessions).</li>
+        <li id="note-13"><a class="note-back" href="#src-13" aria-label="Back to reference 13">↩</a>Admin announcements
+          and help should stay neutral and clear, avoiding confusion, bias or spreading wrong information.</li>
+        <li id="note-14"><a class="note-back" href="#src-14" aria-label="Back to reference 14">↩</a>Admins follow the
+          same community rules as everyone else, plus the school’s and government’s rules — no exceptions.</li>
+        <li id="note-15"><a class="note-back" href="#src-15" aria-label="Back to reference 15">↩</a>An admin can say no
+          to a request that’s excessive, or when they’re busy with their own exams, projects or personal matters.</li>
+        <li id="note-16"><a class="note-back" href="#src-16" aria-label="Back to reference 16">↩</a>If an admin is
+          unavailable or overwhelmed, they can name another member to temporarily cover their duties.</li>
+        <li id="note-17"><a class="note-back" href="#src-17" aria-label="Back to reference 17">↩</a>An admin can resign
+          at any time, but has 14 days to reconsider before the resignation actually takes effect.</li>
+        <li id="note-18"><a class="note-back" href="#src-18" aria-label="Back to reference 18">↩</a>Members should try
+          to sort out disagreements privately — usually with an admin’s help — before bringing in other groups.</li>
+        <li id="note-19"><a class="note-back" href="#src-19" aria-label="Back to reference 19">↩</a>A fight between two
+          members doesn’t count as an “attack on the whole community” under Article 1 — it’s handled as an individual
+          conflict instead.</li>
+        <li id="note-20"><a class="note-back" href="#src-20" aria-label="Back to reference 20">↩</a>Don’t flood the chat
+          — repeated stickers, pictures, videos or messages should be kept to a reasonable amount.</li>
+        <li id="note-21"><a class="note-back" href="#src-21" aria-label="Back to reference 21">↩</a>A fixed list of
+          content that can never be posted — things like adult content, slurs, misinformation, private pictures, scams,
+          leaked exams and impersonation.</li>
+        <li id="note-22"><a class="note-back" href="#src-22" aria-label="Back to reference 22">↩</a>Everyone must
+          recognize these six people as the official, legitimate admins of School Info and the wider community.</li>
+        <li id="note-23"><a class="note-back" href="#src-23" aria-label="Back to reference 23">↩</a>Appreciating the
+          admins’ effort is encouraged, though not a strict requirement like the other rules.</li>
+        <li id="note-24"><a class="note-back" href="#src-24" aria-label="Back to reference 24">↩</a>Don’t pretend to be
+          an admin, try to undermine one, or spread rumors about them.</li>
+      </ol>
+    </div>
+    <footer class="foot"><span class="logo-img small"></span>Caspedia.Uk</footer>
+  </section>
+
+  <!-- Custom cursor element -->
+  <div class="cur-pointer" aria-hidden="true">
+    <svg class="cur-svg" width="26" height="26" viewBox="0 0 24 24">
+      <path d="M3 2 L21 12 L12.3 13.6 L9 21 Z"></path>
+    </svg>
+  </div>
+
+  <script>
+    /* ============ CONFIG: paste your logo link here ============ */
+    const LOGO_URL = "Cas_Junior_Logo.jpg";   // e.g. "https://your-domain.com/logo.png" or "logo.png"
+    /* =========================================================== */
+
+    // Insert logo (header + footers). Falls back to a blue emblem if empty/broken.
+    document.querySelectorAll(".logo-img").forEach(el => {
+      const fallback = () => { el.outerHTML = '<span class="ph"></span>'; };
+      if (!LOGO_URL) { fallback(); return; }
+      const img = new Image();
+      img.src = LOGO_URL; img.alt = "Caspedia.Uk logo";
+      img.onerror = () => img.replaceWith(Object.assign(document.createElement("span"), { className: "ph" }));
+      el.replaceWith(img);
+    });
+
+    // ---------- Custom cursor: modern arrow pointer ----------
+    (function () {
+      if (!matchMedia("(pointer:fine)").matches) return;
+      const root = document.documentElement;
+      const pointer = document.querySelector(".cur-pointer");
+
+      addEventListener("mousemove", e => {
+        root.classList.add("cur-on");
+        pointer.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+        root.classList.toggle("cur-link", !!e.target.closest("a"));
+      }, { passive: true });
+
+      addEventListener("mousedown", () => root.classList.add("cur-down"));
+      addEventListener("mouseup", () => root.classList.remove("cur-down"));
+
+      addEventListener("click", e => {
+        if (matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+        const r = document.createElement("span");
+        r.className = "cur-ripple";
+        r.style.left = e.clientX + "px"; r.style.top = e.clientY + "px";
+        document.body.appendChild(r);
+        r.addEventListener("animationend", () => r.remove());
+      });
+
+      document.addEventListener("mouseleave", () => root.classList.remove("cur-on"));
+      document.addEventListener("mouseenter", () => root.classList.add("cur-on"));
+    })();
+  </script>
+</body>
+
+</html>
